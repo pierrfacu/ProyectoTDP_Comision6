@@ -1,5 +1,7 @@
-package Galaxian;
+package Juego;
 
 public class Juego {
 
+	
+	
 }
