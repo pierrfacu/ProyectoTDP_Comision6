@@ -11,7 +11,7 @@ public class Juego {
 	private Nivel nivel;
 	
 	
-	//Contructor
+	//Constructor
 	public Juego(gui gui) {
 		//Creacion de jugador
 		jugador = new Jugador();
