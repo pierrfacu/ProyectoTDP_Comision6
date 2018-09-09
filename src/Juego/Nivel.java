@@ -3,6 +3,11 @@ package Juego;
 import Entidades.Enemigos;
 import java.util.LinkedList;
 
+/**
+ * 
+ * @author 
+ *
+ */
 public class Nivel {
 	//Atributos de clase
 	private static int N_Inicial = 1;

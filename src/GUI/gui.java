@@ -1,7 +1,5 @@
 package GUI;
 
-
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,11 +9,17 @@ import Juego.Juego;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * 
+ * @author 
+ *
+ */
 public class gui extends JFrame {
 	private JPanel contentPane;
 	
 	private Juego game;
-
+	private ContadorTiempo cTime;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -50,12 +54,13 @@ public class gui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		game = new Juego(this);//inicia el juego
+		game = new Juego(this);
+		cTime = new ContadorTiempo(game);
+		cTime.start();
 	}
 	
 	protected void mover(KeyEvent key){
-		game.moverJugador(key.getKeyCode());
-		
+		game.moverJugador(key.getKeyCode());		
 		this.repaint();
 	}
 }
