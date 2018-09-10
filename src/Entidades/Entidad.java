@@ -13,8 +13,8 @@ public abstract class Entidad {
 
 	protected JLabel grafico;
 	protected Icon image[]; //Podriamos usar map?
-	protected final int width = 51; //modificar a tamaño definitivo
-	protected final int height = 57; //modificar a tamaño definitivo
+	protected final int width = 40; //modificar a tamaño definitivo
+	protected final int height = 40; //modificar a tamaño definitivo
 	protected Point pos;
 	protected int velocidad;
 	
