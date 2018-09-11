@@ -52,17 +52,16 @@ public class Juego {
 	 * @param x
 	 */
 	public void moverJugador(int x) {
-		int dir = 0;
 		
 		switch (x){
 			case KeyEvent.VK_LEFT : //Izquierda
-				dir = 0;
+				jugador.mover(0);
 				break;
 			case KeyEvent.VK_RIGHT : //Derecha
-				dir = 1;
+				jugador.mover(1);
 				break;
 		}
-		jugador.mover(dir);
+		
 	}
 	
 	/**
