@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -56,14 +57,13 @@ public class gui extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 		game = new Juego(this);
 		cTime = new ContadorTiempo(game);
 		cTime.start();
 	}
 	
 	protected void mover(KeyEvent key){
-		game.moverJugador(key.getKeyCode());		
+		game.moverJugador(key.getKeyCode());
 		this.repaint();
 	}
 }
