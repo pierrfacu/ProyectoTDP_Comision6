@@ -20,11 +20,11 @@ public class ContadorTiempo extends Thread{
 	public void run() {
 		while(game.hayEnemigos()) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//game.mover();
+			game.moverFormacion();
 		}
 		/**
 		 * cuando se acaben los enemigos, luego hay que

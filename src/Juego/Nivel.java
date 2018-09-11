@@ -1,6 +1,8 @@
 package Juego;
 
-import Entidades.Enemigos;
+import Entidades.Enemigo;
+import Entidades.Enemigos.E1;
+
 import java.util.LinkedList;
 
 /**
@@ -43,10 +45,15 @@ public class Nivel {
 	 * Devuelve una coleccion de enemigos de acuerdo al nivel a cargar, requiere que se establezca el siguiente nivel.
 	 * @return Coleccion de enemigos.
 	 */
-	public LinkedList<Enemigos> obtenerEnemigos(){
-		LinkedList<Enemigos> e = new LinkedList<Enemigos>();
+	public LinkedList<Enemigo> obtenerEnemigos(){
+		LinkedList<Enemigo> e = new LinkedList<Enemigo>();
 		
-		//Completar
+		Enemigo e1 = new E1(10, 100, 150);
+		e.addLast(e1);
+		Enemigo e2 = new E1(10, 250, 150);
+		e.addLast(e2);
+		Enemigo e3 = new E1(10, 400, 150);
+		e.addLast(e3);
 			
 		return e;		
 	}

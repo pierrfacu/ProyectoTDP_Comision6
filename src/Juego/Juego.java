@@ -1,9 +1,11 @@
 package Juego;
 
 import GUI.gui;
-
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
+
 import Entidades.*;
 
 /**
@@ -14,7 +16,7 @@ import Entidades.*;
 public class Juego {
 
 	private Jugador jugador;
-	private LinkedList<Enemigos> enemigos;
+	private LinkedList<Enemigo> enemigos;
 	private Nivel nivel;
 	
 	
@@ -29,7 +31,10 @@ public class Juego {
 		
 		//Carga de enemigos
 		enemigos = nivel.obtenerEnemigos();
-	
+		Iterator<Enemigo> i = enemigos.iterator();
+		while(i.hasNext()) {
+			gui.add(i.next().getGrafico());
+		}	
 	}
 	
 	// Metodos
@@ -39,8 +44,7 @@ public class Juego {
 	 * @return
 	 */
 	public boolean hayEnemigos() {
-		//return !(enemigos.size() == 0);
-		return true; //Sacar cuando ya este la carga de enemigos.
+		return !(enemigos.size() == 0);
 	}
 	
 	/**
@@ -61,6 +65,17 @@ public class Juego {
 		jugador.mover(dir);
 	}
 	
+	/**
+	 * 
+	 */
+	public void moverFormacion() {
+		Random r = new Random();
+		int dir = r.nextInt(2);
+		Iterator<Enemigo> i = enemigos.iterator();
+		while(i.hasNext()) {
+			i.next().mover(dir);
+		}
+	}
 	//Metodos privados
 	
 }

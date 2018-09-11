@@ -27,10 +27,14 @@ public class Jugador extends Entidad{
 		//Investigar como hacer para no salirse de la ventana
 		switch (d) {
 			case 0 : //Izquierda
-				pos.setLocation(pos.x - velocidad, pos.y);
+				if ((pos.x - velocidad) < 0)
+					pos.setLocation(0, pos.y);
+				else pos.setLocation(pos.x - velocidad, pos.y);
 				break;
 			case 1 : //Derecha
-				pos.setLocation(pos.x + velocidad, pos.y);
+				if ((pos.x + velocidad) > 550)
+					pos.setLocation(550, pos.y);
+				else pos.setLocation(pos.x + velocidad, pos.y);
 				break;
 		}
 		setGrafico(d);
