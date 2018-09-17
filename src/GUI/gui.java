@@ -43,7 +43,7 @@ public class gui extends JFrame {
 	public gui() {
 		addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent arg0) {
+			public void keyPressed(KeyEvent arg0) {
 				mover(arg0);
 			}
 		});
@@ -57,6 +57,8 @@ public class gui extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(000));
+		
 		game = new Juego(this);
 		cTime = new ContadorTiempo(game);
 		cTime.start();

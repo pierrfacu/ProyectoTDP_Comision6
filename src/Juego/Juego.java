@@ -17,8 +17,9 @@ public class Juego {
 
 	private Jugador jugador;
 	private LinkedList<Enemigo> enemigos;
-	private Nivel nivel;
+	private Nivel nivel; //Gestor de niveles
 	
+	private int contSecMF; //Contador para secuencia de movimiento formacion enemigos
 	
 	//Constructor
 	public Juego(gui gui) {
@@ -68,12 +69,29 @@ public class Juego {
 	 * 
 	 */
 	public void moverFormacion() {
-		Random r = new Random();
-		int dir = r.nextInt(2);
+		int d = 0;
+		switch (contSecMF) {
+		case 0 : //izquierda
+			d = 0;
+			break; 
+		case 1 : //derecha
+			d = 1;
+			break;
+		case 2 : //derecha
+			d = 1;
+			break;
+		case 3 : //izquierda
+			d = 0;
+			break;
+		}
+		
 		Iterator<Enemigo> i = enemigos.iterator();
 		while(i.hasNext()) {
-			i.next().mover(dir);
+			i.next().mover(d);
 		}
+		contSecMF ++;
+		if(contSecMF == 4)
+			contSecMF = 0;
 	}
 	//Metodos privados
 	
