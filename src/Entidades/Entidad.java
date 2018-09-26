@@ -77,6 +77,6 @@ public abstract class Entidad {
 	
 	// Metodos abstractos
 	
-	abstract void mover(int d);
+	public abstract void mover(int d);
 	
 }

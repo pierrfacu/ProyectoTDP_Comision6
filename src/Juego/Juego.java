@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import Entidades.*;
+import Entidades.Enemigos.Enemigo;
 
 /**
  * 
@@ -14,18 +15,23 @@ import Entidades.*;
  *
  */
 public class Juego {
+	
 
-	private Jugador jugador;
-	private LinkedList<Enemigo> enemigos;
 	private Nivel nivel; //Gestor de niveles
 	
-	private int contSecMF; //Contador para secuencia de movimiento formacion enemigos
+	private Jugador jugador;
+	private int puntaje;
+	
+	private LinkedList<Enemigo> enemigos;
+	
+	private int contSecMF; //Contador para secuencia de movimiento formacion enemigos, variable temporal.
 	
 	//Constructor
 	public Juego(gui gui) {
 		//Creacion de jugador
 		jugador = new Jugador(10, 270, 600);
 		gui.add(jugador.getGrafico());
+		puntaje = 0;
 		
 		//Creacion del gestor de niveles
 		nivel = new Nivel();
@@ -39,6 +45,22 @@ public class Juego {
 	}
 	
 	// Metodos
+	
+	/**
+	 * 
+	 * @param p
+	 */
+	public void sumarPuntaje(int p) {
+		puntaje = puntaje + p;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int obtenerPuntaje() {
+		return puntaje;
+	}
 	
 	/**
 	 * 
@@ -68,7 +90,7 @@ public class Juego {
 	/**
 	 * 
 	 */
-	public void moverFormacion() {
+	public void moverFormacion() {//Provisorio
 		int d = 0;
 		switch (contSecMF) {
 		case 0 : //izquierda

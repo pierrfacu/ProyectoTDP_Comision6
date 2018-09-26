@@ -1,8 +1,7 @@
 package Entidades.Enemigos;
 
 import javax.swing.ImageIcon;
-
-import Entidades.Enemigo;
+import Entidades.*;
 
 /**
  * 

@@ -1,4 +1,6 @@
-package Entidades;
+package Entidades.Enemigos;
+
+import Entidades.Entidad;
 
 /**
  * 
