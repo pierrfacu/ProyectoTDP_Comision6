@@ -4,7 +4,6 @@ import GUI.gui;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Random;
 
 import Entidades.*;
 import Entidades.Enemigos.Enemigo;
@@ -67,7 +66,7 @@ public class Juego {
 	 * @return
 	 */
 	public boolean hayEnemigos() {
-		return !(enemigos.size() == 0);
+		return !(enemigos.isEmpty());
 	}
 	
 	/**
@@ -82,6 +81,9 @@ public class Juego {
 				break;
 			case KeyEvent.VK_RIGHT : //Derecha
 				jugador.mover(1);
+				break;
+			case KeyEvent.VK_SPACE : //Disparo
+				jugador.disparar(this);
 				break;
 		}
 		
@@ -114,6 +116,18 @@ public class Juego {
 		contSecMF ++;
 		if(contSecMF == 4)
 			contSecMF = 0;
+	}
+	
+	public LinkedList<Enemigo> obtenerEnemigos(){//Provisorio
+		return enemigos;
+	}
+	
+	public void eliminarEnem(Enemigo e) {//Provisorio
+		if (enemigos.remove(e))
+			System.out.println("Enemigo eliminado.");
+		
+		System.out.println("Cant enemigos rest: "+enemigos.size());
+		
 	}
 	//Metodos privados
 	

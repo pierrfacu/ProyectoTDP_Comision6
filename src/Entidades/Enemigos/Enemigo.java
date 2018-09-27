@@ -1,6 +1,7 @@
 package Entidades.Enemigos;
 
 import Entidades.Entidad;
+import Juego.Juego;
 
 /**
  * 
@@ -30,4 +31,12 @@ public abstract class Enemigo extends Entidad{
 		}
 		setGrafico(d);
 	}
+	
+	public void morir(Juego j) {
+		j.eliminarEnem(this);
+		this.getGrafico().setVisible(false);
+		// ES NECESARIO INVOCAR EL finalice() ???
+		
+	}
+	
 }

@@ -1,7 +1,13 @@
 package Entidades;
 
+import java.util.LinkedList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import java.util.Random;
+import Entidades.Enemigos.Enemigo;
+import Juego.Juego;
 
 /**
  * 
@@ -64,5 +70,15 @@ public class Jugador extends Entidad{
 				break;
 		}
 		setGrafico(d);
+	}
+	
+	public void disparar(Juego j) {//Provisorio
+		LinkedList<Enemigo> enem = j.obtenerEnemigos();
+		if (!enem.isEmpty()) {
+			Random rnd = new Random();
+			int x = rnd.nextInt(enem.size());
+			Enemigo e = enem.get(x);
+			e.morir(j);
+		}
 	}
 }

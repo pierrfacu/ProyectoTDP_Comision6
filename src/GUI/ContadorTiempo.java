@@ -25,11 +25,15 @@ public class ContadorTiempo extends Thread{
 				e.printStackTrace();
 			}
 			game.moverFormacion();
+			
+		}
+		
+		if(!game.hayEnemigos()){
+			System.out.println("Has ganado!!");
 		}
 		/**
 		 * cuando se acaben los enemigos, luego hay que
-		 * realizar la carga del siguiente nivel y
-		 * re posicionar al jugador en el centro.
+		 * realizar la carga del siguiente nivel
 		 */
 	}
 }
