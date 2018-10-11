@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Juego.HiloPrincipal;
 import Juego.Juego;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -19,8 +20,8 @@ import java.awt.event.KeyEvent;
 public class gui extends JFrame {
 	private JPanel contentPane;
 	
-	private Juego game;
-	private ContadorTiempo cTime;
+	private Juego juego;
+	private HiloPrincipal hiloPrincipal;
 	
 	/**
 	 * Launch the application.
@@ -44,7 +45,7 @@ public class gui extends JFrame {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				mover(arg0);
+				accionesJugador(arg0);
 			}
 		});
 		getContentPane().setLayout(null);
@@ -59,13 +60,14 @@ public class gui extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.setBackground(new Color(000));
 		
-		game = new Juego(this);
-		cTime = new ContadorTiempo(game);
-		cTime.start();
+		juego = new Juego(this);
+		hiloPrincipal = new HiloPrincipal(juego);
+		hiloPrincipal.start();
 	}
 	
-	protected void mover(KeyEvent key){
-		game.moverJugador(key.getKeyCode());
+	protected void accionesJugador(KeyEvent key){
+		juego.obtenerJugador().mover(key.getKeyCode());
+		juego.obtenerJugador().disparar(juego, key.getKeyCode());
 		this.repaint();
 	}
 }

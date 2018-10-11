@@ -1,10 +1,9 @@
 package Juego;
 
 import GUI.gui;
-import java.awt.event.KeyEvent;
+import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import Entidades.*;
 import Entidades.Enemigos.Enemigo;
 
@@ -15,22 +14,21 @@ import Entidades.Enemigos.Enemigo;
  */
 public class Juego {
 	
-
+	private gui gui;
 	private Nivel nivel; //Gestor de niveles
 	
 	private Jugador jugador;
-	private int puntaje;
 	
 	private LinkedList<Enemigo> enemigos;
-	
-	private int contSecMF; //Contador para secuencia de movimiento formacion enemigos, variable temporal.
+	private LinkedList<Entidad> entidades;
 	
 	//Constructor
 	public Juego(gui gui) {
+		this.gui = gui;
+		
 		//Creacion de jugador
-		jugador = new Jugador(10, 270, 600);
+		jugador = new Jugador(new Point(270, 600));
 		gui.add(jugador.getGrafico());
-		puntaje = 0;
 		
 		//Creacion del gestor de niveles
 		nivel = new Nivel();
@@ -46,89 +44,45 @@ public class Juego {
 	// Metodos
 	
 	/**
-	 * 
-	 * @param p
-	 */
-	public void sumarPuntaje(int p) {
-		puntaje = puntaje + p;
-	}
-	
-	/**
-	 * 
-	 * @return
+	 * Devuelve el puntaje acumulado por el jugador en la partida.
+	 * @return Puntaje jugador.
 	 */
 	public int obtenerPuntaje() {
-		return puntaje;
+		return jugador.getPuntaje();
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Deuelve verdadero si hay enemigos, caso contrario, falso.
+	 * @return Verdadero si hay enemigos, caso contrario, falso.
 	 */
 	public boolean hayEnemigos() {
 		return !(enemigos.isEmpty());
 	}
 	
 	/**
-	 * 
-	 * @param x
+	 * Devuelve el jugador de la partida.
+	 * @return jugador.
 	 */
-	public void moverJugador(int x) {
-		
-		switch (x){
-			case KeyEvent.VK_LEFT : //Izquierda
-				jugador.mover(0);
-				break;
-			case KeyEvent.VK_RIGHT : //Derecha
-				jugador.mover(1);
-				break;
-			case KeyEvent.VK_SPACE : //Disparo
-				jugador.disparar(this);
-				break;
-		}
-		
+	public Jugador obtenerJugador() {
+		return jugador;		
 	}
 	
 	/**
-	 * 
+	 * Devuelve la colección de enemigos.
+	 * @return Coleccion de enemigos.
 	 */
-	public void moverFormacion() {//Provisorio
-		int d = 0;
-		switch (contSecMF) {
-		case 0 : //izquierda
-			d = 0;
-			break; 
-		case 1 : //derecha
-			d = 1;
-			break;
-		case 2 : //derecha
-			d = 1;
-			break;
-		case 3 : //izquierda
-			d = 0;
-			break;
-		}
-		
-		Iterator<Enemigo> i = enemigos.iterator();
-		while(i.hasNext()) {
-			i.next().mover(d);
-		}
-		contSecMF ++;
-		if(contSecMF == 4)
-			contSecMF = 0;
-	}
-	
-	public LinkedList<Enemigo> obtenerEnemigos(){//Provisorio
+	public LinkedList<Enemigo> obtenerEnemigos(){
 		return enemigos;
 	}
 	
-	public void eliminarEnem(Enemigo e) {//Provisorio
-		if (enemigos.remove(e))
-			System.out.println("Enemigo eliminado.");
-		
-		System.out.println("Cant enemigos rest: "+enemigos.size());
-		
+	/**
+	 * Devuelve la colección de entidades.
+	 * @return Colección de entidades.
+	 */
+	public LinkedList<Entidad> obtenerEntidades(){
+		return entidades;
 	}
+	
 	//Metodos privados
 	
 }

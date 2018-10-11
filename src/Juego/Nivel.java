@@ -2,7 +2,7 @@ package Juego;
 
 import java.io.*;
 import java.util.*;
-
+import java.awt.Point;
 import Entidades.Enemigos.*;
 
 
@@ -73,9 +73,9 @@ public class Nivel {
             		int y = 0;
             		i++;
             		while(i < sCurrentLine.length() && sCurrentLine.charAt(i) != ' ') {
-            			x = leerX(i, sCurrentLine);
+            			x = leerVariable(i, sCurrentLine);
             			i = i + 3;
-            			y = leerY(i, sCurrentLine);
+            			y = leerVariable(i, sCurrentLine);
             			i = i + 3;
             		}
             		if(i < sCurrentLine.length())
@@ -111,7 +111,7 @@ public class Nivel {
 		Enemigo e = null;
 		switch (tipo) {
 		case 'a' : // Si aparece una a
-			e = new E1(10, x, y);
+			e = new E1(new Point( x, y));
 			break;
 		case 'b' :
 			
@@ -129,31 +129,14 @@ public class Nivel {
 	 * @param sCurrentLine
 	 * @return
 	 */
-	private int leerX(int i, String sCurrentLine) {
-		String x = "";
+	private int leerVariable(int i, String sCurrentLine) {
+		String variable = "";
 		int j = 0;
 		while(j < 3 && i < sCurrentLine.length()){
-			x = x + sCurrentLine.charAt(i);
+			variable = variable + sCurrentLine.charAt(i);
 			i++;
 			j++;
 		}
-		return Integer.parseInt(x);
-	}
-	
-	/**
-	 * 
-	 * @param i
-	 * @param sCurrentLine
-	 * @return
-	 */
-	private int leerY(int i, String sCurrentLine) {
-		String y = "";
-		int j = 0;
-		while(j < 3 && i < sCurrentLine.length()){
-			y = y + sCurrentLine.charAt(i);
-			i++;
-			j++;
-		}
-		return Integer.parseInt(y);
+		return Integer.parseInt(variable);
 	}
 }

@@ -1,7 +1,9 @@
 package Entidades.Enemigos;
 
 import Entidades.Entidad;
-import Juego.Juego;
+import java.awt.Point;
+
+import Colisionador.Colisionador;
 
 /**
  * 
@@ -9,19 +11,17 @@ import Juego.Juego;
  *
  */
 public abstract class Enemigo extends Entidad{
-	
+		
 	//Constructos
-	protected Enemigo(int vel, int x, int y) {
-		super(vel, x, y);
+	protected Enemigo(Point p) {
+		super(p);
 	}
 	
 	//Metodos
 	
-	/**
-	 * 
-	 */
-	public void mover(int d) {
-		switch (d) {
+	public void mover() {
+		
+		/*switch (d) {
 			case 0 : //izquierda
 				pos.setLocation(pos.x - velocidad, pos.y);
 				break; 
@@ -29,14 +29,10 @@ public abstract class Enemigo extends Entidad{
 				pos.setLocation(pos.x + velocidad, pos.y);
 				break;
 		}
-		setGrafico(d);
+		setGrafico(d);*/
 	}
 	
-	public void morir(Juego j) {
-		j.eliminarEnem(this);
-		this.getGrafico().setVisible(false);
-		// ES NECESARIO INVOCAR EL finalice() ???
-		
+	public void meColisionan(Colisionador c) {
+		c.colisionarEnemigo(this);
 	}
-	
 }

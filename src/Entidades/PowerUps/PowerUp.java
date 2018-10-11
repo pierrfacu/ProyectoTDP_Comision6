@@ -1,5 +1,8 @@
 package Entidades.PowerUps;
 
+import java.awt.Point;
+
+import Colisionador.Colisionador;
 import Entidades.Entidad;
 
 /**
@@ -8,9 +11,19 @@ import Entidades.Entidad;
  *
  */
 public abstract class PowerUp extends Entidad{
-
-	protected PowerUp(int x, int y) {
-		super(5, x, y);
+	
+	//Constructor
+	protected PowerUp(Point p) {
+		super(p);
+	}
+	
+	//Metodos
+	
+	public void mover() {
+		
 	}
 
+	public void meColisionan(Colisionador c) {
+		c.colisionarPowerUp(this);
+	}
 }

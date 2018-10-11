@@ -1,7 +1,8 @@
 package Entidades.Enemigos;
 
 import javax.swing.ImageIcon;
-import Entidades.*;
+import java.awt.Point;
+import Colisionador.*;
 
 /**
  * 
@@ -12,11 +13,16 @@ public class E1 extends Enemigo{
 	
 	
 	//Constructor
-	public E1(int vel, int x, int y) {
-		super(vel, x, y);
+	public E1(Point p) {
+		super(p);
 		
-		this.image[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
-		this.image[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
 		
+		velocidad = 10;
+		cantVidas = 1;
+		porcentajeVida = 100;
+		puntaje = 10;
+		colisionador = new ColisionadorEnemigo();
 	}
 }
