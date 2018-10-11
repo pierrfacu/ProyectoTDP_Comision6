@@ -15,9 +15,9 @@ public class DisparoJugador extends Disparo{
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
-		this.imagen[4] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
-		
+	
 		colisionador = new ColisionadorDisparoJugador();
 	}
 

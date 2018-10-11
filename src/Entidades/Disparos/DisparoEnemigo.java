@@ -14,8 +14,8 @@ public class DisparoEnemigo extends Disparo{
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
-		this.imagen[4] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		
 		colisionador = new ColisionadorDisparoEnemigo();
 	}
