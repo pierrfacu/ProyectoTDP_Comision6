@@ -2,13 +2,22 @@ package Entidades.Disparos;
 
 import java.awt.Point;
 
-import Colisionador.Colisionador;
+import javax.swing.ImageIcon;
+
+import Colisionador.*;
 
 public class DisparoEnemigo extends Disparo{
 
 	//Constructor
 	protected DisparoEnemigo(Point p) {
 		super(p);
+		
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		this.imagen[4] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		
+		colisionador = new ColisionadorDisparoEnemigo();
 	}
 
 	//Metodos
