@@ -10,7 +10,7 @@ public class DisparoJugador extends Disparo{
 	
 	
 	//Constructor
-	protected DisparoJugador(Point p) {
+	public DisparoJugador(Point p) {
 		super(p);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
@@ -19,6 +19,7 @@ public class DisparoJugador extends Disparo{
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 	
 		colisionador = new ColisionadorDisparoJugador();
+		
 	}
 
 	//Metodos

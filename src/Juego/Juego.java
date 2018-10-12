@@ -33,6 +33,8 @@ public class Juego {
 		//Creacion del gestor de niveles
 		nivel = new Nivel();
 		
+		entidades = new LinkedList<Entidad>();
+		
 		//Carga de enemigos
 		enemigos = nivel.obtenerEnemigos();
 		Iterator<Enemigo> i = enemigos.iterator();
@@ -81,6 +83,11 @@ public class Juego {
 	 */
 	public LinkedList<Entidad> obtenerEntidades(){
 		return entidades;
+	}
+	
+	public void agregarEntidad(Entidad e) {
+		entidades.add(e);
+		gui.add(e.getGrafico());
 	}
 	
 	//Metodos privados

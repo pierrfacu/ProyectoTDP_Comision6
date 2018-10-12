@@ -5,6 +5,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import Juego.Juego;
 import Colisionador.*;
+import Entidades.Disparos.*;
 
 /**
  * 
@@ -50,7 +51,9 @@ public class Jugador extends Entidad{
 	
 	public void disparar(Juego j, int d) {
 		if (d == KeyEvent.VK_SPACE) {
-			
+			Point p = new Point(pos.x, pos.y - 20); 
+			Disparo disp = new DisparoJugador(p);
+			j.agregarEntidad(disp);
 		}
 	}
 	
