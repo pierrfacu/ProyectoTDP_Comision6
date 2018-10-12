@@ -8,6 +8,15 @@ import Entidades.Disparos.*;
 
 public class ColisionadorDisparoJugador extends Colisionador {
 	
+	private DisparoJugador disparo;
+	
+	//Constructor
+	public ColisionadorDisparoJugador(DisparoJugador d) {
+		disparo = d;
+	}
+	
+	//Metodos
+	
 	public void colisionarJugador(Jugador j) {
 		
 	}

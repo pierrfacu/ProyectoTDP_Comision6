@@ -17,7 +17,13 @@ public class DisparoEnemigo extends Disparo{
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		
-		colisionador = new ColisionadorDisparoEnemigo();
+		velocidad = 5;
+		cantVidas = 1;
+		porcentajeVida = 100;
+		puntaje = 1;
+		dañoImpacto = 10;
+		colisionador = new ColisionadorDisparoEnemigo(this);
+		
 	}
 
 	//Metodos

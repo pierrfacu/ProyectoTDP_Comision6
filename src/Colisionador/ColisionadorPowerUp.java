@@ -8,6 +8,16 @@ import Entidades.Disparos.*;
 
 public class ColisionadorPowerUp extends Colisionador{
 	
+	private PowerUp powerUp;
+	
+	//Constructor
+	
+	public ColisionadorPowerUp(PowerUp pU) {
+		powerUp = pU;
+	}
+	
+	//Metodos
+	
 	public void colisionarJugador(Jugador j) {
 		
 	}
