@@ -33,9 +33,7 @@ public class DisparoJugador extends Disparo{
 	//Metodos
 	
 	public void mover() {
-		
-		
-		
+		pos.setLocation(pos.x, pos.y - velocidad);
 	}
 
 	public void meColisionan(Colisionador c) {
