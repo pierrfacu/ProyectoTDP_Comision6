@@ -22,7 +22,7 @@ public abstract class Entidad {
 	protected int puntaje;
 	protected int cantVidas;
 	protected int porcentajeVida;
-	protected int dañoImpacto;
+	protected int danioImpacto;
 	
 	protected Colisionador colisionador;
 	
@@ -130,16 +130,16 @@ public abstract class Entidad {
 	 * Devuelve el daño de impacto que ocaciona la entidad en porcentaje.
 	 * @return Daño de impacto que ocasiona.
 	 */
-	public int obtenerDaño() {
-		return dañoImpacto;
+	public int obtenerDanio() {
+		return danioImpacto;
 	}
 	
 	/**
 	 * Establece el daño de impacto que ocaciona la entidad en porcentaje. Requiere que el valor sea entre 0 a 100.
 	 * @param d Daño de impacto.
 	 */
-	public void establecerDaño(int d) {
-		dañoImpacto = d;
+	public void establecerDanio(int d) {
+		danioImpacto = d;
 	}
 	
 	// Metodos abstractos

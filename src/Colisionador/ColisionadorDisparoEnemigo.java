@@ -18,7 +18,7 @@ public class ColisionadorDisparoEnemigo extends Colisionador{
 	//Metodos
 	
 	public void colisionarJugador(Jugador j) {
-		j.restarVida(disparo.obtenerDaño());
+		j.restarVida(disparo.obtenerDanio());
 		j.sumarPuntaje(disparo.getPuntaje());
 		disparo.restarVida(100);		
 	}

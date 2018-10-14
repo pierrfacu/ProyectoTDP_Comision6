@@ -22,13 +22,13 @@ public class ColisionadorDisparoJugador extends Colisionador {
 	}
 
 	public void colisionarEnemigo(Enemigo e) {
-		e.restarVida(disparo.obtenerDaño());
+		e.restarVida(disparo.obtenerDanio());
 		disparo.recibirPuntaje(e.getPuntaje());
 		disparo.restarVida(100);
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
-		o.restarVida(disparo.obtenerDaño());
+		o.restarVida(disparo.obtenerDanio());
 		disparo.recibirPuntaje(o.getPuntaje());
 		disparo.restarVida(100);
 	}

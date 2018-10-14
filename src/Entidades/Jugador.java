@@ -26,7 +26,7 @@ public class Jugador extends Entidad{
 		cantVidas = 3;
 		porcentajeVida = 100;
 		puntaje = 0;
-		dañoImpacto = 100;
+		danioImpacto = 100;
 		colisionador = new ColisionadorJugador(this);
 	}
 	

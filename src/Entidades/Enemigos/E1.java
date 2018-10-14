@@ -23,7 +23,7 @@ public class E1 extends Enemigo{
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 10;
-		dañoImpacto = 25;
+		danioImpacto = 25;
 		colisionador = new ColisionadorEnemigo(this);
 	}
 }

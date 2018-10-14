@@ -21,7 +21,7 @@ public class DisparoEnemigo extends Disparo{
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 1;
-		dañoImpacto = 10;
+		danioImpacto = 10;
 		colisionador = new ColisionadorDisparoEnemigo(this);
 		
 	}

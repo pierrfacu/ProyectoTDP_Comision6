@@ -18,8 +18,8 @@ public class ColisionadorEnemigo extends Colisionador{
 	//Metodos
 
 	public void colisionarJugador(Jugador j) {
-		j.restarVida(enemigo.obtenerDaño());
-		enemigo.restarVida(j.obtenerDaño());
+		j.restarVida(enemigo.obtenerDanio());
+		enemigo.restarVida(j.obtenerDanio());
 		j.sumarPuntaje(enemigo.getPuntaje());
 	}
 
