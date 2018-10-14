@@ -85,9 +85,48 @@ public class Juego {
 		return entidades;
 	}
 	
+	/**
+	 * Agrega la entidad recibida como parámetro al juego.
+	 * @param e Entidad a agregar.
+	 */
 	public void agregarEntidad(Entidad e) {
-		entidades.add(e);
-		gui.add(e.getGrafico());
+		if(e != null) {
+			entidades.add(e);
+			gui.add(e.getGrafico());
+		}
+	}
+	
+	/**
+	 * Agrega el enemigo recibido como parámetro al juego.
+	 * @param e Enemigo a agregar.
+	 */
+	public void agregarEnemigo(Enemigo e) {
+		if(e != null) {
+			enemigos.add(e);
+			gui.add(e.getGrafico());
+		}
+	}
+	
+	/**
+	 * Elimina la entidad del juego.
+	 * @param e Entidad a eliminar.
+	 */
+	public void eliminarEntidad(Entidad e) {
+		if (e != null) {
+			entidades.remove(e);
+			gui.remove(e.getGrafico());
+		}
+	}
+	
+	/**
+	 * Elimina el enemigo del juego.
+	 * @param e Enemigo a eliminar.
+	 */
+	public void eliminarEnemigo(Enemigo e) {
+		if (e != null) {
+			enemigos.remove(e);
+			gui.remove(e.getGrafico());
+		}
 	}
 	
 	//Metodos privados

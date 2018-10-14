@@ -80,10 +80,9 @@ public abstract class Entidad {
 	 * @param p Porcentaje de vida a restar.
 	 */
 	public void restarVida(int p) {
-		int resta = (porcentajeVida * p) / 100;
-		porcentajeVida = porcentajeVida - resta;
+		porcentajeVida = porcentajeVida - p;
 		if(porcentajeVida < 0) {
-			porcentajeVida = 100 + porcentajeVida;
+			porcentajeVida = 100 - porcentajeVida;
 			cantVidas--;
 		}
 	}

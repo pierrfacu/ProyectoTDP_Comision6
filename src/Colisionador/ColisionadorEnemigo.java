@@ -18,26 +18,30 @@ public class ColisionadorEnemigo extends Colisionador{
 	//Metodos
 
 	public void colisionarJugador(Jugador j) {
-		
+		j.restarVida(enemigo.obtenerDaño());
+		enemigo.restarVida(j.obtenerDaño());
+		j.sumarPuntaje(enemigo.getPuntaje());
 	}
 
 	public void colisionarEnemigo(Enemigo e) {
-		
+		//No hace nada
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
-		
+		/**
+		 * Imprementar esquivarlo. Charlarlo.
+		 */
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {
-		
+		//No hace nada
 	}
 
 	public void colisionarDisparoJugador(DisparoJugador dJ) {
-		
+		//No hace nada
 	}
 
 	public void colisionarDisparoEnemigo(DisparoEnemigo dE) {
-		
+		//No hace nada
 	}
 }

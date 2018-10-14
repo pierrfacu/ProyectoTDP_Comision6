@@ -19,26 +19,26 @@ public class ColisionadorObstaculo extends Colisionador {
 	//Metodos
 	
 	public void colisionarJugador(Jugador j) {
-		
+		//No hace nada
 	}
 
 	public void colisionarEnemigo(Enemigo e) {
-		
+		//No hace nada
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
-		
+		//No hace nada
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {
-		
+		//No hace nada
 	}
 
 	public void colisionarDisparoJugador(DisparoJugador dJ) {
-		
+		//No hace nada
 	}
 
 	public void colisionarDisparoEnemigo(DisparoEnemigo dE) {
-		
+		//No hace nada
 	}
 }

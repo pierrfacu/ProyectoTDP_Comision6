@@ -53,7 +53,7 @@ public class Jugador extends Entidad{
 	public void disparar(Juego j, int d) {
 		if (d == KeyEvent.VK_SPACE) {
 			Point p = new Point(pos.x, pos.y - 20); 
-			Disparo disp = new DisparoJugador(p);
+			Disparo disp = new DisparoJugador(p, this);
 			j.agregarEntidad(disp);
 		}
 	}
@@ -64,5 +64,15 @@ public class Jugador extends Entidad{
 
 	public void meColisionan(Colisionador c) {
 		c.colisionarJugador(this);
+	}
+	
+	/**
+	 * Suma al puntaje del jugar el recibido como parámetro, si es negativo, le resta.
+	 * @param puntj puntaje a sumar o restar.
+	 */
+	public void sumarPuntaje(int puntj) {
+		puntaje = puntaje + puntj;
+		if (puntaje < 0)
+			puntaje = 0;
 	}
 }
