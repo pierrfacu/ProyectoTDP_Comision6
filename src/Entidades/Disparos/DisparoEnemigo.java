@@ -17,7 +17,7 @@ public class DisparoEnemigo extends Disparo{
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		
-		velocidad = 5;
+		velocidad = 8;
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 1;
@@ -30,6 +30,7 @@ public class DisparoEnemigo extends Disparo{
 	
 	public void mover() {
 		pos.setLocation(pos.x, pos.y + velocidad);
+		setGrafico(0);
 	}
 	
 	public void meColisionan(Colisionador c) {
