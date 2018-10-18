@@ -20,7 +20,7 @@ public class ColisionadorEnemigo extends Colisionador{
 	public void colisionarJugador(Jugador j) {
 		j.restarVida(enemigo.obtenerDanio());
 		enemigo.restarVida(j.obtenerDanio());
-		j.sumarPuntaje(enemigo.getPuntaje());
+		j.sumarPuntaje(-enemigo.getPuntaje());
 	}
 
 	public void colisionarEnemigo(Enemigo e) {

@@ -52,7 +52,7 @@ public class Jugador extends Entidad{
 	
 	public void disparar(Juego j, int d) {
 		if (d == KeyEvent.VK_SPACE) {
-			Point p = new Point(pos.x, pos.y - 20); 
+			Point p = new Point(pos.x + 20, pos.y); 
 			Disparo disp = new DisparoJugador(p, this);
 			j.agregarEntidad(disp);
 		}
