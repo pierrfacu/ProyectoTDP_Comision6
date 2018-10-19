@@ -21,7 +21,7 @@ public class DisparoJugador extends Disparo{
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 		
-		velocidad = 8;
+		velocidad = 10;
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 0;

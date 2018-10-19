@@ -115,6 +115,7 @@ public class Juego {
 		if (e != null) {
 			entidades.remove(e);
 			gui.remove(e.getGrafico());
+			gui.repaint();
 		}
 	}
 	
@@ -126,6 +127,7 @@ public class Juego {
 		if (e != null) {
 			enemigos.remove(e);
 			gui.remove(e.getGrafico());
+			gui.repaint();
 		}
 	}
 	
