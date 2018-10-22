@@ -18,7 +18,7 @@ public class Jugador extends Entidad{
 	protected static JuegoJugador juego;
 	
 	public Jugador(Point p) {
-		super(p);
+		super(p, 40, 40);
 		
 		juego = JuegoJugador.getInstance();
 		

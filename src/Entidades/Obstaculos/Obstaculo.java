@@ -13,8 +13,8 @@ import Entidades.Entidad;
 public abstract class Obstaculo extends Entidad{
 	
 	//Constructor
-	protected Obstaculo(Point p) {
-		super(p);
+	protected Obstaculo(Point p, int w, int h) {
+		super(p, w, h);
 	}
 	
 	//Metodos

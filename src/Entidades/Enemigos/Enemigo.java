@@ -18,7 +18,7 @@ public abstract class Enemigo extends Entidad{
 	
 	//Constructor
 	protected Enemigo(Point p) {
-		super(p);
+		super(p, 40 , 40);
 		juego = JuegoEnemigo.getInstance();
 	}
 	

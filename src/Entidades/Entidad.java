@@ -27,11 +27,11 @@ public abstract class Entidad {
 	protected Colisionador colisionador;
 	
 	//constructor
-	protected Entidad(Point p) {
+	protected Entidad(Point p, int w, int h) {
 		pos = p;
 		imagen = new Icon[4];
-		width = 40;
-		height = 40;
+		width = w;
+		height = h;
 	}
 	
 	//Metodos publicos

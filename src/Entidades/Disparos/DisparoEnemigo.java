@@ -10,7 +10,7 @@ public class DisparoEnemigo extends Disparo{
 
 	//Constructor
 	public DisparoEnemigo(Point p) {
-		super(p);
+		super(p, 3, 5);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));

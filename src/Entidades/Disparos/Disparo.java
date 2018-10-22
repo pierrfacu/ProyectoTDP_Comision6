@@ -8,12 +8,8 @@ public abstract class Disparo extends Entidad {
 	
 	
 	//Constructor
-	protected Disparo(Point p) {
-		super(p);
-		
-		width = 3;
-		height = 5;
-		
+	protected Disparo(Point p, int w, int h) {
+		super(p, w, h);		
 	}
 	
 	//Metodos

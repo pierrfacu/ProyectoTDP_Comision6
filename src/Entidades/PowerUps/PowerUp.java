@@ -13,8 +13,8 @@ import Entidades.Entidad;
 public abstract class PowerUp extends Entidad{
 	
 	//Constructor
-	protected PowerUp(Point p) {
-		super(p);
+	protected PowerUp(Point p, int w, int h) {
+		super(p, w, h);
 	}
 	
 	//Metodos
