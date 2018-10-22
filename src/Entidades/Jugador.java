@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import Juego.Juego;
+import Juego.JuegoJugador;
 import Colisionador.*;
 import Entidades.Disparos.*;
 
@@ -14,8 +15,12 @@ import Entidades.Disparos.*;
  */
 public class Jugador extends Entidad{
 	
+	protected static JuegoJugador juego;
+	
 	public Jugador(Point p) {
 		super(p);
+		
+		juego = JuegoJugador.getInstance();
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
@@ -50,11 +55,11 @@ public class Jugador extends Entidad{
 		}
 	}
 	
-	public void disparar(Juego j, int d) {
+	public void disparar(int d) {
 		if (d == KeyEvent.VK_SPACE) {
 			Point p = new Point(pos.x + 20, pos.y); 
-			Disparo disp = new DisparoJugador(p, this);
-			j.agregarEntidad(disp);
+			DisparoJugador disp = new DisparoJugador(p, this);
+			juego.addDisparoJugador(disp);
 		}
 	}
 	

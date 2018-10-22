@@ -5,14 +5,18 @@ import java.awt.Point;
 import java.util.Iterator;
 import java.util.LinkedList;
 import Entidades.*;
+import Entidades.Disparos.*;
 import Entidades.Enemigos.Enemigo;
+import Entidades.PowerUps.PowerUp;
 
 /**
  * 
  * @author 
  *
  */
-public class Juego {
+public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo {
+	
+	private static Juego instance;
 	
 	private gui gui;
 	private Nivel nivel; //Gestor de niveles
@@ -22,10 +26,26 @@ public class Juego {
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Entidad> entidades;
 	
-	//Constructor
-	public Juego(gui gui) {
-		this.gui = gui;
+	//Constructor e instancia
+	private Juego() {
 		
+	}
+	
+	public static Juego getInstance() {
+		if(instance == null) {
+			instance = new Juego();
+		}
+		return instance;
+	}
+	
+	// Metodos
+	
+	public void establecerGrafica(gui g) {
+		if(gui == null)
+			gui = g;
+	}
+	
+	public void iniciarJuego() {
 		//Creacion de jugador
 		jugador = new Jugador(new Point(270, 600));
 		gui.add(jugador.getGrafico());
@@ -40,47 +60,31 @@ public class Juego {
 		Iterator<Enemigo> i = enemigos.iterator();
 		while(i.hasNext()) {
 			gui.add(i.next().getGrafico());
-		}	
+		}
 	}
 	
-	// Metodos
 	
-	/**
-	 * Devuelve el puntaje acumulado por el jugador en la partida.
-	 * @return Puntaje jugador.
-	 */
 	public int obtenerPuntaje() {
 		return jugador.getPuntaje();
 	}
 	
-	/**
-	 * Deuelve verdadero si hay enemigos, caso contrario, falso.
-	 * @return Verdadero si hay enemigos, caso contrario, falso.
-	 */
+	public int obtenerNivel() {
+		return nivel.obtenerNivelActual();
+	}
+	
 	public boolean hayEnemigos() {
 		return !(enemigos.isEmpty());
 	}
 	
-	/**
-	 * Devuelve el jugador de la partida.
-	 * @return jugador.
-	 */
 	public Jugador obtenerJugador() {
 		return jugador;		
 	}
 	
-	/**
-	 * Devuelve la colección de enemigos.
-	 * @return Coleccion de enemigos.
-	 */
 	public LinkedList<Enemigo> obtenerEnemigos(){
 		return enemigos;
 	}
 	
-	/**
-	 * Devuelve la colección de entidades.
-	 * @return Colección de entidades.
-	 */
+	
 	public LinkedList<Entidad> obtenerEntidades(){
 		return entidades;
 	}
@@ -107,10 +111,6 @@ public class Juego {
 		}
 	}
 	
-	/**
-	 * Elimina la entidad del juego.
-	 * @param e Entidad a eliminar.
-	 */
 	public void eliminarEntidad(Entidad e) {
 		if (e != null) {
 			entidades.remove(e);
@@ -119,15 +119,32 @@ public class Juego {
 		}
 	}
 	
-	/**
-	 * Elimina el enemigo del juego.
-	 * @param e Enemigo a eliminar.
-	 */
 	public void eliminarEnemigo(Enemigo e) {
 		if (e != null) {
 			enemigos.remove(e);
 			gui.remove(e.getGrafico());
 			gui.repaint();
+		}
+	}
+	
+	public void addDisparoEnemigo(DisparoEnemigo dE) {
+		if(dE != null) {
+			entidades.add(dE);
+			gui.add(dE.getGrafico());
+		}
+	}
+	
+	public void addPowerUp(PowerUp pU) {
+		if(pU != null) {
+			entidades.add(pU);
+			gui.add(pU.getGrafico());
+		}
+	}
+	
+	public void addDisparoJugador(DisparoJugador dJ) {
+		if(dJ != null) {
+			entidades.add(dJ);
+			gui.add(dJ.getGrafico());
 		}
 	}
 	

@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Juego.HiloPrincipal;
-import Juego.Juego;
+import Juego.JuegoGrafica;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -20,7 +21,7 @@ import java.awt.event.KeyEvent;
 public class gui extends JFrame {
 	private JPanel contentPane;
 	
-	private Juego juego;
+	private JuegoGrafica juego;
 	private HiloPrincipal hiloPrincipal;
 	
 	/**
@@ -60,14 +61,16 @@ public class gui extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.setBackground(new Color(000));
 		
-		juego = new Juego(this);
-		hiloPrincipal = new HiloPrincipal(juego);
+		juego = JuegoGrafica.getInstance();
+		juego.establecerGrafica(this);
+		juego.iniciarJuego();
+		hiloPrincipal = new HiloPrincipal();
 		hiloPrincipal.start();
 	}
 	
 	protected void accionesJugador(KeyEvent key){
 		juego.obtenerJugador().mover(key.getKeyCode());
-		juego.obtenerJugador().disparar(juego, key.getKeyCode());
+		juego.obtenerJugador().disparar(key.getKeyCode());
 		this.repaint();
 	}
 }

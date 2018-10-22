@@ -14,15 +14,15 @@ import Entidades.Enemigos.Enemigo;
  */
 public class HiloPrincipal extends Thread{
 	
-	private Juego juego;
+	private JuegoHilo juego;
 	
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Enemigo> elimEnemigos;
 	private LinkedList<Entidad> elimEntidades;
 
-	public HiloPrincipal(Juego j){
-		juego = j;
+	public HiloPrincipal(){
+		juego = JuegoHilo.getInstance();
 		
 		enemigos = juego.obtenerEnemigos();
 		entidades = juego.obtenerEntidades();
