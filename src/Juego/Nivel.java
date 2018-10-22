@@ -35,19 +35,24 @@ public class Nivel {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Devuelve el nivel maximo del juego
+	 * @return nivel maximo.
 	 */
 	public int obtenerNivelMax() {
 		return N_Final;
 	}
 	
 	/**
-	 * 
+	 * Devuelve verdadero si se pudo establecer el siguiente nivel, caso contrario falso, indicando que no hay mas niveles.
+	 * @return verdadero si se avanzo de nivel, caso contrario falso.
 	 */
-	public void siguienteNivel(){
-		if (N_Actual < N_Final)
+	public boolean siguienteNivel(){
+		boolean haySig = false;
+		if (N_Actual < N_Final) {
 			N_Actual++;
+			haySig = true;
+		}
+		return haySig;
 	}
 	
 	/**

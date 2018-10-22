@@ -63,6 +63,22 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		}
 	}
 	
+	public void siguienteNivel() {
+		if(nivel.siguienteNivel()) {
+			
+		}
+		else {
+			/**
+			 * Cargar en la GUI que se gano la partida.
+			 */
+		}
+	}
+	
+	public void seMurioJugador() {
+		/**
+		 * Cargar en la GUI GAME OVER.
+		 */
+	}
 	
 	public int obtenerPuntaje() {
 		return jugador.getPuntaje();

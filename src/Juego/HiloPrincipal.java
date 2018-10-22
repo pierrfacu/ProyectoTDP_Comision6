@@ -44,7 +44,10 @@ public class HiloPrincipal extends Thread{
 			elimEnemigos();
 			colisionarEntidades();
 			elimEntidades();
-						
+			
+			if(!juego.hayEnemigos()) {
+				juego.siguienteNivel();
+			}
 		}
 		
 	}
@@ -65,6 +68,7 @@ public class HiloPrincipal extends Thread{
 			//colisionar Jugador
 			if(colisionan(enem.getGrafico(), juego.obtenerJugador().getGrafico())) {
 				enem.colisionar(juego.obtenerJugador());
+				verificarVidaJugador();
 			}
 			//agregar enemigo sin vida a eliminar
 			if(enem.cantVidas() <= 0) {
@@ -87,6 +91,7 @@ public class HiloPrincipal extends Thread{
 			//colisionar Jugador
 			if(colisionan(ent.getGrafico(), juego.obtenerJugador().getGrafico())) {
 				ent.colisionar(juego.obtenerJugador());
+				verificarVidaJugador();
 			}
 			
 			//agregar entidad sin vida a eliminar
@@ -121,5 +126,11 @@ public class HiloPrincipal extends Thread{
 				colisionan = true;
 		
 		return colisionan;
+	}
+	
+	private void verificarVidaJugador() {
+		if (juego.obtenerJugador().estoyMuerto()) {
+			juego.seMurioJugador();
+		}
 	}
 }

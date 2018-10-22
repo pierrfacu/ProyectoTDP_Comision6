@@ -83,7 +83,7 @@ public abstract class Entidad {
 	public void restarVida(int p) {
 		porcentajeVida = porcentajeVida - p;
 		if(porcentajeVida <= 0) {
-			porcentajeVida = 100 - porcentajeVida;
+			porcentajeVida = 100 + porcentajeVida;
 			cantVidas--;
 		}
 	}

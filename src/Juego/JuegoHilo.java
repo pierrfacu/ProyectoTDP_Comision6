@@ -50,4 +50,15 @@ public interface JuegoHilo {
 	 * @param e Entidad a eliminar.
 	 */
 	public void eliminarEntidad(Entidad e);
+	
+	/**
+	 * Avanza el juego al siguiente nivel, si ya se jugo el ultimo, se termina la partida.
+	 */
+	public void siguienteNivel();
+	
+	/**
+	 * El juego termina estableciendo que se perdio la partida.
+	 * Requiere que se verifique si el jugador esta muerto.
+	 */
+	public void seMurioJugador();
 }

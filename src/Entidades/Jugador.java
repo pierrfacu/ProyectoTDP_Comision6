@@ -37,6 +37,14 @@ public class Jugador extends Entidad{
 	
 	//Metodos
 	
+	/**
+	 * Devuelve verdadero si el jugador no tiene mas vida, caso contrario falso.
+	 * @return verdadero si el jugador murio, caso contrario falso.
+	 */
+	public boolean estoyMuerto() {
+		return cantVidas() == 0;
+	}
+	
 	public void mover(int d) {
 		
 		switch (d){
