@@ -26,6 +26,7 @@ public class Jugador extends Entidad{
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
+		this.imagen[4] = null;
 		
 		velocidad = 10;
 		cantVidas = 3;
@@ -46,6 +47,7 @@ public class Jugador extends Entidad{
 	}
 	
 	public void mover(int d) {
+		int ancho = juego.obtenerGrafica().anchoGrafica();
 		
 		switch (d){
 		case KeyEvent.VK_LEFT : //Izquierda
@@ -55,8 +57,8 @@ public class Jugador extends Entidad{
 			setGrafico(0);
 			break;
 		case KeyEvent.VK_RIGHT : //Derecha
-			if ((pos.x + velocidad) > 550)
-				pos.setLocation(550, pos.y);
+			if ((pos.x + velocidad) > (ancho - 50))
+				pos.setLocation((ancho - 50), pos.y);
 			else pos.setLocation(pos.x + velocidad, pos.y);
 			setGrafico(0);
 			break;
@@ -88,4 +90,17 @@ public class Jugador extends Entidad{
 		if (puntaje < 0)
 			puntaje = 0;
 	}
-}
+	
+	public void sumarPorcentajeVida(int p) {
+		porcentajeVida = porcentajeVida + p;
+		if(porcentajeVida > 100) {
+			porcentajeVida = porcentajeVida - 100;
+			cantVidas++;
+		}
+		if(cantVidas > 3) {
+			cantVidas--;
+			porcentajeVida = 100;
+		}
+		
+	}
+	}

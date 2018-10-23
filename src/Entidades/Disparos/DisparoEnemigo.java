@@ -16,6 +16,7 @@ public class DisparoEnemigo extends Disparo{
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
+		this.imagen[4] = null;
 		
 		velocidad = 8;
 		cantVidas = 1;

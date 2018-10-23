@@ -19,9 +19,8 @@ public class ColisionadorPowerUp extends Colisionador{
 	//Metodos
 	
 	public void colisionarJugador(Jugador j) {
-		/**
-		 * Imprementar darle el power up al jugador
-		 */
+		powerUp.activar();
+		powerUp.restarVida(100);
 	}
 
 	public void colisionarEnemigo(Enemigo e) {

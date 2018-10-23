@@ -19,6 +19,10 @@ import java.awt.event.KeyEvent;
  *
  */
 public class gui extends JFrame {
+	
+	private static final int width = 600;
+	private static final int height = 700;
+	
 	private JPanel contentPane;
 	
 	private JuegoGrafica juego;
@@ -52,7 +56,7 @@ public class gui extends JFrame {
 		getContentPane().setLayout(null);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(600, 700));
+		setSize(new Dimension(width, height));
 		setLocationRelativeTo(null);
 		setResizable(false);
 		contentPane = new JPanel();
@@ -66,6 +70,17 @@ public class gui extends JFrame {
 		juego.iniciarJuego();
 		hiloPrincipal = new HiloPrincipal();
 		hiloPrincipal.start();
+	}
+	
+	
+	//Metodos extras
+	
+	public int altoGrafica() {
+		return height;
+	}
+	
+	public int anchoGrafica() {
+		return width;
 	}
 	
 	protected void accionesJugador(KeyEvent key){

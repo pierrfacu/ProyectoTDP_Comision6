@@ -14,7 +14,7 @@ import Entidades.PowerUps.PowerUp;
  * @author 
  *
  */
-public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo {
+public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo, JuegoPowerUp {
 	
 	private static Juego instance;
 	
@@ -92,6 +92,10 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		return !(enemigos.isEmpty());
 	}
 	
+	public gui obtenerGrafica() {
+		return gui;
+	}
+	
 	public Jugador obtenerJugador() {
 		return jugador;		
 	}
@@ -137,6 +141,10 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void eliminarEnemigo(Enemigo e) {
 		if (e != null) {
+			if(e.doyPowerUp()) {
+				PowerUp pU = e.obtenerPowerUp();
+				agregarEntidad(pU);
+			}
 			enemigos.remove(e);
 			gui.remove(e.getGrafico());
 			gui.repaint();
@@ -147,13 +155,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		if(dE != null) {
 			entidades.add(dE);
 			gui.add(dE.getGrafico());
-		}
-	}
-	
-	public void addPowerUp(PowerUp pU) {
-		if(pU != null) {
-			entidades.add(pU);
-			gui.add(pU.getGrafico());
 		}
 	}
 	

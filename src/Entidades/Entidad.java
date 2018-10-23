@@ -13,8 +13,8 @@ import Colisionador.Colisionador;
  */
 public abstract class Entidad {
 
-	protected int width; //modificar a tamaño definitivo
-	protected int height; //modificar a tamaño definitivo
+	protected static int width; //modificar a tamaño definitivo
+	protected static int height; //modificar a tamaño definitivo
 	protected JLabel grafico;
 	protected Icon imagen[];
 	protected Point pos;
@@ -29,9 +29,10 @@ public abstract class Entidad {
 	//constructor
 	protected Entidad(Point p, int w, int h) {
 		pos = p;
-		imagen = new Icon[4];
 		width = w;
 		height = h;
+
+		imagen = new Icon[5];
 	}
 	
 	//Metodos publicos
@@ -97,6 +98,14 @@ public abstract class Entidad {
 	}
 	
 	/**
+	 * Establece la posicion de la entidad con la posicion recibida por parametro.
+	 * @param p posicion a asignar.
+	 */
+	public void setPosition(Point p) {
+		pos = p;
+	}
+	
+	/**
 	 * Devuelve el grafico de la entidad.
 	 * @return grafico de la entidad.
 	 */
@@ -109,7 +118,7 @@ public abstract class Entidad {
 	}
 	
 	/**
-	 * 
+	 * Establece el grafico de la entidad.
 	 * @param dir
 	 */
 	protected void setGrafico(int dir){

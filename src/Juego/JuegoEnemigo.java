@@ -1,7 +1,9 @@
 package Juego;
 
+import Entidades.Jugador;
 import Entidades.Disparos.DisparoEnemigo;
 import Entidades.PowerUps.PowerUp;
+import GUI.gui;
 
 /**
  * 
@@ -25,8 +27,8 @@ public interface JuegoEnemigo {
 	public void addDisparoEnemigo(DisparoEnemigo dE);
 	
 	/**
-	 * Agrega el juego el power up que entregaba el enemigo al morir.
-	 * @param pU power up
+	 * Devuelve la interfaz grafica del juego.
+	 * @return interfaz grafica.
 	 */
-	public void addPowerUp(PowerUp pU);
+	public gui obtenerGrafica();
 }

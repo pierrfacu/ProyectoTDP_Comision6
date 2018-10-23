@@ -1,6 +1,7 @@
 package Juego;
 
 import Entidades.Disparos.DisparoJugador;
+import GUI.gui;
 
 /**
  * 
@@ -22,4 +23,10 @@ public interface JuegoJugador {
 	 * @param dJ
 	 */
 	public void addDisparoJugador(DisparoJugador dJ);
+	
+	/**
+	 * Devuelve la interfaz grafica del juego.
+	 * @return interfaz grafica.
+	 */
+	public gui obtenerGrafica();
 }
