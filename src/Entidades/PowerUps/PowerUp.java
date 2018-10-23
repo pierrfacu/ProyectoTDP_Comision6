@@ -14,14 +14,10 @@ import Juego.JuegoPowerUp;
  */
 public abstract class PowerUp extends Entidad{
 	
-	protected static JuegoPowerUp juego;
-	
 	//Constructor
 	protected PowerUp(Point p, int w, int h) {
 		super(p, w, h);
-		
-		juego = JuegoPowerUp.getInstance();
-		
+
 		velocidad = 20;
 		cantVidas = 1;
 		porcentajeVida = 100;
@@ -32,6 +28,7 @@ public abstract class PowerUp extends Entidad{
 	//Metodos
 	
 	public void mover() {
+		JuegoPowerUp juego = JuegoPowerUp.getInstance();
 		int ancho = juego.obtenerGrafica().anchoGrafica();
 		int alto = juego.obtenerGrafica().altoGrafica();
 		

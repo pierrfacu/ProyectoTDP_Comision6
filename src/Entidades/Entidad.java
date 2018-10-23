@@ -13,8 +13,8 @@ import Colisionador.Colisionador;
  */
 public abstract class Entidad {
 
-	protected static int width; //modificar a tamaño definitivo
-	protected static int height; //modificar a tamaño definitivo
+	protected int width; //modificar a tamaño definitivo
+	protected int height; //modificar a tamaño definitivo
 	protected JLabel grafico;
 	protected Icon imagen[];
 	protected Point pos;

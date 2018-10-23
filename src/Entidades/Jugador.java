@@ -15,12 +15,8 @@ import Entidades.Disparos.*;
  */
 public class Jugador extends Entidad{
 	
-	protected static JuegoJugador juego;
-	
 	public Jugador(Point p) {
 		super(p, 40, 40);
-		
-		juego = JuegoJugador.getInstance();
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
@@ -46,30 +42,28 @@ public class Jugador extends Entidad{
 		return cantVidas() == 0;
 	}
 	
-	public void mover(int d) {
-		int ancho = juego.obtenerGrafica().anchoGrafica();
+	public void accionar(int d) {
+		JuegoJugador j = JuegoJugador.getInstance();
+		int ancho = j.obtenerGrafica().anchoGrafica();
 		
 		switch (d){
 		case KeyEvent.VK_LEFT : //Izquierda
-			if ((pos.x - velocidad) < 0)
+			if ((pos.x - velocidad) < 0) 
 				pos.setLocation(0, pos.y);
 			else pos.setLocation(pos.x - velocidad, pos.y);
 			setGrafico(0);
 			break;
 		case KeyEvent.VK_RIGHT : //Derecha
-			if ((pos.x + velocidad) > (ancho - 50))
+			if ((pos.x + velocidad) > (ancho - 50))//550)
 				pos.setLocation((ancho - 50), pos.y);
 			else pos.setLocation(pos.x + velocidad, pos.y);
 			setGrafico(0);
 			break;
-		}
-	}
-	
-	public void disparar(int d) {
-		if (d == KeyEvent.VK_SPACE) {
+		case KeyEvent.VK_SPACE : //Disparo
 			Point p = new Point(pos.x + 20, pos.y); 
 			DisparoJugador disp = new DisparoJugador(p, this);
-			juego.addDisparoJugador(disp);
+			j.addDisparoJugador(disp);
+			
 		}
 	}
 	
@@ -103,4 +97,4 @@ public class Jugador extends Entidad{
 		}
 		
 	}
-	}
+}

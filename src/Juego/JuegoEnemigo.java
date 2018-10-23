@@ -2,7 +2,6 @@ package Juego;
 
 import Entidades.Jugador;
 import Entidades.Disparos.DisparoEnemigo;
-import Entidades.PowerUps.PowerUp;
 import GUI.gui;
 
 /**
@@ -31,4 +30,10 @@ public interface JuegoEnemigo {
 	 * @return interfaz grafica.
 	 */
 	public gui obtenerGrafica();
+	
+	/**
+	 * Devuelve el jugador de la partida.
+	 * @return jugador.
+	 */
+	public Jugador obtenerJugador();
 }

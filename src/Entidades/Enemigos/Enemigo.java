@@ -2,7 +2,6 @@ package Entidades.Enemigos;
 
 import Entidades.Entidad;
 import Entidades.PowerUps.PowerUp;
-import Juego.JuegoEnemigo;
 
 import java.awt.Point;
 
@@ -15,14 +14,12 @@ import Colisionador.Colisionador;
  */
 public abstract class Enemigo extends Entidad{
 	
-	protected static JuegoEnemigo juego;
 	protected boolean doyPU;
 	protected PowerUp pU;
 	
 	//Constructor
 	protected Enemigo(Point p) {
 		super(p, 40 , 40);
-		juego = JuegoEnemigo.getInstance();
 	}
 	
 	//Metodos
