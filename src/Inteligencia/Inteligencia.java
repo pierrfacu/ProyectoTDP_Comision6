@@ -17,12 +17,16 @@ public abstract class Inteligencia {
 		posicionFormacion = enemigo.getPosition();
 		velocidad=enemigo.getVelocidad();
 		contSecMF = 0;
+		ataco=false;
 	}
 	
 	//Metodos
 	
 	public void ejecutar() {
-		moverFormacion();
+		if (ataco)
+			atacar();
+		else
+		   moverFormacion();
 	}
 	
 	
