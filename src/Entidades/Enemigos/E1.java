@@ -3,6 +3,7 @@ package Entidades.Enemigos;
 import javax.swing.ImageIcon;
 import java.awt.Point;
 import Colisionador.*;
+import Inteligencia.Standard;
 
 /**
  * 
@@ -29,5 +30,6 @@ public class E1 extends Enemigo{
 		puntaje = 10;
 		danioImpacto = 25;
 		colisionador = new ColisionadorEnemigo(this);
+		inteligencia = new Standard(this);
 	}
 }

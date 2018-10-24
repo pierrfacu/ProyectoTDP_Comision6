@@ -1,7 +1,8 @@
-package Entidades.Enemigos;
+	package Entidades.Enemigos;
 
 import Entidades.Entidad;
 import Entidades.PowerUps.PowerUp;
+import Inteligencia.Inteligencia;
 import Juego.JuegoEnemigo;
 
 import java.awt.Point;
@@ -18,6 +19,7 @@ public abstract class Enemigo extends Entidad{
 	protected static JuegoEnemigo juego;
 	protected boolean doyPU;
 	protected PowerUp pU;
+	protected Inteligencia inteligencia;
 	
 	//Constructor
 	protected Enemigo(Point p) {
@@ -28,16 +30,8 @@ public abstract class Enemigo extends Entidad{
 	//Metodos
 	
 	public void mover() {
-		
-		/*switch (d) {
-			case 0 : //izquierda
-				pos.setLocation(pos.x - velocidad, pos.y);
-				break; 
-			case 1 : //derecha
-				pos.setLocation(pos.x + velocidad, pos.y);
-				break;
-		}
-		setGrafico(d);*/
+		inteligencia.ejecutar();
+		setGrafico(0);
 	}
 	
 	public void meColisionan(Colisionador c) {
