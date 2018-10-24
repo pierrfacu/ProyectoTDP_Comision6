@@ -18,7 +18,8 @@ public class AJSimple extends ArmaJugador {
 	public void accionar() {
 		JuegoJugador juego = JuegoJugador.getInstance();
 		Point posJugador = jugador.getPosition();
-		Point p = new Point(posJugador.x + 20, posJugador.y); 
+		int ancJ = jugador.anchoEntidad();
+		Point p = new Point(posJugador.x + (ancJ / 2), posJugador.y); 
 		DJSimple disp = new DJSimple(p);
 		juego.addDisparoJugador(disp);
 	}

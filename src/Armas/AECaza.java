@@ -1,6 +1,10 @@
 package Armas;
 
+import java.awt.Point;
+
+import Entidades.Disparos.DECaza;
 import Entidades.Enemigos.EnemigoArmado;
+import Juego.JuegoEnemigo;
 
 public class AECaza extends ArmaEnemigo{
 	
@@ -12,7 +16,12 @@ public class AECaza extends ArmaEnemigo{
 	//Metodos
 	
 	public void accionar() {
-		
+		JuegoEnemigo juego = JuegoEnemigo.getInstance();
+		Point posEnemigo = enemigo.getPosition();
+		int altE = enemigo.altoEntidad();
+		int ancE = enemigo.anchoEntidad();
+		Point p = new Point((posEnemigo.x + altE) + (ancE / 2), posEnemigo.y); 
+		DECaza disp = new DECaza(p);
+		juego.addDisparoEnemigo(disp);
 	}
-
 }

@@ -1,11 +1,7 @@
 package Entidades.Disparos;
 
 import java.awt.Point;
-
-import javax.swing.ImageIcon;
-
 import Colisionador.*;
-import Entidades.Jugador;
 
 public abstract class DisparoJugador extends Disparo{
 	

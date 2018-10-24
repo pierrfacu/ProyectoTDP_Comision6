@@ -1,9 +1,6 @@
 package Entidades.Disparos;
 
 import java.awt.Point;
-
-import javax.swing.ImageIcon;
-
 import Colisionador.*;
 
 public class DisparoEnemigo extends Disparo{
@@ -23,5 +20,4 @@ public class DisparoEnemigo extends Disparo{
 	public void meColisionan(Colisionador c) {
 		c.colisionarDisparoEnemigo(this);
 	}
-
 }
