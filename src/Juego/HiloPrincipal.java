@@ -14,16 +14,13 @@ import Entidades.Enemigos.Enemigo;
  */
 public class HiloPrincipal extends Thread{
 	
-	private JuegoHilo juego;
-	
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Enemigo> elimEnemigos;
 	private LinkedList<Entidad> elimEntidades;
 
 	public HiloPrincipal(){
-		juego = JuegoHilo.getInstance();
-		
+		JuegoHilo juego = JuegoHilo.getInstance();
 		enemigos = juego.obtenerEnemigos();
 		entidades = juego.obtenerEntidades();
 	}
@@ -31,9 +28,10 @@ public class HiloPrincipal extends Thread{
 	//Metodos
 	
 	public void run() {
+		JuegoHilo juego = JuegoHilo.getInstance();
 		while(true) {
 			try {
-				Thread.sleep(500);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -66,6 +64,7 @@ public class HiloPrincipal extends Thread{
 			}
 			
 			//colisionar Jugador
+			JuegoHilo juego = JuegoHilo.getInstance();
 			if(colisionan(enem.getGrafico(), juego.obtenerJugador().getGrafico())) {
 				enem.colisionar(juego.obtenerJugador());
 				verificarVidaJugador();
@@ -89,6 +88,7 @@ public class HiloPrincipal extends Thread{
 			}
 			
 			//colisionar Jugador
+			JuegoHilo juego = JuegoHilo.getInstance();
 			if(colisionan(ent.getGrafico(), juego.obtenerJugador().getGrafico())) {
 				ent.colisionar(juego.obtenerJugador());
 				verificarVidaJugador();
@@ -102,12 +102,14 @@ public class HiloPrincipal extends Thread{
 	}
 
 	private void elimEnemigos() {
+		JuegoHilo juego = JuegoHilo.getInstance();
 		for(Enemigo enem : elimEnemigos) {
 			juego.eliminarEnemigo(enem);
 		}
 	}
 	
 	private void elimEntidades() {
+		JuegoHilo juego = JuegoHilo.getInstance();
 		for(Entidad ent : elimEntidades) {
 			juego.eliminarEntidad(ent);
 		}
@@ -129,6 +131,7 @@ public class HiloPrincipal extends Thread{
 	}
 	
 	private void verificarVidaJugador() {
+		JuegoHilo juego = JuegoHilo.getInstance();
 		if (juego.obtenerJugador().estoyMuerto()) {
 			juego.seMurioJugador();
 		}

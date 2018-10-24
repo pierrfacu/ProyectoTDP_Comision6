@@ -1,7 +1,9 @@
 package Juego;
 
+import java.util.LinkedList;
+
 import Entidades.Jugador;
-import Entidades.PowerUps.PowerUp;
+import Entidades.Enemigos.Enemigo;
 import GUI.gui;
 
 public interface JuegoPowerUp {
@@ -25,4 +27,10 @@ public interface JuegoPowerUp {
 	 * @return interfaz grafica.
 	 */
 	public gui obtenerGrafica();
+	
+	/**
+	 * Devuelve la colección de enemigos.
+	 * @return Coleccion de enemigos.
+	 */
+	public LinkedList<Enemigo> obtenerEnemigos();
 }

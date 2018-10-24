@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Colisionador.ColisionadorPowerUp;
 import Entidades.Jugador;
+import Juego.JuegoPowerUp;
 
 public class Vida extends PowerUp{
 	
@@ -26,6 +27,7 @@ public class Vida extends PowerUp{
 	//Metodos
 	
 	public void activar() {
+		JuegoPowerUp juego = JuegoPowerUp.getInstance();
 		Jugador j = juego.obtenerJugador();
 		j.sumarPorcentajeVida(100);
 	}

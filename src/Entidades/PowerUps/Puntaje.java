@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import Colisionador.ColisionadorPowerUp;
 import Entidades.Jugador;
+import Juego.JuegoPowerUp;
 
 public class Puntaje extends PowerUp{
 	//Constructor
@@ -26,6 +27,7 @@ public class Puntaje extends PowerUp{
 	//Metodos
 	
 	public void activar() {
+		JuegoPowerUp juego = JuegoPowerUp.getInstance();
 		Jugador j = juego.obtenerJugador();
 		j.sumarPuntaje(puntaje); 
 	}

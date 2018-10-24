@@ -25,7 +25,6 @@ public class gui extends JFrame {
 	
 	private JPanel contentPane;
 	
-	private JuegoGrafica juego;
 	private HiloPrincipal hiloPrincipal;
 	
 	/**
@@ -65,7 +64,7 @@ public class gui extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.setBackground(new Color(000));
 		
-		juego = JuegoGrafica.getInstance();
+		JuegoGrafica juego = JuegoGrafica.getInstance();
 		juego.establecerGrafica(this);
 		juego.iniciarJuego();
 		hiloPrincipal = new HiloPrincipal();
@@ -84,8 +83,8 @@ public class gui extends JFrame {
 	}
 	
 	protected void accionesJugador(KeyEvent key){
-		juego.obtenerJugador().mover(key.getKeyCode());
-		juego.obtenerJugador().disparar(key.getKeyCode());
+		JuegoGrafica juego = JuegoGrafica.getInstance();
+		juego.obtenerJugador().accionar(key.getKeyCode());
 		this.repaint();
 	}
 }
