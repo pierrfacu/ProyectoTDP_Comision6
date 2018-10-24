@@ -1,8 +1,10 @@
 package Inteligencia;
 
 import Entidades.Enemigos.Enemigo;
+import Juego.JuegoEnemigo;
+import Entidades.Jugador;
 
-public class Buscador extends Inteligencia {
+public class Buscador extends Inteligencia {	
 	
 	public Buscador (Enemigo e) {
 		super(e);
@@ -11,7 +13,9 @@ public class Buscador extends Inteligencia {
 	//Metodos
 	
 	public void atacar() {
-		
+		JuegoEnemigo je= JuegoEnemigo.getInstance();
+		Jugador j= JuegoEnemigo.obtenerJugador();
+		if(j.)
 	}
 
 }
