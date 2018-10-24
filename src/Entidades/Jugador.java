@@ -54,7 +54,7 @@ public class Jugador extends Entidad{
 		
 		switch (d){
 		case KeyEvent.VK_LEFT : //Izquierda
-			if ((pos.x - velocidad) < 0) 
+			if ((pos.x - velocidad) < 0)
 				pos.setLocation(0, pos.y);
 			else pos.setLocation(pos.x - velocidad, pos.y);
 			setGrafico(0);
