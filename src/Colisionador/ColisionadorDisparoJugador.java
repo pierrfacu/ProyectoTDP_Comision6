@@ -4,6 +4,7 @@ import Entidades.Jugador;
 import Entidades.Enemigos.Enemigo;
 import Entidades.Obstaculos.Obstaculo;
 import Entidades.PowerUps.PowerUp;
+import Juego.JuegoJugador;
 import Entidades.Disparos.*;
 
 public class ColisionadorDisparoJugador extends Colisionador {
@@ -23,13 +24,17 @@ public class ColisionadorDisparoJugador extends Colisionador {
 
 	public void colisionarEnemigo(Enemigo e) {
 		e.restarVida(disparo.obtenerDanio());
-		disparo.recibirPuntaje(e.getPuntaje());
+		JuegoJugador juego = JuegoJugador.getInstance();
+		Jugador jugador = juego.obtenerJugador();
+		jugador.sumarPuntaje(e.getPuntaje());
 		disparo.restarVida(100);
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
 		o.restarVida(disparo.obtenerDanio());
-		disparo.recibirPuntaje(o.getPuntaje());
+		JuegoJugador juego = JuegoJugador.getInstance();
+		Jugador jugador = juego.obtenerJugador();
+		jugador.sumarPuntaje(o.getPuntaje());
 		disparo.restarVida(100);
 	}
 

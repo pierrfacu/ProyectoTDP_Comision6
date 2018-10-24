@@ -3,7 +3,8 @@ package Entidades;
 import java.awt.event.KeyEvent;
 import java.awt.Point;
 import javax.swing.ImageIcon;
-import Juego.Juego;
+
+import Armas.*;
 import Juego.JuegoJugador;
 import Colisionador.*;
 import Entidades.Disparos.*;
@@ -15,6 +16,9 @@ import Entidades.Disparos.*;
  */
 public class Jugador extends Entidad{
 	
+	private Arma arma;
+	private Arma armaEspecial;
+	
 	public Jugador(Point p) {
 		super(p, 40, 40);
 		
@@ -24,6 +28,8 @@ public class Jugador extends Entidad{
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[4] = null;
 		
+		arma = new AJSimple(this);
+		armaEspecial = null;
 		velocidad = 10;
 		cantVidas = 3;
 		porcentajeVida = 100;
@@ -60,15 +66,22 @@ public class Jugador extends Entidad{
 			setGrafico(0);
 			break;
 		case KeyEvent.VK_SPACE : //Disparo
-			Point p = new Point(pos.x + 20, pos.y); 
-			DisparoJugador disp = new DisparoJugador(p, this);
-			j.addDisparoJugador(disp);
-			
+			arma.accionar();
+		case KeyEvent.VK_ALT : //Disparo especial
+			if(armaEspecial != null) {
+				
+			}
 		}
 	}
 	
-	public void mover() {
-		
+	public void establecerArma(ArmaJugador a) {
+		arma = a;
+	}
+	
+	public void establecerArmaEspecial(AJProyectil p) {
+		if(armaEspecial == null) {
+			armaEspecial = p;
+		}
 	}
 
 	public void meColisionan(Colisionador c) {
@@ -95,6 +108,9 @@ public class Jugador extends Entidad{
 			cantVidas--;
 			porcentajeVida = 100;
 		}
+	}
+
+	public void mover() {
 		
 	}
 }

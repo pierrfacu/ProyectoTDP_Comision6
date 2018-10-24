@@ -14,7 +14,7 @@ public class E1 extends Enemigo{
 	
 	//Constructor
 	public E1(Point p) {
-		super(p);
+		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
 		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));

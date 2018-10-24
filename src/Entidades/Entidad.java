@@ -152,6 +152,22 @@ public abstract class Entidad {
 		danioImpacto = d;
 	}
 	
+	/**
+	 * Devuelve la altura d ela entidad.
+	 * @return altura entidad.
+	 */
+	public int altoEntidad() {
+		return height;
+	}
+	
+	/**
+	 * Devuelve el ancho de la entidad.
+	 * @return ancho entidad.
+	 */
+	public int anchoEntidad() {
+		return width;
+	}
+	
 	// Metodos abstractos
 	
 	/**

@@ -1,5 +1,6 @@
 package Juego;
 
+import Entidades.Jugador;
 import Entidades.Disparos.DisparoJugador;
 import GUI.gui;
 
@@ -29,4 +30,10 @@ public interface JuegoJugador {
 	 * @return interfaz grafica.
 	 */
 	public gui obtenerGrafica();
+	
+	/**
+	 * Devuelve el jugador de la partida.
+	 * @return jugador.
+	 */
+	public Jugador obtenerJugador();
 }
