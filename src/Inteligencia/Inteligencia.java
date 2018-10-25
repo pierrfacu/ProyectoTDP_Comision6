@@ -2,12 +2,11 @@ package Inteligencia;
 
 import java.awt.Point;
 import java.util.Random;
-
 import Entidades.Enemigos.Enemigo;
 import Juego.JuegoEnemigo;
 
 public abstract class Inteligencia {
-	protected static final int velFormacion = 50;
+	protected static final int velFormacion = 40;
 	protected Enemigo enemigo;
 	protected Point posicionFormacion;
 	protected int velocidad;
@@ -21,9 +20,9 @@ public abstract class Inteligencia {
 		posicionFormacion = enemigo.getPosition();
 		velocidad = enemigo.getVelocidad();
 		contSecMF = 0;
-		ataco=false;
-		meSali=false;
-	}
+		ataco = false;
+		meSali = false;
+	} 
 	
 	//Metodos
 	
@@ -31,8 +30,9 @@ public abstract class Inteligencia {
 		if (ataco)
 			atacar();
 		else
-		   if(volverFormacion())
-			moverFormacion();
+		   if(meSali)
+			   volverFormacion();
+		   else moverFormacion();
 	}
 	
 	public void setPosFormacion(Point p) {

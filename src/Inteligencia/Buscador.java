@@ -2,7 +2,6 @@ package Inteligencia;
 
 import Entidades.Enemigos.Enemigo;
 import Juego.JuegoEnemigo;
-
 import java.awt.Point;
 
 public class Buscador extends Inteligencia {	
@@ -18,6 +17,7 @@ public class Buscador extends Inteligencia {
 		Point posJug = juegoEnem.obtenerJugador().getPosition();
 		Point posEnem=enemigo.getPosition();
 		Point posNueva=new Point(0,0);
+        int alto = juegoEnem.obtenerGrafica().altoGrafica();
 		int ancho=juegoEnem.obtenerGrafica().anchoGrafica();
 	    if(posEnem.x < posJug.x && posEnem.y < posJug.y) //Derecha
 		    if((posEnem.x + velocidad) > (ancho - 50))
@@ -25,15 +25,17 @@ public class Buscador extends Inteligencia {
 	    if(posEnem.x > posJug.x && posEnem.y < posJug.y) //Izquierda
 	    	if((posEnem.x - velocidad) < 0)
         	    posNueva.setLocation(posEnem.x - velocidad, posEnem.y + velocidad);
-        if(posEnem.x == posJug.x && posEnem.y > posJug.y) //Solo bajar
+        if(posEnem.x == posJug.x && posEnem.y > posJug.y){ //Solo bajar
             posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
+    		if(enemigo.getPosition().y > alto) {
+    			ataco=false;
+    			meSali=true;
+    		}
+            
+        }
         enemigo.setPosition(posNueva);
         enemigo.setGrafico(0);
         
-        int alto = juegoEnem.obtenerGrafica().altoGrafica();
-		if(enemigo.getPosition().y > alto) {
-			ataco=false;
-			meSali=true;
-		}
+       
 	}
 }
