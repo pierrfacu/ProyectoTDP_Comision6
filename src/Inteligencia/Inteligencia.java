@@ -52,10 +52,10 @@ public abstract class Inteligencia {
 			enemigo.setPosition(new Point(p.x + velFormacion, p.y));
 			break;
 		case 2 : //derecha
-			posicionFormacion.setLocation(p.x + velFormacion, p.y); //esta bien que se use posicionFormacion aca?
+			enemigo.setPosition(new Point(p.x + velFormacion, p.y));
 			break;
 		case 3 : //izquierda
-			posicionFormacion.setLocation(p.x - velFormacion, p.y);//esta bien que se use posicionFormacion aca?
+			enemigo.setPosition(new Point(p.x - velFormacion,p.y));
 			break;
 		}
 		
