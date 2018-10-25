@@ -64,6 +64,18 @@ public abstract class Inteligencia {
 			contSecMF = 0;
     } 
 	
+	/**
+	 * 
+	 * Requiere que el enemigo sea posicionado en la parte superior afuera de la ventana.
+	 */
+	protected void volverFormacion() {
+		Point pos=enemigo.getPosition();
+		pos.setLocation(posicionFormacion.x, 0);
+		if(posicionFormacion.y > pos.y)
+			pos.setLocation(posicionFormacion.x, pos.y + velocidad);
+		enemigo.setGrafico(0);
+	}
+	
     protected void ejecutarMovimientoAleatorio() {
 		
 		JuegoEnemigo juego = JuegoEnemigo.getInstance();
