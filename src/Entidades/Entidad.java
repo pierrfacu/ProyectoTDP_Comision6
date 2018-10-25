@@ -121,7 +121,7 @@ public abstract class Entidad {
 	 * Establece el grafico de la entidad.
 	 * @param dir
 	 */
-	protected void setGrafico(int dir){
+	public void setGrafico(int dir){
 		if(this.grafico != null){
 			this.grafico.setIcon(this.imagen[dir]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
@@ -150,6 +150,22 @@ public abstract class Entidad {
 	 */
 	public void establecerDanio(int d) {
 		danioImpacto = d;
+	}
+	
+	/**
+	 * Devuelve la altura d ela entidad.
+	 * @return altura entidad.
+	 */
+	public int altoEntidad() {
+		return height;
+	}
+	
+	/**
+	 * Devuelve el ancho de la entidad.
+	 * @return ancho entidad.
+	 */
+	public int anchoEntidad() {
+		return width;
 	}
 	
 	// Metodos abstractos

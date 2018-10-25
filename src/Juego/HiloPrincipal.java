@@ -31,7 +31,7 @@ public class HiloPrincipal extends Thread{
 		JuegoHilo juego = JuegoHilo.getInstance();
 		while(true) {
 			try {
-				Thread.sleep(50);
+				Thread.sleep(70);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

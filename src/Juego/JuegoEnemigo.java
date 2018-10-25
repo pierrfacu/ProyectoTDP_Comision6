@@ -20,7 +20,7 @@ public interface JuegoEnemigo {
 	}
 	
 	/**
-	 * Agrega al juego el disparo generado por un enemigo.
+	 * Agrega al juego el disparo generado por el enemigo.
 	 * @param dE disparo enemigo.
 	 */
 	public void addDisparoEnemigo(DisparoEnemigo dE);

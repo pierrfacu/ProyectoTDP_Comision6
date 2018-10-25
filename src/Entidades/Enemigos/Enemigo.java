@@ -18,8 +18,8 @@ public abstract class Enemigo extends Entidad{
 	protected Inteligencia inteligencia;
 	
 	//Constructor
-	protected Enemigo(Point p) {
-		super(p, 40 , 40);
+	protected Enemigo(Point p, int w, int h) {
+		super(p, w, h);
 	}
 	
 	//Metodos
