@@ -5,8 +5,6 @@ import Juego.JuegoEnemigo;
 
 import java.awt.Point;
 
-import Entidades.Jugador;
-
 public class Buscador extends Inteligencia {	
 	
 	public Buscador (Enemigo e) {
@@ -20,12 +18,15 @@ public class Buscador extends Inteligencia {
 		Point posJug = juegoEnem.obtenerJugador().getPosition();
 		Point posEnem=enemigo.getPosition();
 		Point posNueva=new Point(0,0);
-        if(posEnem.x < posJug.x && posEnem.y < posJug.y)
-        	posNueva.setLocation(posEnem.x + velocidad, posEnem.y + velocidad);
-        if(posEnem.x > posJug.x && posEnem.y < posJug.y)
-        	posNueva.setLocation(posEnem.x - velocidad, posEnem.y + velocidad);
-        if(posEnem.x == posJug.x && posEnem.y > posJug.x)
-        	posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
+		int ancho=juegoEnem.obtenerGrafica().anchoGrafica();
+	    if(posEnem.x < posJug.x && posEnem.y < posJug.y) //Derecha
+		    if((posEnem.x + velocidad) > (ancho - 50))
+		        posNueva.setLocation(posEnem.x + velocidad, posEnem.y + velocidad);
+	    if(posEnem.x > posJug.x && posEnem.y < posJug.y) //Izquierda
+	    	if((posEnem.x - velocidad) < 0)
+        	    posNueva.setLocation(posEnem.x - velocidad, posEnem.y + velocidad);
+        if(posEnem.x == posJug.x && posEnem.y > posJug.y) //Solo bajar
+            posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
         enemigo.setPosition(posNueva);
         enemigo.setGrafico(0);
 	}
