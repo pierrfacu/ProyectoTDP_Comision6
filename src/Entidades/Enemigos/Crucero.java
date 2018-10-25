@@ -14,7 +14,7 @@ import Inteligencia.Standard;
 public class Crucero extends EnemigoArmado{
 	
 	//Constructor
-	protected Crucero(Point p) {
+	public Crucero(Point p) {
 		super(p, 0, 0);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));

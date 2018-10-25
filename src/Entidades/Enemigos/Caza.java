@@ -4,6 +4,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import Armas.AECaza;
 import Colisionador.ColisionadorEnemigo;
+import Inteligencia.Buscador;
 import Inteligencia.Standard;
 
 /**
@@ -14,7 +15,7 @@ import Inteligencia.Standard;
 public class Caza extends EnemigoArmado{
 	
 	//Constructor
-	protected Caza(Point p) {
+	public Caza(Point p) {
 		super(p, 0, 0);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
@@ -38,5 +39,13 @@ public class Caza extends EnemigoArmado{
 	public void disparar() {
 		if(arma != null)
 			arma.accionar();
+	}
+	
+	public void restarVida(int i) {
+		super.restarVida(i);
+		if(porcentajeVida <= 50) {
+			inteligencia = new Buscador(this);
+			arma = null;
+		}
 	}
 }

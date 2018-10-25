@@ -4,10 +4,12 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import Colisionador.ColisionadorEnemigo;
 import Inteligencia.Buscador;
+import Inteligencia.Mareado;
 
 public class TwoBehavior  extends Enemigo{
-
-	protected TwoBehavior(Point p) {
+	
+	//Constructor
+	public TwoBehavior(Point p) {
 		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
@@ -24,4 +26,15 @@ public class TwoBehavior  extends Enemigo{
 		colisionador = new ColisionadorEnemigo(this);
 		inteligencia = new Buscador(this);
 	}
+	
+	//Metodos
+	
+	public void restarVida(int i) {
+		super.restarVida(i);
+		if(porcentajeVida <= 50) {
+			inteligencia = new Mareado(this);
+		}
+			
+	}
+	
 }

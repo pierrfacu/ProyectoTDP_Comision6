@@ -12,7 +12,7 @@ import Inteligencia.Mareado;
  */
 public class Tonto extends Enemigo{
 
-	protected Tonto(Point p) {
+	public Tonto(Point p) {
 		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));

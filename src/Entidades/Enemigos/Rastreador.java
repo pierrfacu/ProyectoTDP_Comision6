@@ -12,7 +12,7 @@ import Inteligencia.Buscador;
  */
 public class Rastreador extends Enemigo{
 
-	protected Rastreador(Point p) {
+	public Rastreador(Point p) {
 		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
