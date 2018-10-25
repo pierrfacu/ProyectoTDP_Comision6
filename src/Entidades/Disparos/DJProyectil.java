@@ -19,7 +19,7 @@ public class DJProyectil extends DisparoJugador{
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/dj.png"));
 		this.imagen[4] = null;
 		
-		velocidad = 10;
+		velocidad = 15;
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 0;

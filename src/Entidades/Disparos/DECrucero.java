@@ -15,11 +15,11 @@ public class DECrucero extends DisparoEnemigo{
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/de.png"));
 		this.imagen[4] = null;
 		
-		velocidad = 8;
+		velocidad = 10;
 		cantVidas = 1;
 		porcentajeVida = 100;
-		puntaje = 1;
-		danioImpacto = 10;
+		puntaje = -4;
+		danioImpacto = 20;
 		colisionador = new ColisionadorDisparoEnemigo(this);
 		
 	}
