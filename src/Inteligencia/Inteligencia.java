@@ -7,6 +7,7 @@ import Entidades.Enemigos.Enemigo;
 import Juego.JuegoEnemigo;
 
 public abstract class Inteligencia {
+	protected static final int velFormacion = 50;
 	protected Enemigo enemigo;
 	protected Point posicionFormacion;
 	protected int velocidad;
@@ -45,16 +46,16 @@ public abstract class Inteligencia {
 		Point p = enemigo.getPosition();
 		switch (contSecMF) {
 		case 0 : //izquierda
-			enemigo.setPosition(new Point(p.x - velocidad,p.y));
+			enemigo.setPosition(new Point(p.x - velFormacion,p.y));
 			break; 
 		case 1 : //derecha
-			enemigo.setPosition(new Point(p.x + velocidad, p.y));
+			enemigo.setPosition(new Point(p.x + velFormacion, p.y));
 			break;
 		case 2 : //derecha
-			posicionFormacion.setLocation(p.x + velocidad, p.y); //esta bien que se use posicionFormacion aca?
+			posicionFormacion.setLocation(p.x + velFormacion, p.y); //esta bien que se use posicionFormacion aca?
 			break;
 		case 3 : //izquierda
-			posicionFormacion.setLocation(p.x - velocidad, p.y);//esta bien que se use posicionFormacion aca?
+			posicionFormacion.setLocation(p.x - velFormacion, p.y);//esta bien que se use posicionFormacion aca?
 			break;
 		}
 		
