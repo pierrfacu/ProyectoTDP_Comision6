@@ -121,7 +121,7 @@ public abstract class Entidad {
 	 * Establece el grafico de la entidad.
 	 * @param dir
 	 */
-	protected void setGrafico(int dir){
+	public void setGrafico(int dir){
 		if(this.grafico != null){
 			this.grafico.setIcon(this.imagen[dir]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
