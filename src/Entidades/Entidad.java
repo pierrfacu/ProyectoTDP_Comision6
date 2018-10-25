@@ -65,7 +65,7 @@ public abstract class Entidad {
 	 * Establece la velocidad de desplazamiento de la entidad por la recibida como parametro.
 	 * @param v velocidad a establecer.
 	 */
-	public void setVelovidad(int v){
+	public void setVelocidad(int v){
 		velocidad = v;		
 	}
 	
