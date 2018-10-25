@@ -12,6 +12,7 @@ public abstract class Inteligencia {
 	protected Point posicionFormacion;
 	protected int velocidad;
 	protected boolean ataco;
+	protected boolean meSali;
 	protected int contSecMF;
 	
 	//Constructor
@@ -21,6 +22,7 @@ public abstract class Inteligencia {
 		velocidad = enemigo.getVelocidad();
 		contSecMF = 0;
 		ataco=false;
+		meSali=false;
 	}
 	
 	//Metodos
@@ -29,7 +31,8 @@ public abstract class Inteligencia {
 		if (ataco)
 			atacar();
 		else
-		   moverFormacion();
+		   if(volverFormacion())
+			moverFormacion();
 	}
 	
 	public void setPosFormacion(Point p) {
@@ -97,6 +100,12 @@ public abstract class Inteligencia {
 			p.setLocation(p.x, p.y + velocidad);
 			enemigo.setPosition(p);
 			enemigo.setGrafico(0);
+			
+			int alto = juego.obtenerGrafica().altoGrafica();
+			if(enemigo.getPosition().y > alto) {
+				ataco=false;
+				meSali=true;
+			}
 			break;
 	    }	
 	}

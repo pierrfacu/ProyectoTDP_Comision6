@@ -29,5 +29,11 @@ public class Buscador extends Inteligencia {
             posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
         enemigo.setPosition(posNueva);
         enemigo.setGrafico(0);
+        
+        int alto = juegoEnem.obtenerGrafica().altoGrafica();
+		if(enemigo.getPosition().y > alto) {
+			ataco=false;
+			meSali=true;
+		}
 	}
 }
