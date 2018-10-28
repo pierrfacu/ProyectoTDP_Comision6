@@ -1,10 +1,7 @@
 package Entidades.Disparos;
 
 import java.awt.Point;
-
 import javax.swing.ImageIcon;
-
-import Colisionador.Colisionador;
 import Colisionador.ColisionadorDisparoJugador;
 
 public class DJPlus extends DisparoJugador{

@@ -19,6 +19,7 @@ public class AJPlus extends ArmaJugador {
 		Point posJugador = jugador.getPosition();
 		Point p = new Point(posJugador.x + 20, posJugador.y); 
 		DJPlus disp = new DJPlus(p);
+		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoJugador(disp);
 	}	
 }

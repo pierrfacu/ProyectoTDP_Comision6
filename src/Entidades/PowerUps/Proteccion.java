@@ -6,10 +6,10 @@ import Colisionador.ColisionadorPowerUp;
 import Entidades.Jugador;
 import Juego.JuegoPowerUp;
 
-public class Vida extends PowerUp{
+public class Proteccion extends PowerUp{
 	
 	//Constructor
-	public Vida(Point p) {
+	public Proteccion(Point p) {
 		super(p, 20, 20);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/PowerUp/Vida/vida.png"));
@@ -26,7 +26,7 @@ public class Vida extends PowerUp{
 	
 	public void activar() {
 		JuegoPowerUp juego = JuegoPowerUp.getInstance();
-		Jugador j = juego.obtenerJugador();
-		j.sumarPorcentajeVida(100);
+		Jugador jugador = juego.obtenerJugador();
+		jugador.activarEscudo();
 	}
 }

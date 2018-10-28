@@ -8,6 +8,7 @@ public abstract class ArmaEnemigo extends Arma{
 	
 	//Constructor
 	public ArmaEnemigo(EnemigoArmado e) {
+		super();
 		enemigo = e;
 	}
 

@@ -21,6 +21,7 @@ public class AJSimple extends ArmaJugador {
 		int ancJ = jugador.anchoEntidad();
 		Point p = new Point(posJugador.x + (ancJ / 2), posJugador.y); 
 		DJSimple disp = new DJSimple(p);
+		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoJugador(disp);
 	}
 }

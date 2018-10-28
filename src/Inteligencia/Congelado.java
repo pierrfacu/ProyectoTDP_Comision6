@@ -10,6 +10,10 @@ public class Congelado extends Inteligencia {
 	
 	//Metodos 
 	
+	public void ejecutar() {
+		
+	}
+	
 	public void atacar() {
 		
 	}

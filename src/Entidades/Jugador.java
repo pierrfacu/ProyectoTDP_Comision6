@@ -3,11 +3,9 @@ package Entidades;
 import java.awt.event.KeyEvent;
 import java.awt.Point;
 import javax.swing.ImageIcon;
-
 import Armas.*;
 import Juego.JuegoJugador;
 import Colisionador.*;
-import Entidades.Disparos.*;
 
 /**
  * 
@@ -18,18 +16,20 @@ public class Jugador extends Entidad{
 	
 	private Arma arma;
 	private Arma armaEspecial;
+	private boolean escudo;
 	
 	public Jugador(Point p) {
 		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));//Jugador con escudo
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[4] = null;
 		
 		arma = new AJSimple(this);
 		armaEspecial = null;
+		escudo = false;
 		velocidad = 10;
 		cantVidas = 3;
 		porcentajeVida = 100;
@@ -57,19 +57,24 @@ public class Jugador extends Entidad{
 			if ((pos.x - velocidad) < 0)
 				pos.setLocation(0, pos.y);
 			else pos.setLocation(pos.x - velocidad, pos.y);
-			setGrafico(0);
+			if(escudo)
+				setGrafico(1);
+			else setGrafico(0);
 			break;
 		case KeyEvent.VK_RIGHT : //Derecha
 			if ((pos.x + velocidad) > (ancho - 50))//550)
 				pos.setLocation((ancho - 50), pos.y);
 			else pos.setLocation(pos.x + velocidad, pos.y);
-			setGrafico(0);
+			if(escudo)
+				setGrafico(1);
+			else setGrafico(0);
 			break;
 		case KeyEvent.VK_SPACE : //Disparo
 			arma.accionar();
 		case KeyEvent.VK_ALT : //Disparo especial
 			if(armaEspecial != null) {
-				
+				armaEspecial.accionar();
+				armaEspecial = null;
 			}
 		}
 	}
@@ -109,7 +114,37 @@ public class Jugador extends Entidad{
 			porcentajeVida = 100;
 		}
 	}
-
+	
+	/**
+	 * Devuelve el arma del Jugador.
+	 * @return arma jugador.
+	 */
+	public Arma obtenerArma() {
+		return arma;
+	}
+	
+	/**
+	 * Activa o desactiva el escudo del jugador.
+	 */
+	public void activarEscudo() {
+		if(escudo) {
+			escudo = false;
+			setGrafico(0);
+		}
+		else {
+			escudo = true;
+			setGrafico(1);
+		}
+	}
+	
+	/**
+	 * Devuelve verdadero si el jugador posee escudo, caso contrario falso.
+	 * @return estado del escudo.
+	 */
+	public boolean tengoProteccion() {
+		return escudo;
+	}
+	
 	public void mover() {
 		
 	}

@@ -22,6 +22,7 @@ public class AECrucero extends ArmaEnemigo{
 		int ancE = enemigo.anchoEntidad();
 		Point p = new Point((posEnemigo.x + altE) + (ancE / 2), posEnemigo.y); 
 		DECrucero disp = new DECrucero(p);
+		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoEnemigo(disp);
 	}
 }

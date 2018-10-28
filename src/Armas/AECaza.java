@@ -22,6 +22,7 @@ public class AECaza extends ArmaEnemigo{
 		int ancE = enemigo.anchoEntidad();
 		Point p = new Point((posEnemigo.x + altE) + (ancE / 2), posEnemigo.y); 
 		DECaza disp = new DECaza(p);
+		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoEnemigo(disp);
 	}
 }

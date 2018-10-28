@@ -20,7 +20,7 @@ public abstract class Obstaculo extends Entidad{
 	//Metodos
 	
 	public void mover() {
-		//No hace nada, no se mueven los obstaculos.
+		
 	}
 	
 	public void meColisionan(Colisionador c) {

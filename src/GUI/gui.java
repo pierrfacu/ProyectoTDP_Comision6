@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Juego.HiloPrincipal;
+import Hilos.HiloPrincipal;
 import Juego.JuegoGrafica;
 
 import java.awt.event.KeyAdapter;
@@ -19,7 +19,8 @@ import java.awt.event.KeyEvent;
  *
  */
 public class gui extends JFrame {
-	
+
+	private static final long serialVersionUID = 1L;
 	private static final int width = 600;
 	private static final int height = 700;
 	
@@ -42,6 +43,7 @@ public class gui extends JFrame {
 			}
 		});
 	}
+	
 	/**
 	 * Create the frame.
 	 */

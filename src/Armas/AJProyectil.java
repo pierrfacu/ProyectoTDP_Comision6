@@ -17,8 +17,9 @@ public class AJProyectil extends ArmaJugador {
 	public void accionar() {
 		JuegoJugador juego = JuegoJugador.getInstance();
 		Point posJugador = jugador.getPosition();
-		Point p = new Point(posJugador.x + 20, posJugador.y); 
+		Point p = new Point(posJugador.x + (jugador.anchoEntidad() / 2), posJugador.y); 
 		DJProyectil disp = new DJProyectil(p);
+		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoJugador(disp);
 	}
 

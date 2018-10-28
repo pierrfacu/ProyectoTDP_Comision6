@@ -1,11 +1,10 @@
-package Juego;
+package Hilos;
 
 import java.util.LinkedList;
-
 import javax.swing.JLabel;
-
 import Entidades.*;
 import Entidades.Enemigos.Enemigo;
+import Juego.JuegoHilo;
 
 /**
  * 
@@ -20,9 +19,6 @@ public class HiloPrincipal extends Thread{
 	private LinkedList<Entidad> elimEntidades;
 
 	public HiloPrincipal(){
-		JuegoHilo juego = JuegoHilo.getInstance();
-		enemigos = juego.obtenerEnemigos();
-		entidades = juego.obtenerEntidades();
 	}
 	
 	//Metodos
@@ -35,7 +31,9 @@ public class HiloPrincipal extends Thread{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
+			
+			enemigos = juego.obtenerEnemigos();
+			entidades = juego.obtenerEntidades();
 			elimEnemigos = new LinkedList<Enemigo>();
 			elimEntidades = new LinkedList<Entidad>();
 			colisionarEnemigos();

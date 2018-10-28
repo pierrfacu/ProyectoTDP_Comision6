@@ -60,4 +60,20 @@ public abstract class Enemigo extends Entidad{
 		pU.setPosition(new Point(pos.x + (width/2), pos.y + (height/2)));
 		return pU;
 	}
+	
+	/**
+	 * Establece en el enemigo su inteligencia.
+	 * @param i inteligencia a establecer.
+	 */
+	public void establecerInteligencia(Inteligencia i) {
+		inteligencia = i;
+	}
+	
+	/**
+	 * Devuelve la inteligencia del enemigo.
+	 * @return inteligencia enemigo.
+	 */
+	public Inteligencia obtenerInteligencia() {
+		return inteligencia;
+	}
 }
