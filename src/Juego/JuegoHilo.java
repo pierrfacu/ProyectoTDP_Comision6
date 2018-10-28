@@ -61,4 +61,9 @@ public interface JuegoHilo {
 	 * Requiere que se verifique si el jugador esta muerto.
 	 */
 	public void seMurioJugador();
+	
+	/**
+	 * Carga los disparos del jugador al juego.
+	 */
+	public void cargarDisparosJugador();
 }

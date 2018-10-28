@@ -22,7 +22,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	private Nivel nivel; //Gestor de niveles
 	
 	private Jugador jugador;
-	
+	private LinkedList<DisparoJugador> dispJugEspera;
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Entidad> entidades;
 	
@@ -49,6 +49,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		//Creacion de jugador
 		jugador = new Jugador(new Point(270, 600));
 		gui.add(jugador.getGrafico());
+		dispJugEspera = new LinkedList<DisparoJugador>();
 		
 		//Creacion del gestor de niveles
 		nivel = new Nivel();
@@ -160,6 +161,17 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void addDisparoJugador(DisparoJugador dJ) {
 		if(dJ != null) {
+			dispJugEspera.add(dJ);
+			//entidades.add(dJ);
+			//gui.add(dJ.getGrafico());
+		}
+	}
+	
+	public void cargarDisparosJugador() {///PRUEBA
+		LinkedList<DisparoJugador> listClon = (LinkedList<DisparoJugador>) dispJugEspera.clone();
+		//LinkedList<DisparoJugador> listClon = clone;
+		dispJugEspera.clear();
+		for(DisparoJugador dJ : listClon) {
 			entidades.add(dJ);
 			gui.add(dJ.getGrafico());
 		}

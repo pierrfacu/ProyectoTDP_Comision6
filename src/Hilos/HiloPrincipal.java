@@ -32,12 +32,14 @@ public class HiloPrincipal extends Thread{
 				e.printStackTrace();
 			}
 			
+			juego.cargarDisparosJugador();
 			enemigos = juego.obtenerEnemigos();
 			entidades = juego.obtenerEntidades();
 			elimEnemigos = new LinkedList<Enemigo>();
 			elimEntidades = new LinkedList<Entidad>();
 			colisionarEnemigos();
 			elimEnemigos();
+			juego.cargarDisparosJugador();
 			colisionarEntidades();
 			elimEntidades();
 			
