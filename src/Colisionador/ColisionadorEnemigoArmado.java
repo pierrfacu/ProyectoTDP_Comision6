@@ -2,38 +2,42 @@ package Colisionador;
 
 import Entidades.Jugador;
 import Entidades.Enemigos.Enemigo;
+import Entidades.Enemigos.EnemigoArmado;
 import Entidades.Obstaculos.Obstaculo;
 import Entidades.PowerUps.PowerUp;
 import Entidades.Disparos.*;
 
-public class ColisionadorJugador extends Colisionador{
+public class ColisionadorEnemigoArmado extends Colisionador{
 	
-	private Jugador jugador;
+	private EnemigoArmado enemigo;
 	
 	//Constructor
-	
-	public ColisionadorJugador(Jugador j) {
-		jugador = j;
+	public ColisionadorEnemigoArmado(EnemigoArmado e) {
+		enemigo = e;
 	}
 	
 	//Metodos
-	
+
 	public void colisionarJugador(Jugador j) {
-		//No hace nada
+		j.restarVida(enemigo.obtenerDanio());
+		enemigo.restarVida(j.obtenerDanio());
+		j.sumarPuntaje(-enemigo.getPuntaje());
 	}
 
 	public void colisionarEnemigoArmado(Enemigo e) {
 		//No hace nada
 	}
-	
+
 	public void colisionarEnemigoKamikaze(Enemigo e){
 		//No hace nada
 	}
-
+	
 	public void colisionarObstaculo(Obstaculo o) {
-		//No hace nada
+		/**
+		 * CONSULTAR ASISTENTE
+		 */
 	}
-
+	
 	public void colisionarObstaculoBarricada(Obstaculo o) {
 		//No hace nada
 	}
@@ -49,5 +53,4 @@ public class ColisionadorJugador extends Colisionador{
 	public void colisionarDisparoEnemigo(DisparoEnemigo dE) {
 		//No hace nada
 	}
-
 }

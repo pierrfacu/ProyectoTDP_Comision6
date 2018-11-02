@@ -169,7 +169,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void cargarDisparosJugador() {///PRUEBA
 		LinkedList<DisparoJugador> listClon = (LinkedList<DisparoJugador>) dispJugEspera.clone();
-		//LinkedList<DisparoJugador> listClon = clone;
 		dispJugEspera.clear();
 		for(DisparoJugador dJ : listClon) {
 			entidades.add(dJ);

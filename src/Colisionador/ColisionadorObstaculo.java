@@ -22,11 +22,19 @@ public class ColisionadorObstaculo extends Colisionador {
 		//No hace nada
 	}
 
-	public void colisionarEnemigo(Enemigo e) {
+	public void colisionarEnemigoArmado(Enemigo e) {
+		//No hace nada
+	}
+	
+	public void colisionarEnemigoKamikaze(Enemigo e){
 		//No hace nada
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
+		//No hace nada
+	}
+
+	public void colisionarObstaculoBarricada(Obstaculo o) {
 		//No hace nada
 	}
 

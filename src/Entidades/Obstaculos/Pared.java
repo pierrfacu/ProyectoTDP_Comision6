@@ -4,6 +4,9 @@ import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorObstaculo;
+
 public class Pared extends Obstaculo{
 	
 	//Constructor
@@ -21,6 +24,12 @@ public class Pared extends Obstaculo{
 		porcentajeVida = 100;
 		puntaje = 7;
 		danioImpacto = 40;
-		//colisionador = new ColisionadorObstaculo(this);
+		colisionador = new ColisionadorObstaculo(this);
+	}
+	
+	//Metodos
+	
+	public void meColisionan(Colisionador c) {
+		c.colisionarObstaculo(this);
 	}
 }

@@ -2,7 +2,8 @@ package Entidades.Enemigos;
 
 import java.awt.Point;
 import javax.swing.ImageIcon;
-import Colisionador.ColisionadorEnemigo;
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorEnemigoKamikaze;
 import Inteligencia.Buscador;
 
 /**
@@ -11,7 +12,8 @@ import Inteligencia.Buscador;
  *
  */
 public class Rastreador extends Enemigo{
-
+	
+	//Constructor
 	public Rastreador(Point p) {
 		super(p, 40, 40);
 		
@@ -26,7 +28,13 @@ public class Rastreador extends Enemigo{
 		porcentajeVida = 100;
 		puntaje = 15;
 		danioImpacto = 23;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoKamikaze(this);
 		inteligencia = new Buscador(this);
+	}
+	
+	//Metodos
+	
+	public void meColisionan(Colisionador c) {
+		c.colisionarEnemigoKamikaze(this);
 	}
 }

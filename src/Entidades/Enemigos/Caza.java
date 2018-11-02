@@ -3,7 +3,8 @@ package Entidades.Enemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import Armas.AECaza;
-import Colisionador.ColisionadorEnemigo;
+import Colisionador.ColisionadorEnemigoArmado;
+import Colisionador.ColisionadorEnemigoKamikaze;
 import Inteligencia.Buscador;
 import Inteligencia.Standard;
 
@@ -29,7 +30,7 @@ public class Caza extends EnemigoArmado{
 		porcentajeVida = 100;
 		puntaje = 10;
 		danioImpacto = 20;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoArmado(this);
 		inteligencia = new Standard(this);
 		arma = new AECaza(this);
 	}
@@ -43,9 +44,10 @@ public class Caza extends EnemigoArmado{
 	
 	public void restarVida(int i) {
 		super.restarVida(i);
-		if(porcentajeVida <= 50) {
+		if(porcentajeVida <= 50 && arma != null) {
 			inteligencia = new Buscador(this);
 			arma = null;
+			colisionador = new ColisionadorEnemigoKamikaze(this);
 		}
 	}
 }

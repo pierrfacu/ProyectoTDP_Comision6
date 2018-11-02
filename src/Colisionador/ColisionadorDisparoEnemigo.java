@@ -20,15 +20,24 @@ public class ColisionadorDisparoEnemigo extends Colisionador{
 	public void colisionarJugador(Jugador j) {
 		j.restarVida(disparo.obtenerDanio());
 		j.sumarPuntaje(disparo.getPuntaje());
-		disparo.restarVida(100);		
+		disparo.restarVida(100);
 	}
 
-	public void colisionarEnemigo(Enemigo e) {
+	public void colisionarEnemigoArmado(Enemigo e) {
+		//No hace nada
+	}
+	
+	public void colisionarEnemigoKamikaze(Enemigo e){
 		//No hace nada
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
+		o.restarVida(disparo.obtenerDanio());
 		disparo.restarVida(100);
+	}
+	
+	public void colisionarObstaculoBarricada(Obstaculo o) {
+		//Los disparos de los enemigos no le hacen nada
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {

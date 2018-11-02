@@ -1,36 +1,41 @@
 package Colisionador;
 
 import Entidades.Jugador;
+import Entidades.Disparos.DisparoEnemigo;
+import Entidades.Disparos.DisparoJugador;
 import Entidades.Enemigos.Enemigo;
 import Entidades.Obstaculos.Obstaculo;
 import Entidades.PowerUps.PowerUp;
-import Entidades.Disparos.*;
 
-public class ColisionadorEnemigo extends Colisionador{
+public class ColisionadorObstaculoBarricada extends Colisionador{
 	
-	private Enemigo enemigo;
+	private Obstaculo obstaculo;
 	
 	//Constructor
-	public ColisionadorEnemigo(Enemigo e) {
-		enemigo = e;
+	public ColisionadorObstaculoBarricada(Obstaculo o) {
+		obstaculo = o;
 	}
 	
 	//Metodos
-
+	
 	public void colisionarJugador(Jugador j) {
-		j.restarVida(enemigo.obtenerDanio());
-		enemigo.restarVida(j.obtenerDanio());
-		j.sumarPuntaje(-enemigo.getPuntaje());
+		//No hace nada	
 	}
 
-	public void colisionarEnemigo(Enemigo e) {
+	public void colisionarEnemigoArmado(Enemigo e) {
 		//No hace nada
 	}
-
+		
+	public void colisionarEnemigoKamikaze(Enemigo e){
+		//No hace nada
+	}
+	
 	public void colisionarObstaculo(Obstaculo o) {
-		/**
-		 * Imprementar esquivarlo. Charlarlo.
-		 */
+		//No hace nada
+	}
+	
+	public void colisionarObstaculoBarricada(Obstaculo o) {
+		//No hace nada
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {

@@ -3,6 +3,9 @@ package Entidades.Obstaculos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorObstaculo;
+
 public class Escombro extends Obstaculo{
 	
 	//Constructor
@@ -20,6 +23,12 @@ public class Escombro extends Obstaculo{
 		porcentajeVida = 50;
 		puntaje = 5;
 		danioImpacto = 15;
-		//colisionador = new ColisionadorObstaculo(this);
+		colisionador = new ColisionadorObstaculo(this);
+	}
+	
+	//Metodos
+	
+	public void meColisionan(Colisionador c) {
+		c.colisionarObstaculo(this);
 	}
 }

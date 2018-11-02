@@ -2,7 +2,8 @@ package Entidades.Enemigos;
 
 import java.awt.Point;
 import javax.swing.ImageIcon;
-import Colisionador.ColisionadorEnemigo;
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorEnemigoKamikaze;
 import Inteligencia.Buscador;
 import Inteligencia.Mareado;
 
@@ -23,18 +24,21 @@ public class TwoBehavior  extends Enemigo{
 		porcentajeVida = 100;
 		puntaje = 10;
 		danioImpacto = 25;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoKamikaze(this);
 		inteligencia = new Buscador(this);
 	}
 	
 	//Metodos
 	
+	public void meColisionan(Colisionador c) {
+		c.colisionarEnemigoKamikaze(this);
+	}
+	
 	public void restarVida(int i) {
 		super.restarVida(i);
 		if(porcentajeVida <= 50) {
 			inteligencia = new Mareado(this);
-		}
-			
+		}		
 	}
 	
 }

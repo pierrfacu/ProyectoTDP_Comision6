@@ -1,8 +1,9 @@
 package Entidades.Obstaculos;
 
 import java.awt.Point;
-
 import javax.swing.ImageIcon;
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorObstaculoBarricada;
 
 public class CampoFuerza extends Obstaculo{
 	
@@ -21,6 +22,12 @@ public class CampoFuerza extends Obstaculo{
 		porcentajeVida = 100;
 		puntaje = 4;
 		danioImpacto = 0;
-		//colisionador = new ColisionadorObstaculo(this);
+		colisionador = new ColisionadorObstaculoBarricada(this);
+	}
+	
+	//Metodos
+	
+	public void meColisionan(Colisionador c) {
+		c.colisionarObstaculoBarricada(this);
 	}
 }

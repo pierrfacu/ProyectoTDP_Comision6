@@ -30,7 +30,13 @@ public class E1 extends Enemigo{
 		porcentajeVida = 100;
 		puntaje = 10;
 		danioImpacto = 25;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoKamikaze(this);
 		inteligencia= new Mareado(this);
+	}
+
+	@Override
+	public void meColisionan(Colisionador c) {
+		c.colisionarEnemigoKamikaze(this);
+		
 	}
 }

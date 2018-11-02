@@ -4,7 +4,6 @@ import Entidades.Entidad;
 import Entidades.PowerUps.PowerUp;
 import Inteligencia.Inteligencia;
 import java.awt.Point;
-import Colisionador.Colisionador;
 
 /**
  * 
@@ -27,10 +26,6 @@ public abstract class Enemigo extends Entidad{
 	public void mover() {
 		inteligencia.ejecutar();
 		setGrafico(0);
-	}
-	
-	public void meColisionan(Colisionador c) {
-		c.colisionarEnemigo(this);
 	}
 	
 	/**

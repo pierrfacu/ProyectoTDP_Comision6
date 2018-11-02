@@ -2,7 +2,8 @@ package Entidades.Enemigos;
 
 import java.awt.Point;
 import javax.swing.ImageIcon;
-import Colisionador.ColisionadorEnemigo;
+import Colisionador.Colisionador;
+import Colisionador.ColisionadorEnemigoKamikaze;
 import Inteligencia.Mareado;
 
 /**
@@ -11,7 +12,8 @@ import Inteligencia.Mareado;
  *
  */
 public class Tonto extends Enemigo{
-
+	
+	//Constructor
 	public Tonto(Point p) {
 		super(p, 40, 40);
 		
@@ -26,7 +28,13 @@ public class Tonto extends Enemigo{
 		porcentajeVida = 100;
 		puntaje = 5;
 		danioImpacto = 20;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoKamikaze(this);
 		inteligencia = new Mareado(this);
+	}
+	
+	//Metodos
+	
+	public void meColisionan(Colisionador c) {
+		c.colisionarEnemigoKamikaze(this);
 	}
 }

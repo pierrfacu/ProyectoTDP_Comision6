@@ -22,8 +22,4 @@ public abstract class Obstaculo extends Entidad{
 	public void mover() {
 		
 	}
-	
-	public void meColisionan(Colisionador c) {
-		c.colisionarObstaculo(this);
-	}
 }

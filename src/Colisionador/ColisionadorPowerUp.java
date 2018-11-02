@@ -23,14 +23,20 @@ public class ColisionadorPowerUp extends Colisionador{
 		powerUp.restarVida(100);
 	}
 
-	public void colisionarEnemigo(Enemigo e) {
+	public void colisionarEnemigoArmado(Enemigo e) {
+		//No hace nada
+	}
+	
+	public void colisionarEnemigoKamikaze(Enemigo e){
+		//No hace nada
+	}
+	
+	public void colisionarObstaculo(Obstaculo o) {
 		//No hace nada
 	}
 
-	public void colisionarObstaculo(Obstaculo o) {
-		/**
-		 * Imprementar esquivarlo. Charlarlo.
-		 */
+	public void colisionarObstaculoBarricada(Obstaculo o) {
+		//No hace nada
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {

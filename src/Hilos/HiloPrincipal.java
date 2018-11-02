@@ -70,7 +70,7 @@ public class HiloPrincipal extends Thread{
 				verificarVidaJugador();
 			}
 			//agregar enemigo sin vida a eliminar
-			if(enem.cantVidas() <= 0) {
+			if(enem.estoyMuerto()) {
 				elimEnemigos.add(enem);
 			}
 		}
@@ -95,7 +95,7 @@ public class HiloPrincipal extends Thread{
 			}
 			
 			//agregar entidad sin vida a eliminar
-			if(ent.cantVidas() <= 0) {
+			if(ent.estoyMuerto()) {
 				elimEntidades.add(ent);
 			}
 		}

@@ -3,7 +3,6 @@ package Entidades;
 import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
-
 import Colisionador.Colisionador;
 
 /**
@@ -87,6 +86,14 @@ public abstract class Entidad {
 			porcentajeVida = 100 + porcentajeVida;
 			cantVidas--;
 		}
+	}
+	
+	/**
+	 * Devuelve verdadero si la entidad no tiene mas vida, caso contrario falso.
+	 * @return verdadero si la entidad murio, caso contrario falso.
+	 */
+	public boolean estoyMuerto() {
+		return cantVidas() <= 0;
 	}
 	
 	/**

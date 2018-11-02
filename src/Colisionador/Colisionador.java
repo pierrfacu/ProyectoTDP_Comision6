@@ -10,9 +10,13 @@ public abstract class Colisionador {
 		
 	public abstract void colisionarJugador(Jugador j);
 	
-	public abstract void colisionarEnemigo(Enemigo e);
+	public abstract void colisionarEnemigoArmado(Enemigo e);
+	
+	public abstract void colisionarEnemigoKamikaze(Enemigo e);
 	
 	public abstract void colisionarObstaculo(Obstaculo o);
+	
+	public abstract void colisionarObstaculoBarricada(Obstaculo o);
 	
 	public abstract void colisionarPowerUp(PowerUp pU);
 	

@@ -3,7 +3,7 @@ package Entidades.Enemigos;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import Armas.AECrucero;
-import Colisionador.ColisionadorEnemigo;
+import Colisionador.ColisionadorEnemigoArmado;
 import Inteligencia.Standard;
 
 /**
@@ -28,7 +28,7 @@ public class Crucero extends EnemigoArmado{
 		porcentajeVida = 100;
 		puntaje = 40;
 		danioImpacto = 30;
-		colisionador = new ColisionadorEnemigo(this);
+		colisionador = new ColisionadorEnemigoArmado(this);
 		inteligencia = new Standard(this);
 		arma = new AECrucero(this);
 	}
