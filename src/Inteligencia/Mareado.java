@@ -1,6 +1,9 @@
 package Inteligencia;
 
+import java.util.Random;
+
 import Entidades.Enemigos.Enemigo;
+import Inteligencia.Estados.Tontear;
 
 public class Mareado extends Inteligencia {
 	
@@ -11,9 +14,13 @@ public class Mareado extends Inteligencia {
 	
 	//Metodos
 	
-	public void atacar() {
+	public void ejecutar() {
 		
-		ejecutarMovimientoAleatorio();
+		Random rnd = new Random();
+		int n=rnd.nextInt(30);
+		if (estado.isAtaco() && n<1)
+			estado = new Tontear(this,enemigo) ;
+		estado.ejecutar();
 		
 	}
 }

@@ -54,7 +54,7 @@ public class Tontear extends Estado{
 		 		}
 		 		break;
 	    }	
-        
+       
 	}
 
 }

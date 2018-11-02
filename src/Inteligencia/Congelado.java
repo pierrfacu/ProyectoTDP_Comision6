@@ -2,6 +2,7 @@ package Inteligencia;
 
 import Entidades.Enemigos.Enemigo;
 
+
 public class Congelado extends Inteligencia {
 
 	public Congelado(Enemigo e) {
@@ -12,9 +13,6 @@ public class Congelado extends Inteligencia {
 	
 	public void ejecutar() {
 		
-	}
-	
-	public void atacar() {
 		
 	}
 }

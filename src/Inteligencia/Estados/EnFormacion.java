@@ -44,6 +44,10 @@ public class EnFormacion extends Estado {
 			contSecMF = 0;
     } 
 	
+	public boolean isAtaco() {
+    	return true;
+    }
+	
 }
 		
 

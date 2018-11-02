@@ -16,9 +16,17 @@ public class VolverFormacion extends Estado{
 		Point posicionFormacion = inteligencia.getPosFormacion();
 		
 		Point pos=enemigo.getPosition();
-		pos.setLocation(posicionFormacion.x, 0);
+		if(pos.y < posicionFormacion.y) {
+			if(pos.y + velocidad < posicionFormacion.y)
+				pos.setLocation(posicionFormacion.x, posicionFormacion.y + velocidad);
+			else {
+				pos.setLocation(posicionFormacion.x, posicionFormacion.y);
+		        inteligencia.setEstado(new EnFormacion(inteligencia, enemigo));
+			}
+		}
+		/*pos.setLocation(posicionFormacion.x, posicionFormacion.y);
 		if(posicionFormacion.y > pos.y)
-			pos.setLocation(posicionFormacion.x, pos.y + velocidad);
+			pos.setLocation(posicionFormacion.x, pos.y + velocidad);*/
 		enemigo.setGrafico(0);
 	}
 

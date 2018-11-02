@@ -15,6 +15,12 @@ public abstract class Estado {
 		velocidad = e.getVelocidad();
 	}
 	
+	public boolean isAtaco() {
+    	return false;
+    }
+	
 	public abstract void ejecutar();
+	
+
 	
 }
