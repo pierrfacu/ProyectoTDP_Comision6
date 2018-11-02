@@ -29,7 +29,7 @@ public abstract class Inteligencia {
 	public void ejecutar() {
 		Random rnd = new Random();
 		int n=rnd.nextInt(30);
-		if (n<7)
+		if (n<1)
 			ataco=true;
 		if (ataco)
 			atacar();
