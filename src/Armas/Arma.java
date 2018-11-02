@@ -18,7 +18,7 @@ public abstract class Arma {
 	 * Multiplica la fuerza de impacto del disparo del arma.
 	 * @param d 
 	 */
-	public void aumentarDaño(int d) {
+	public void aumentarDanio(int d) {
 		danioExtra = d;
 	}
 }
