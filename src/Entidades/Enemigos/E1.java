@@ -3,6 +3,8 @@ package Entidades.Enemigos;
 import javax.swing.ImageIcon;
 import java.awt.Point;
 import Colisionador.*;
+import Inteligencia.Buscador;
+import Inteligencia.Congelado;
 import Inteligencia.Mareado;
 import Inteligencia.Standard;
 
@@ -31,7 +33,7 @@ public class E1 extends Enemigo{
 		puntaje = 10;
 		danioImpacto = 25;
 		colisionador = new ColisionadorEnemigoKamikaze(this);
-		inteligencia= new Mareado(this);
+		inteligencia= new Buscador(this);
 	}
 
 	@Override

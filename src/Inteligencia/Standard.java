@@ -28,8 +28,8 @@ public class Standard extends Inteligencia{
 	private void ejecutarDisparo() {
 	
 		JuegoEnemigo juego = JuegoEnemigo.getInstance();
-		Random rnd =new Random (2);
-		int dir =rnd.nextInt();
+		Random rnd =new Random ();
+		int dir =rnd.nextInt(2);
 		
 		switch(dir) {
 		

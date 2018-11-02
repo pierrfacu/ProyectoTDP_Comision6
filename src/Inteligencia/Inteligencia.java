@@ -27,12 +27,18 @@ public abstract class Inteligencia {
 	//Metodos
 	
 	public void ejecutar() {
+		Random rnd = new Random();
+		int n=rnd.nextInt(30);
+		if (n<7)
+			ataco=true;
 		if (ataco)
 			atacar();
 		else
 		   if(meSali)
 			   volverFormacion();
-		   else moverFormacion();
+		   else
+			   moverFormacion();
+		
 	}
 	
 	public void setPosFormacion(Point p) {
@@ -79,47 +85,53 @@ public abstract class Inteligencia {
 		enemigo.setGrafico(0);
 	}
 	
+	/**
+	 * 
+	 * Movimiendo aleatorio de los enemigos.
+	 */
     protected void ejecutarMovimientoAleatorio() {
 		
 		JuegoEnemigo juego = JuegoEnemigo.getInstance();
 		int ancho = juego.obtenerGrafica().anchoGrafica();
 		Point p = enemigo.getPosition();
-        Random r = new Random (3);
-		int d=r.nextInt();
+        Random r = new Random ();
+		int d=r.nextInt(3);
 		
-		switch(d) {
+        switch(d) {
 		
-		case 0: //izquierda
-			if ((p.x - velocidad) < 0)
-				p.setLocation(0, p.y);
-			else
-				p.setLocation(p.x - velocidad, p.y);
-			enemigo.setPosition(p);
-			enemigo.setGrafico(0);
-			break; 
+		 	case 0: //izquierda
+		 		if ((p.x - velocidad) < 0)
+		 			p.setLocation(0, p.y);
+		 		else
+		 			p.setLocation(p.x - velocidad, p.y);
+		 		enemigo.setPosition(p);
+		 		enemigo.setGrafico(0);
+		 		break; 
 			
-		case 1: //derecha controla tope hasta 50
-			if ((p.x + velocidad) > (ancho - 50))
-				p.setLocation((ancho - 50), p.y);
-			else 
-				p.setLocation(p.x + velocidad, p.y);
-			enemigo.setPosition(p);
-			enemigo.setGrafico(0);
+		 	case 1: //derecha controla tope hasta 50
+		 		if ((p.x + velocidad) > (ancho - 50))
+		 			p.setLocation((ancho - 50), p.y);
+		 		else 
+		 			p.setLocation(p.x + velocidad, p.y);
+		 		enemigo.setPosition(p);
+		 		enemigo.setGrafico(0);
 			
-			break;
+		 		break;
 			
-		case 2: //abajo
-			p.setLocation(p.x, p.y + velocidad);
-			enemigo.setPosition(p);
-			enemigo.setGrafico(0);
+		 	case 2: //abajo
+		 		p.setLocation(p.x, p.y + velocidad);
+		 		enemigo.setPosition(p);
+		 		enemigo.setGrafico(0);
 			
-			int alto = juego.obtenerGrafica().altoGrafica();
-			if(enemigo.getPosition().y > alto) {
-				ataco=false;
-				meSali=true;
-			}
-			break;
+		 		int alto = juego.obtenerGrafica().altoGrafica();
+		 		if(enemigo.getPosition().y > alto) {
+		 			ataco=false;
+		 			meSali=true;
+		 		}
+		 		break;
 	    }	
+		
+		
 	}
 	
 	//Metodos abstractos
