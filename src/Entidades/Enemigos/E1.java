@@ -33,7 +33,7 @@ public class E1 extends Enemigo{
 		puntaje = 10;
 		danioImpacto = 25;
 		colisionador = new ColisionadorEnemigoKamikaze(this);
-		inteligencia= new Buscador(this);
+		inteligencia= new Mareado(this);
 	}
 
 	@Override

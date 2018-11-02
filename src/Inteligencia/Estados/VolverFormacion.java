@@ -12,6 +12,9 @@ public class VolverFormacion extends Estado{
 	}
 	
 	public void ejecutar(){
+		
+		Point posicionFormacion = inteligencia.getPosFormacion();
+		
 		Point pos=enemigo.getPosition();
 		pos.setLocation(posicionFormacion.x, 0);
 		if(posicionFormacion.y > pos.y)

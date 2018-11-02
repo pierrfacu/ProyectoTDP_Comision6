@@ -16,7 +16,6 @@ public class Tontear extends Estado{
 	
 	public void ejecutar() {
 		
-		int velocidad = enemigo.getVelocidad();
 		JuegoEnemigo juego = JuegoEnemigo.getInstance();
 		int ancho = juego.obtenerGrafica().anchoGrafica();
 		Point p = enemigo.getPosition();
@@ -51,7 +50,7 @@ public class Tontear extends Estado{
 			
 		 		int alto = juego.obtenerGrafica().altoGrafica();
 		 		if(enemigo.getPosition().y > alto) {
-		 			enemigo.setEstado(new VolverFormacion(inteligencia)); //si se pasa vuelve a la formacion
+		 			inteligencia.setEstado(new VolverFormacion(inteligencia, enemigo)); //si se pasa vuelve a la formacion
 		 		}
 		 		break;
 	    }	

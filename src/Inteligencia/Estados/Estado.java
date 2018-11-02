@@ -7,10 +7,12 @@ public abstract class Estado {
 	
 	protected Inteligencia inteligencia;
 	protected Enemigo enemigo;
+	protected int velocidad;
 	
 	protected Estado(Inteligencia i, Enemigo e) {
 		inteligencia = i;
 		enemigo = e;
+		velocidad = e.getVelocidad();
 	}
 	
 	public abstract void ejecutar();

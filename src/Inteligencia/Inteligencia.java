@@ -3,6 +3,8 @@ package Inteligencia;
 import java.awt.Point;
 import java.util.Random;
 import Entidades.Enemigos.Enemigo;
+import Inteligencia.Estados.EnFormacion;
+import Inteligencia.Estados.Estado;
 import Juego.JuegoEnemigo;
 
 public abstract class Inteligencia {
@@ -13,6 +15,7 @@ public abstract class Inteligencia {
 	protected boolean ataco;
 	protected boolean meSali;
 	protected int contSecMF;
+	protected Estado estado;
 	
 	//Constructor
 	public Inteligencia(Enemigo e) {
@@ -22,6 +25,7 @@ public abstract class Inteligencia {
 		contSecMF = 0;
 		ataco = false;
 		meSali = false;
+		estado = new EnFormacion(this, enemigo);
 	} 
 	
 	//Metodos
@@ -29,7 +33,7 @@ public abstract class Inteligencia {
 	public void ejecutar() {
 		Random rnd = new Random();
 		int n=rnd.nextInt(30);
-		if (n<7)
+		if (n<7)//modificar
 			ataco=true;
 		if (ataco)
 			atacar();
@@ -41,6 +45,13 @@ public abstract class Inteligencia {
 		
 	}
 	
+	public void setEstado(Estado e) {
+		estado = e;
+	}
+	
+	public Estado getEstado() {
+		return estado;
+	}
 	public void setPosFormacion(Point p) {
 		if(p!=null)
 		   posicionFormacion = p;	
