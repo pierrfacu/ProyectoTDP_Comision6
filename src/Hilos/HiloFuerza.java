@@ -14,7 +14,7 @@ public class HiloFuerza extends Thread{
 	public void run() {
 		JuegoHilo juego = JuegoHilo.getInstance();
 		Arma a = juego.obtenerJugador().obtenerArma();
-		a.aumentarDaño(2);
+		a.aumentarDanio(2);
 		
 		try {
 			Thread.sleep(30000);
@@ -22,6 +22,6 @@ public class HiloFuerza extends Thread{
 			e.printStackTrace();
 		}
 		
-		a.aumentarDaño(1);
+		a.aumentarDanio(1);
 	}
 }
