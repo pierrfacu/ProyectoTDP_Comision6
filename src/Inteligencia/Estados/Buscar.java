@@ -6,12 +6,20 @@ import Entidades.Enemigos.Enemigo;
 import Inteligencia.Inteligencia;
 import Juego.JuegoEnemigo;
 
+/**
+ * 
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ *
+ */
+
 public class Buscar extends Estado{
 	
+	//Constructor
 	public Buscar(Inteligencia i, Enemigo enemigo) {
 		super(i,enemigo);
 	}
 	
+	//Metodos
 	public void ejecutar() {
 		
 		JuegoEnemigo juegoEnem = JuegoEnemigo.getInstance();

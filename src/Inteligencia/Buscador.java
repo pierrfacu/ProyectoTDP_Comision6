@@ -4,8 +4,15 @@ import Entidades.Enemigos.Enemigo;
 import Inteligencia.Estados.Buscar;
 import java.util.Random;
 
+/**
+ * 
+ * @author  Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ *
+ */
+
 public class Buscador extends Inteligencia {	
 	
+	//Constructor
 	public Buscador (Enemigo e) {
 		super(e);
 	}

@@ -7,7 +7,7 @@ import Inteligencia.Inteligencia;
 
 /**
  *
- * @author
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 public class EnFormacion extends Estado {
@@ -15,13 +15,15 @@ public class EnFormacion extends Estado {
 	protected static final int velFormacion = 40;
 	protected int contSecMF;
 	
+	//Constructor
 	public EnFormacion (Inteligencia i, Enemigo enemigo) {
 		super(i, enemigo); 
 		contSecMF = 0;
 	}
 	
+	//Metodos
+	
 	public void ejecutar() {
-		
 		
 		Point p = enemigo.getPosition();
 		switch (contSecMF) {

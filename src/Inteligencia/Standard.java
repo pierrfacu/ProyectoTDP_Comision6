@@ -2,11 +2,14 @@ package Inteligencia;
 
 
 import java.util.Random;
-
-
 import Entidades.Enemigos.EnemigoArmado;
 import Inteligencia.Estados.TontearDispara;
 
+/**
+ * 
+ * @author  Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ *
+ */
 
 public class Standard extends Inteligencia{
 	
