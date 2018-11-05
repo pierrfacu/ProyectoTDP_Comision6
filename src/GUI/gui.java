@@ -6,16 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Hilos.HiloPrincipal;
 import Juego.JuegoGrafica;
-
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * 
- * @author 
+ * Clase GUI que extiende de JFrame.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public class gui extends JFrame {
@@ -88,5 +86,44 @@ public class gui extends JFrame {
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		juego.obtenerJugador().accionar(key.getKeyCode());
 		this.repaint();
+	}
+	
+	/**
+	 * Actualiza los indicadores de estado en la interfaz del juego.
+	 */
+	public void actualizarIndicadores() {
+		/**
+		 * TERMINAR
+		 * 1) Lado superior izquierdo: nivel.
+		 * 2) Lado superior derecho: puntaje.
+		 * 3) lado inferior izquierdo: vidas del jugador.
+		 * 4) lado inferior derecho, power ups activos/inactivos.
+		 */
+		JuegoGrafica juego = JuegoGrafica.getInstance();
+		System.out.println(juego.obtenerPuntaje());
+		
+	}
+	
+	/**
+	 * Cambia el panel de la ventana al panel de fin de juego mostrando el resultado de la
+	 * partida. Si el resultado recibido como parámetro es verdadero, se indica que se gano,
+	 * caso contrario, se perdio.
+	 * @param gano verdadero si se gano, caso conrario, se perdio.
+	 */
+	public void partidaFinalizada(boolean gano) {
+		/**
+		 * TERMINAR
+		 * -Agregar:
+		 * 1) panel final
+		 * 2) Poner el estado final de la partida con el puntaje obtenido.
+		 * 3) Botones de: volver a jugar y salir.
+		 * 4) Opcional, cambiar fondo.
+		 */
+		if(gano)
+			System.out.println("Has ganado.");
+		else System.out.println("Has perdido.");
+		JuegoGrafica juego = JuegoGrafica.getInstance();
+		System.out.println(juego.obtenerPuntaje());
+		//hiloPrincipal.stop();
 	}
 }

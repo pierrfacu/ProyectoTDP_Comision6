@@ -5,6 +5,11 @@ import Entidades.Entidad;
 import Entidades.Jugador;
 import Entidades.Enemigos.Enemigo;
 
+/**
+ * Interfaz JuegoHilo.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public interface JuegoHilo {
 	
 	/**
@@ -20,6 +25,13 @@ public interface JuegoHilo {
 	 * @return jugador.
 	 */
 	public Jugador obtenerJugador();
+	
+
+	/**
+	 * El juego termina estableciendo que se perdio la partida.
+	 * Requiere que se verifique si el jugador esta muerto.
+	 */
+	public void seMurioJugador();
 	
 	/**
 	 * Deuelve verdadero si hay enemigos, caso contrario, falso.
@@ -55,12 +67,6 @@ public interface JuegoHilo {
 	 * Avanza el juego al siguiente nivel, si ya se jugo el ultimo, se termina la partida.
 	 */
 	public void siguienteNivel();
-	
-	/**
-	 * El juego termina estableciendo que se perdio la partida.
-	 * Requiere que se verifique si el jugador esta muerto.
-	 */
-	public void seMurioJugador();
 	
 	/**
 	 * Carga los disparos del jugador al juego.

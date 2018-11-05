@@ -7,8 +7,8 @@ import Entidades.Enemigos.Enemigo;
 import Juego.JuegoHilo;
 
 /**
- * 
- * @author
+ * Clase HiloPrincipal que extiende de Thread.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public class HiloPrincipal extends Thread{
@@ -17,7 +17,8 @@ public class HiloPrincipal extends Thread{
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Enemigo> elimEnemigos;
 	private LinkedList<Entidad> elimEntidades;
-
+	
+	//Constructor
 	public HiloPrincipal(){
 	}
 	
@@ -27,16 +28,17 @@ public class HiloPrincipal extends Thread{
 		JuegoHilo juego = JuegoHilo.getInstance();
 		while(true) {
 			try {
-				Thread.sleep(70);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
-			juego.cargarDisparosJugador();
+			
 			enemigos = juego.obtenerEnemigos();
 			entidades = juego.obtenerEntidades();
 			elimEnemigos = new LinkedList<Enemigo>();
 			elimEntidades = new LinkedList<Entidad>();
+			juego.cargarDisparosJugador();
 			colisionarEnemigos();
 			elimEnemigos();
 			juego.cargarDisparosJugador();
@@ -51,7 +53,10 @@ public class HiloPrincipal extends Thread{
 	}
 
 	//Metodos Privados
-
+	
+	/**
+	 * Colisiona a los enemigos con las entidades y el jugador.
+	 */
 	private void colisionarEnemigos() {
 		for(Enemigo enem : enemigos) {
 			enem.mover();
@@ -76,6 +81,9 @@ public class HiloPrincipal extends Thread{
 		}
 	}
 
+	/**
+	 * Colisiona las entidades con los enemigos y jugador.
+	 */
 	private void colisionarEntidades() {
 		for(Entidad ent : entidades) {
 			ent.mover();
@@ -100,7 +108,10 @@ public class HiloPrincipal extends Thread{
 			}
 		}
 	}
-
+	
+	/**
+	 * Elimina del juego a los enemigos muertos.
+	 */
 	private void elimEnemigos() {
 		JuegoHilo juego = JuegoHilo.getInstance();
 		for(Enemigo enem : elimEnemigos) {
@@ -108,6 +119,7 @@ public class HiloPrincipal extends Thread{
 		}
 	}
 	
+	//Elimina del juego a las entidades muertas.
 	private void elimEntidades() {
 		JuegoHilo juego = JuegoHilo.getInstance();
 		for(Entidad ent : elimEntidades) {
@@ -115,6 +127,12 @@ public class HiloPrincipal extends Thread{
 		}
 	}
 	
+	/**
+	 * Devuelve verdadero si las entidades colisionan, caso contrario falso.
+	 * @param l1 label de entidad 1.
+	 * @param l2 label de entidad 2.
+	 * @return verdadero si colisionan, caso contrario falso.
+	 */
 	private boolean colisionan(JLabel l1, JLabel l2) {
 		boolean colisionan = false;
 		
@@ -130,6 +148,9 @@ public class HiloPrincipal extends Thread{
 		return colisionan;
 	}
 	
+	/**
+	 * Verifica que el jugador sigue con vida, si esta muerto le indica al juego que murio.
+	 */
 	private void verificarVidaJugador() {
 		JuegoHilo juego = JuegoHilo.getInstance();
 		if (juego.obtenerJugador().estoyMuerto()) {

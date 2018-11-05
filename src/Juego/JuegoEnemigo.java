@@ -5,14 +5,14 @@ import Entidades.Disparos.DisparoEnemigo;
 import GUI.gui;
 
 /**
- * 
- * @author
+ * Interfaz JuegoEnemigo.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public interface JuegoEnemigo {
 	
 	/**
-	 * Devuelve la instancia del juego para lass entidades de enemigos.
+	 * Devuelve la instancia del juego para las entidades de enemigos.
 	 * @return instancia del juego.
 	 */
 	public static JuegoEnemigo getInstance() {

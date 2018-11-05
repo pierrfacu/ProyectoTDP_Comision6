@@ -1,13 +1,11 @@
 package Entidades.Obstaculos;
 
 import java.awt.Point;
-
-import Colisionador.Colisionador;
 import Entidades.Entidad;
 
 /**
- * 
- * @author 
+ * Clase abstracta Obstaculo que extiende de Entidad.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public abstract class Obstaculo extends Entidad{
@@ -20,6 +18,6 @@ public abstract class Obstaculo extends Entidad{
 	//Metodos
 	
 	public void mover() {
-		
+		//Soy una entidad que nacio sin poder moverse.
 	}
 }

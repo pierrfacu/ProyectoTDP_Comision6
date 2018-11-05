@@ -2,14 +2,13 @@ package Entidades.PowerUps;
 
 import java.awt.Point;
 import java.util.Random;
-
 import Colisionador.Colisionador;
 import Entidades.Entidad;
 import Juego.JuegoPowerUp;
 
 /**
- * 
- * @author
+ * Clase abstracta PowerUp que extiende de Entidad.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public abstract class PowerUp extends Entidad{
@@ -59,6 +58,10 @@ public abstract class PowerUp extends Entidad{
 
 	public void meColisionan(Colisionador c) {
 		c.colisionarPowerUp(this);
+	}
+	
+	public void muerteSubita() {
+		//No llevo una bomba en mi interior, ohh sii
 	}
 	
 	//Metdos abstractos

@@ -8,8 +8,8 @@ import Juego.JuegoJugador;
 import Colisionador.*;
 
 /**
- * 
- * @author 
+ * Clase Jugador que extiende de Entidad.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public class Jugador extends Entidad{
@@ -17,12 +17,14 @@ public class Jugador extends Entidad{
 	private Arma arma;
 	private Arma armaEspecial;
 	private boolean escudo;
+	private boolean pausarDisparo;
 	
+	//Constructor
 	public Jugador(Point p) {
 		super(p, 40, 40);
 		
 		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));//Jugador con escudo
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador_escudo.png"));
 		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Jugador/jugador.png"));
 		this.imagen[4] = null;
@@ -30,6 +32,7 @@ public class Jugador extends Entidad{
 		arma = new AJSimple(this);
 		armaEspecial = null;
 		escudo = false;
+		pausarDisparo = false;
 		velocidad = 10;
 		cantVidas = 3;
 		porcentajeVida = 100;
@@ -62,21 +65,31 @@ public class Jugador extends Entidad{
 			else setGrafico(0);
 			break;
 		case KeyEvent.VK_SPACE : //Disparo
-			arma.accionar();
+			if(!pausarDisparo)
+				arma.accionar();
 		case KeyEvent.VK_ALT : //Disparo especial
-			if(armaEspecial != null) {
+			if(!pausarDisparo && armaEspecial != null) {
 				armaEspecial.accionar();
 				armaEspecial = null;
 			}
 		}
 	}
 	
+	/**
+	 * Establece el arma recibida por parámetro al jugador.
+	 * @param a arma.
+	 */
 	public void establecerArma(ArmaJugador a) {
-		arma = a;
+		if(a != null)
+			arma = a;
 	}
 	
+	/**
+	 * Establece el arma especial recibida por parámetro al jugador.
+	 * @param a arma especial.
+	 */
 	public void establecerArmaEspecial(AJProyectil p) {
-		if(armaEspecial == null) {
+		if(p != null && armaEspecial == null) {
 			armaEspecial = p;
 		}
 	}
@@ -94,7 +107,11 @@ public class Jugador extends Entidad{
 		if (puntaje < 0)
 			puntaje = 0;
 	}
-	
+
+	/**
+	 * Agrega al jugador el porcentaje de vida recibido por parámetro.
+	 * @param p porcentaje de vida.
+	 */
 	public void sumarPorcentajeVida(int p) {
 		porcentajeVida = porcentajeVida + p;
 		if(porcentajeVida > 100) {
@@ -120,13 +137,24 @@ public class Jugador extends Entidad{
 	 */
 	public void activarEscudo() {
 		if(escudo) {
+			width = 40;
+			height = 40;
 			escudo = false;
 			setGrafico(0);
 		}
 		else {
 			escudo = true;
+			width = 50;
+			height = 50;
 			setGrafico(1);
 		}
+	}
+	
+	/**
+	 * Establece que el jugador no pueda disparar.
+	 */
+	public void pausarDisparos() {
+		pausarDisparo = !pausarDisparo;
 	}
 	
 	/**
@@ -138,6 +166,6 @@ public class Jugador extends Entidad{
 	}
 	
 	public void mover() {
-		
+		//Solo me muevo si me lo indica un ser vivo, no una maquina.
 	}
 }

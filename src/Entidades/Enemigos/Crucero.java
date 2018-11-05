@@ -7,20 +7,20 @@ import Colisionador.ColisionadorEnemigoArmado;
 import Inteligencia.Standard;
 
 /**
- * 
- * @author
+ * Clase Crucero que extiende de EnemigoArmado.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public class Crucero extends EnemigoArmado{
 	
 	//Constructor
 	public Crucero(Point p) {
-		super(p, 0, 0);
+		super(p, 50, 70);
 		
-		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
-		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/enemy.png"));
-		this.imagen[2] = null;
-		this.imagen[3] = null;
+		this.imagen[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/crucero.png"));
+		this.imagen[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/crucero_congelado.png"));
+		this.imagen[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/crucero.png"));
+		this.imagen[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Enemigos/crucero.png"));
 		this.imagen[4] = null;
 		
 		velocidad = 9;
@@ -32,7 +32,10 @@ public class Crucero extends EnemigoArmado{
 		inteligencia = new Standard(this);
 		arma = new AECrucero(this);
 	}
+	
+	
 	//Metodos
+	
 	public void disparar() {
 		if(arma != null)
 			arma.accionar();

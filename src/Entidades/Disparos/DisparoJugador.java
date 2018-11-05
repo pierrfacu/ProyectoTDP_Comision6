@@ -3,11 +3,15 @@ package Entidades.Disparos;
 import java.awt.Point;
 import Colisionador.*;
 
+/**
+ * Clase abstracta DisparoJugador que extiende de Disparo.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public abstract class DisparoJugador extends Disparo{
 	
-	
 	//Constructor
-	public DisparoJugador(Point p, int w, int h) {
+	protected DisparoJugador(Point p, int w, int h) {
 		super(p, w, h);
 	}
 

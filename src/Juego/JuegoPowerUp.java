@@ -1,11 +1,15 @@
 package Juego;
 
 import java.util.LinkedList;
-
 import Entidades.Jugador;
 import Entidades.Enemigos.Enemigo;
 import GUI.gui;
 
+/**
+ * Interfaz JuegoPowerUp.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public interface JuegoPowerUp {
 	
 	/**

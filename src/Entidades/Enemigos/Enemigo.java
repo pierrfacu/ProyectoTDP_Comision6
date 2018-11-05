@@ -6,8 +6,8 @@ import Inteligencia.Inteligencia;
 import java.awt.Point;
 
 /**
- * 
- * @author 
+ * Clase abstracta Enemigo que extiende de Entidad.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public abstract class Enemigo extends Entidad{

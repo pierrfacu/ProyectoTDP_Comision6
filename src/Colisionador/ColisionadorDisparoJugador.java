@@ -7,6 +7,11 @@ import Entidades.PowerUps.PowerUp;
 import Juego.JuegoJugador;
 import Entidades.Disparos.*;
 
+/**
+ * Clase ColisionadorDisparoJugador que extiende de Colisionador.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public class ColisionadorDisparoJugador extends Colisionador {
 	
 	private DisparoJugador disparo;

@@ -6,8 +6,8 @@ import javax.swing.JLabel;
 import Colisionador.Colisionador;
 
 /**
- * 
- * @author 
+ * Clase abstracta Entidad.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public abstract class Entidad {
@@ -22,7 +22,6 @@ public abstract class Entidad {
 	protected int cantVidas;
 	protected int porcentajeVida;
 	protected int danioImpacto;
-	
 	protected Colisionador colisionador;
 	
 	//constructor
@@ -34,7 +33,7 @@ public abstract class Entidad {
 		imagen = new Icon[5];
 	}
 	
-	//Metodos publicos
+	//Metodos
 	
 	/**
 	 * Devuelve el puntaje de la entidad.
@@ -77,6 +76,14 @@ public abstract class Entidad {
 	}
 	
 	/**
+	 * Devuelve el porcentaje de la vida que tiene la entidad.
+	 * @return porcentaje vida.
+	 */
+	public int porcentajeVida() {
+		return porcentajeVida;
+	}
+	
+	/**
 	 * Resta de la vida el porcentaje recibido.
 	 * @param p Porcentaje de vida a restar.
 	 */
@@ -94,6 +101,14 @@ public abstract class Entidad {
 	 */
 	public boolean estoyMuerto() {
 		return cantVidas() <= 0;
+	}
+	
+	/**
+	 * Genera una muerte subita en la entidad.
+	 */
+	public void muerteSubita() {
+		cantVidas = 0;
+		porcentajeVida = 100;
 	}
 	
 	/**
@@ -126,21 +141,13 @@ public abstract class Entidad {
 	
 	/**
 	 * Establece el grafico de la entidad.
-	 * @param dir
+	 * @param dir numero de grafico.
 	 */
 	public void setGrafico(int dir){
 		if(this.grafico != null){
 			this.grafico.setIcon(this.imagen[dir]);
 			this.grafico.setBounds(this.pos.x, this.pos.y, width, height);
 		}
-	}
-	
-	/**
-	 * 
-	 * @param e
-	 */
-	public void colisionar(Entidad e) {
-		e.meColisionan(colisionador);
 	}
 	
 	/**
@@ -160,7 +167,7 @@ public abstract class Entidad {
 	}
 	
 	/**
-	 * Devuelve la altura d ela entidad.
+	 * Devuelve la altura de la entidad.
 	 * @return altura entidad.
 	 */
 	public int altoEntidad() {
@@ -175,16 +182,24 @@ public abstract class Entidad {
 		return width;
 	}
 	
+	/**
+	 * Colisiona a la entidad que recibe por parámetro.
+	 * @param e entidad.
+	 */
+	public void colisionar(Entidad e) {
+		e.meColisionan(colisionador);
+	}
+	
 	// Metodos abstractos
 	
 	/**
-	 * 
+	 * Mueve la entidad.
 	 */
 	public abstract void mover();
 	
 	/**
-	 * 
-	 * @param c
+	 * Le indica al colisionador la entidad a la que esta colisionando.
+	 * @param c colisionador.
 	 */
 	public abstract void meColisionan(Colisionador c);
 	

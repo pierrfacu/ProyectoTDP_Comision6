@@ -7,6 +7,11 @@ import Inteligencia.Congelado;
 import Inteligencia.Inteligencia;
 import Juego.JuegoHilo;
 
+/**
+ * Clase HiloCongelar que extiende de Thread.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public class HiloCongelar extends Thread{
 	
 	//Constructor
@@ -23,10 +28,11 @@ public class HiloCongelar extends Thread{
 		for(Enemigo e : enemigos) {
 			backupInt.put(e, e.obtenerInteligencia());
 			e.establecerInteligencia(new Congelado(e));
+			e.setGrafico(1);
 		}
 		
 		try {
-			Thread.sleep(30000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -34,6 +40,7 @@ public class HiloCongelar extends Thread{
 		enemigos = juego.obtenerEnemigos();
 		for(Enemigo e : enemigos) {
 			e.establecerInteligencia(backupInt.get(e));
+			e.setGrafico(0);
 		}		
 	}
 }

@@ -6,6 +6,11 @@ import Entidades.Obstaculos.Obstaculo;
 import Entidades.PowerUps.PowerUp;
 import Entidades.Disparos.*;
 
+/**
+ * Clase ColisionadorPowerUp que extiende de Colisionador.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public class ColisionadorPowerUp extends Colisionador{
 	
 	private PowerUp powerUp;

@@ -4,8 +4,8 @@ import Entidades.Jugador;
 import GUI.gui;
 
 /**
- * 
- * @author 
+ * Interfaz JuegoGrafica.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public interface JuegoGrafica {
@@ -17,7 +17,6 @@ public interface JuegoGrafica {
 	public static JuegoGrafica getInstance() {
 		return Juego.getInstance();
 	};
-	
 	
 	/**
 	 * Devuelve el puntaje acumulado por el jugador en la partida.

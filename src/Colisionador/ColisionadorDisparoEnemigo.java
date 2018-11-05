@@ -6,6 +6,11 @@ import Entidades.Enemigos.Enemigo;
 import Entidades.Obstaculos.Obstaculo;
 import Entidades.PowerUps.PowerUp;
 
+/**
+ * Clase ColisionadorDisparoEnemigo que extiende de Colisionador.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public class ColisionadorDisparoEnemigo extends Colisionador{
 	
 	private DisparoEnemigo disparo;

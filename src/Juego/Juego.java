@@ -2,7 +2,6 @@ package Juego;
 
 import GUI.gui;
 import java.awt.Point;
-import java.util.Iterator;
 import java.util.LinkedList;
 import Entidades.*;
 import Entidades.Disparos.*;
@@ -10,16 +9,16 @@ import Entidades.Enemigos.Enemigo;
 import Entidades.PowerUps.PowerUp;
 
 /**
- * 
- * @author 
+ * Clase Juego que implementa a JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo, JuegoPowerUp, JuegoNivel.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
-public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo, JuegoPowerUp {
+public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHilo, JuegoPowerUp, JuegoNivel {
 	
 	private static Juego instance;
 	
 	private gui gui;
-	private Nivel nivel; //Gestor de niveles
+	private Nivel gestorNivel; //Gestor de niveles
 	
 	private Jugador jugador;
 	private LinkedList<DisparoJugador> dispJugEspera;
@@ -46,39 +45,33 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	}
 	
 	public void iniciarJuego() {
-		//Creacion de jugador
-		jugador = new Jugador(new Point(270, 600));
+		
+		jugador = new Jugador(new Point(280, 600));
 		gui.add(jugador.getGrafico());
 		dispJugEspera = new LinkedList<DisparoJugador>();
 		
-		//Creacion del gestor de niveles
-		nivel = new Nivel();
-		
 		entidades = new LinkedList<Entidad>();
+		enemigos = new LinkedList<Enemigo>();
 		
-		//Carga de enemigos
-		enemigos = nivel.obtenerEnemigos();
-		Iterator<Enemigo> i = enemigos.iterator();
-		while(i.hasNext()) {
-			gui.add(i.next().getGrafico());
-		}
+		gestorNivel = new Nivel();
+		gestorNivel.cargarEntidadesAlJuego();
+		
 	}
 	
 	public void siguienteNivel() {
-		if(nivel.siguienteNivel()) {
-			
+		if(gestorNivel.siguienteNivel()) {
+			jugador.pausarDisparos();
+			muerteSubita();
+			gestorNivel.cargarEntidadesAlJuego();
+			jugador.pausarDisparos();
 		}
 		else {
-			/**
-			 * Cargar en la GUI que se gano la partida.
-			 */
+			gui.partidaFinalizada(true);
 		}
 	}
 	
 	public void seMurioJugador() {
-		/**
-		 * Cargar en la GUI GAME OVER.
-		 */
+		gui.partidaFinalizada(false);
 	}
 	
 	public int obtenerPuntaje() {
@@ -86,7 +79,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	}
 	
 	public int obtenerNivel() {
-		return nivel.obtenerNivelActual();
+		return gestorNivel.obtenerNivelActual();
 	}
 	
 	public boolean hayEnemigos() {
@@ -110,10 +103,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		return entidades;
 	}
 	
-	/**
-	 * Agrega la entidad recibida como parámetro al juego.
-	 * @param e Entidad a agregar.
-	 */
 	public void agregarEntidad(Entidad e) {
 		if(e != null) {
 			entidades.add(e);
@@ -121,10 +110,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		}
 	}
 	
-	/**
-	 * Agrega el enemigo recibido como parámetro al juego.
-	 * @param e Enemigo a agregar.
-	 */
 	public void agregarEnemigo(Enemigo e) {
 		if(e != null) {
 			enemigos.add(e);
@@ -136,7 +121,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		if (e != null) {
 			entidades.remove(e);
 			gui.remove(e.getGrafico());
-			gui.repaint();
+			//gui.repaint();
 		}
 	}
 	
@@ -162,12 +147,10 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	public void addDisparoJugador(DisparoJugador dJ) {
 		if(dJ != null) {
 			dispJugEspera.add(dJ);
-			//entidades.add(dJ);
-			//gui.add(dJ.getGrafico());
 		}
 	}
 	
-	public void cargarDisparosJugador() {///PRUEBA
+	public void cargarDisparosJugador() {
 		LinkedList<DisparoJugador> listClon = (LinkedList<DisparoJugador>) dispJugEspera.clone();
 		dispJugEspera.clear();
 		for(DisparoJugador dJ : listClon) {
@@ -178,4 +161,16 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	//Metodos privados
 	
+	/**
+	 * Quita del juego todas las entidades que no deben estar luego de terminar un nivel.
+	 * Se quitan todos los disparos y obstaculos que no se hayan destruido.
+	 * Los Power Ups no son eliminados.
+	 */
+	public void muerteSubita() {
+		for(Entidad ent : entidades) {
+			ent.muerteSubita();
+			if(ent.estoyMuerto())
+				eliminarEntidad(ent);
+		}
+	}
 }

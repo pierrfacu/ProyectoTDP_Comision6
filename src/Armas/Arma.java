@@ -1,5 +1,10 @@
 package Armas;
 
+/**
+ * Clase abstracta Arma.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
+ *
+ */
 public abstract class Arma {
 	
 	protected int danioExtra;
@@ -8,6 +13,8 @@ public abstract class Arma {
 	protected Arma() {
 		danioExtra = 1;
 	}
+	
+	//Metodos
 	
 	/**
 	 * Genera el disparo.

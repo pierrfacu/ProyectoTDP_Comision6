@@ -5,8 +5,8 @@ import Entidades.Disparos.DisparoJugador;
 import GUI.gui;
 
 /**
- * 
- * @author 
+ * Interfaz JuegoJugador.
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205).
  *
  */
 public interface JuegoJugador {
