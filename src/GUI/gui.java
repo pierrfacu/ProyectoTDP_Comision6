@@ -66,11 +66,25 @@ public class gui extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.setBackground(new Color(000));
 		
+		/**
+		 * ACA ESTABLECER LA POSICION DE LOS INDICADORES
+		 * Posiciones:
+		 * 1) Lado superior izquierdo: nivel. Poner Nivel en 1
+		 * 2) Lado superior derecho: puntaje. Al puntaje ponerlo en cero.
+		 * 3) lado inferior izquierdo: vidas del jugador.  Vidas, completas. Imagenes 30*30
+		 * 4) Lado inferior derecho: poner Powerup en estado inactivo. Siendo, congelarTiempo, fuerza y proyectil. Imagenes 30x30
+		 */
+		
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		juego.establecerGrafica(this);
 		juego.iniciarJuego();
 		hiloPrincipal = new HiloPrincipal();
 		hiloPrincipal.start();
+		
+		/**
+		 * Ver si es necesario ejecutar actualizarIndicadores().
+		 */
+		
 	}
 	
 	
@@ -99,10 +113,10 @@ public class gui extends JFrame {
 	public void actualizarIndicadores() {
 		/**
 		 * TERMINAR
-		 * 1) Lado superior izquierdo: nivel.
-		 * 2) Lado superior derecho: puntaje.
-		 * 3) lado inferior izquierdo: vidas del jugador.
-		 * 4) lado inferior derecho, power ups activos/inactivos.
+		 * Se actualizaran:
+		 * Vida
+		 * Puntaje
+		 * Nivel.
 		 */
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		System.out.println(juego.obtenerPuntaje());
@@ -121,7 +135,7 @@ public class gui extends JFrame {
 		 * -Agregar:
 		 * 1) panel final
 		 * 2) Poner el estado final de la partida con el puntaje obtenido.
-		 * 3) Botones de: volver a jugar y salir.
+		 * 3) Opcional, Botones de: volver a jugar y salir.
 		 * 4) Opcional, cambiar fondo.
 		 */
 		if(gano)

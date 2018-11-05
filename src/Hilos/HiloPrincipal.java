@@ -41,9 +41,9 @@ public class HiloPrincipal extends Thread{
 
 			juego.cargarDisparosJugador();
 			
-			elimEnemigos();
-			colisionarEnemigos();
 			
+			colisionarEnemigos();
+			elimEnemigos();
 			colisionarEntidades();
 			elimEntidades();
 			
