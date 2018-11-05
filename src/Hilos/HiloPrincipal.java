@@ -38,10 +38,12 @@ public class HiloPrincipal extends Thread{
 			entidades = juego.obtenerEntidades();
 			elimEnemigos = new LinkedList<Enemigo>();
 			elimEntidades = new LinkedList<Entidad>();
+
 			juego.cargarDisparosJugador();
+			
+			
 			colisionarEnemigos();
 			elimEnemigos();
-			juego.cargarDisparosJugador();
 			colisionarEntidades();
 			elimEntidades();
 			
@@ -88,11 +90,18 @@ public class HiloPrincipal extends Thread{
 		for(Entidad ent : entidades) {
 			ent.mover();
 			
-			//Colisionar entidades
+			//Colisionar entidades con enemigos
 			for(Enemigo enem : enemigos) {
 				if(colisionan(ent.getGrafico(), enem.getGrafico())) {
 					ent.colisionar(enem);
 				}					
+			}
+			
+			//Colisionar entidades con entidades
+			for(Entidad ent2: entidades) {
+				if(colisionan(ent.getGrafico(), ent2.getGrafico())) {
+					ent.colisionar(ent2);
+				}	
 			}
 			
 			//colisionar Jugador

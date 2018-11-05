@@ -121,7 +121,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		if (e != null) {
 			entidades.remove(e);
 			gui.remove(e.getGrafico());
-			//gui.repaint();
+			//gui.repaint(); 
 		}
 	}
 	
@@ -133,7 +133,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 			}
 			enemigos.remove(e);
 			gui.remove(e.getGrafico());
-			gui.repaint();
+			//gui.repaint();
 		}
 	}
 	
@@ -157,6 +157,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 			entidades.add(dJ);
 			gui.add(dJ.getGrafico());
 		}
+		gui.repaint();
 	}
 	
 	//Metodos privados
@@ -167,7 +168,8 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	 * Los Power Ups no son eliminados.
 	 */
 	public void muerteSubita() {
-		for(Entidad ent : entidades) {
+		LinkedList<Entidad> listClon = (LinkedList<Entidad>) entidades.clone();
+		for(Entidad ent : listClon) {
 			ent.muerteSubita();
 			if(ent.estoyMuerto())
 				eliminarEntidad(ent);

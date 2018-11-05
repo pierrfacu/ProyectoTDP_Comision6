@@ -13,5 +13,12 @@ public abstract class Disparo extends Entidad {
 	//Constructor
 	protected Disparo(Point p, int w, int h) {
 		super(p, w, h);		
-	}	
+	}
+	
+	//Metodos abstracto
+	
+	/**
+	 * Verifica si el disparo se salio de la ventana, si se salio lo elimina.
+	 */
+	public abstract void meSali();
 }

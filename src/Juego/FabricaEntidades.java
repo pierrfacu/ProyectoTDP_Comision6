@@ -3,7 +3,6 @@ package Juego;
 import java.awt.Point;
 import Entidades.Enemigos.Caza;
 import Entidades.Enemigos.Crucero;
-import Entidades.Enemigos.E1;
 import Entidades.Enemigos.Enemigo;
 import Entidades.Enemigos.Rastreador;
 import Entidades.Enemigos.Tonto;
@@ -44,7 +43,6 @@ public class FabricaEntidades {
 		Enemigo e = null;
 		switch (tipo) {
 		case 'a' :
-			//e = new E1(p);
 			e = new Tonto(p);
 			break;
 		case 'b' :
