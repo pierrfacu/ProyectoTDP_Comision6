@@ -2,6 +2,7 @@ package Entidades.Disparos;
 
 import java.awt.Point;
 import Colisionador.*;
+import Juego.JuegoEnemigo;
 
 /**
  * Clase abstracta DisparoEnemigo que extiende de Disparo.
@@ -18,11 +19,20 @@ public class DisparoEnemigo extends Disparo{
 	//Metodos
 	
 	public void mover() {
+		meSali();
 		pos.setLocation(pos.x, pos.y + velocidad);
 		setGrafico(0);
 	}
 	
 	public void meColisionan(Colisionador c) {
 		c.colisionarDisparoEnemigo(this);
+	}
+	
+	public void meSali() {
+		JuegoEnemigo juego = JuegoEnemigo.getInstance();
+		int altoGrafica = juego.obtenerGrafica().altoGrafica();
+		if(pos.y > altoGrafica){
+			muerteSubita();
+		}
 	}
 }

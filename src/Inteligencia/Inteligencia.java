@@ -7,7 +7,7 @@ import Inteligencia.Estados.Estado;
 
 /**
  * 
- * @author  Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * @author  Aldana Casï¿½ (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 
@@ -17,8 +17,6 @@ public abstract class Inteligencia {
 	protected Enemigo enemigo;
 	protected Point posicionFormacion;
 	protected int velocidad;
-	protected boolean ataco;
-	protected boolean meSali;
 	protected int contSecMF;
 	protected Estado estado;
 	
@@ -28,8 +26,6 @@ public abstract class Inteligencia {
 		posicionFormacion = new Point (enemigo.getPosition().x, enemigo.getPosition().y);
 		velocidad = enemigo.getVelocidad();
 		contSecMF = 0;
-		ataco = false;
-		meSali = false;
 		estado = new EnFormacion (this, e);
 	} 
 	

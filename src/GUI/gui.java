@@ -52,6 +52,8 @@ public class gui extends JFrame {
 				accionesJugador(arg0);
 			}
 		});
+		
+		
 		getContentPane().setLayout(null);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,9 +85,12 @@ public class gui extends JFrame {
 	}
 	
 	protected void accionesJugador(KeyEvent key){
+		
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		juego.obtenerJugador().accionar(key.getKeyCode());
-		this.repaint();
+		//juego.obtenerJugador().getGrafico().repaint();
+		//this.repaint();
+		
 	}
 	
 	/**
@@ -124,6 +129,6 @@ public class gui extends JFrame {
 		else System.out.println("Has perdido.");
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		System.out.println(juego.obtenerPuntaje());
-		//hiloPrincipal.stop();
+		hiloPrincipal.stop();
 	}
 }

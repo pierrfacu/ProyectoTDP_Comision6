@@ -18,11 +18,18 @@ public abstract class DisparoJugador extends Disparo{
 	//Metodos
 	
 	public void mover() {
+		meSali();
 		pos.setLocation(pos.x, pos.y - velocidad);
 		setGrafico(0);
 	}
 
 	public void meColisionan(Colisionador c) {
 		c.colisionarDisparoJugador(this);
+	}
+	
+	public void meSali() {
+		if((pos.y + altoEntidad()) < 0){
+			muerteSubita();
+		}
 	}
 }

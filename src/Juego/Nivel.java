@@ -13,7 +13,7 @@ import Entidades.PowerUps.PowerUp;
 public class Nivel {
 	//Atributos de clase
 	private static int N_Inicial = 1;
-	private static int N_Final = 1; //No definido aun
+	private static int N_Final = 3;
 	
 	//Atributos de instancia
 	private int N_Actual;

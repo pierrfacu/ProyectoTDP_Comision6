@@ -37,8 +37,10 @@ public class ColisionadorDisparoEnemigo extends Colisionador{
 	}
 
 	public void colisionarObstaculo(Obstaculo o) {
-		o.restarVida(disparo.obtenerDanio());
-		disparo.restarVida(100);
+		if(!disparo.estoyMuerto() && !o.estoyMuerto()) {
+			o.restarVida(disparo.obtenerDanio());
+			disparo.restarVida(100);
+		}
 	}
 	
 	public void colisionarObstaculoBarricada(Obstaculo o) {

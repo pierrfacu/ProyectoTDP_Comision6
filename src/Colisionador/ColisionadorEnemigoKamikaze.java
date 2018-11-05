@@ -46,8 +46,10 @@ public class ColisionadorEnemigoKamikaze extends Colisionador{
 	}
 	
 	public void colisionarObstaculo(Obstaculo o) {
-		o.restarVida(enemigo.obtenerDanio());
-		enemigo.restarVida(o.obtenerDanio());
+		if(!enemigo.estoyMuerto() && !o.estoyMuerto()) {
+			o.restarVida(enemigo.obtenerDanio());
+			enemigo.restarVida(o.obtenerDanio());
+		}
 	}
 	
 	public void colisionarObstaculoBarricada(Obstaculo o) {

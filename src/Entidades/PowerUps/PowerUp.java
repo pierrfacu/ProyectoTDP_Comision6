@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.Random;
 import Colisionador.Colisionador;
 import Entidades.Entidad;
+import Juego.JuegoEnemigo;
 import Juego.JuegoPowerUp;
 
 /**
@@ -61,7 +62,16 @@ public abstract class PowerUp extends Entidad{
 	}
 	
 	public void muerteSubita() {
-		//No llevo una bomba en mi interior, ohh sii
+		//No llevo una bomba en mi interior, ohh sii (?
+	}
+	
+	public void meSali() {
+		JuegoEnemigo juego = JuegoEnemigo.getInstance();
+		int altoGrafica = juego.obtenerGrafica().altoGrafica();
+		if(pos.y > altoGrafica){
+			cantVidas = 0;
+			porcentajeVida = 100;
+		}
 	}
 	
 	//Metdos abstractos

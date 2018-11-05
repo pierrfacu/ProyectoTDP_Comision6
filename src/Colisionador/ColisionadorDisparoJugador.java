@@ -28,43 +28,51 @@ public class ColisionadorDisparoJugador extends Colisionador {
 	}
 
 	public void colisionarEnemigoArmado(Enemigo e) {
-		e.restarVida(disparo.obtenerDanio());
-		if(e.estoyMuerto()) {
-			JuegoJugador juego = JuegoJugador.getInstance();
-			Jugador jugador = juego.obtenerJugador();
-			jugador.sumarPuntaje(e.getPuntaje());
+		if(!disparo.estoyMuerto() && !e.estoyMuerto()) {
+			e.restarVida(disparo.obtenerDanio());
+			if(e.estoyMuerto()) {
+				JuegoJugador juego = JuegoJugador.getInstance();
+				Jugador jugador = juego.obtenerJugador();
+				jugador.sumarPuntaje(e.getPuntaje());
+			}
+			disparo.restarVida(100);
 		}
-		disparo.restarVida(100);
-	}
+	}	
 	
 	public void colisionarEnemigoKamikaze(Enemigo e){
-		e.restarVida(disparo.obtenerDanio());
-		if(e.estoyMuerto()) {
-			JuegoJugador juego = JuegoJugador.getInstance();
-			Jugador jugador = juego.obtenerJugador();
-			jugador.sumarPuntaje(e.getPuntaje());
+		if(!disparo.estoyMuerto() && !e.estoyMuerto()) {
+			e.restarVida(disparo.obtenerDanio());
+			if(e.estoyMuerto()) {
+				JuegoJugador juego = JuegoJugador.getInstance();
+				Jugador jugador = juego.obtenerJugador();
+				jugador.sumarPuntaje(e.getPuntaje());
+			}
+			disparo.restarVida(100);
 		}
-		disparo.restarVida(100);
 	}
-
+	
 	public void colisionarObstaculo(Obstaculo o) {
-		o.restarVida(disparo.obtenerDanio());
-		if(o.estoyMuerto()) {
-			JuegoJugador juego = JuegoJugador.getInstance();
-			Jugador jugador = juego.obtenerJugador();
-			jugador.sumarPuntaje(o.getPuntaje());
+		if(!disparo.estoyMuerto() && !o.estoyMuerto()) {
+			o.restarVida(disparo.obtenerDanio());
+			if(o.estoyMuerto()) {
+				JuegoJugador juego = JuegoJugador.getInstance();
+				Jugador jugador = juego.obtenerJugador();
+				jugador.sumarPuntaje(o.getPuntaje());
+			}
+			disparo.restarVida(100);
 		}
-		disparo.restarVida(100);
 	}
 	
 	public void colisionarObstaculoBarricada(Obstaculo o) {
-		o.restarVida(disparo.obtenerDanio());
-		if(o.estoyMuerto()) {
-			JuegoJugador juego = JuegoJugador.getInstance();
-			Jugador jugador = juego.obtenerJugador();
-			jugador.sumarPuntaje(o.getPuntaje());
+		if(!disparo.estoyMuerto() && !o.estoyMuerto()) {
+			o.restarVida(disparo.obtenerDanio());
+			if(o.estoyMuerto()) {
+				JuegoJugador juego = JuegoJugador.getInstance();
+				Jugador jugador = juego.obtenerJugador();
+				jugador.sumarPuntaje(o.getPuntaje());
+			}
+			disparo.restarVida(100);
 		}
-		disparo.restarVida(100);
 	}
 
 	public void colisionarPowerUp(PowerUp pU) {
