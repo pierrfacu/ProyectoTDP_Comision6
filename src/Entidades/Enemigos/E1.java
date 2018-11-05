@@ -3,6 +3,8 @@ package Entidades.Enemigos;
 import javax.swing.ImageIcon;
 import java.awt.Point;
 import Colisionador.*;
+import Inteligencia.Buscador;
+import Inteligencia.Congelado;
 import Inteligencia.Mareado;
 import Inteligencia.Standard;
 

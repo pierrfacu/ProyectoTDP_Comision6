@@ -19,8 +19,8 @@ import java.awt.event.KeyEvent;
 public class gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private static final int width = 600;
-	private static final int height = 700;
+	private  int width = 600;
+	private int height = 700;
 	
 	private JPanel contentPane;
 	
