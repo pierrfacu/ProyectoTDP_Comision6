@@ -6,6 +6,7 @@ import Colisionador.Colisionador;
 import Colisionador.ColisionadorEnemigoKamikaze;
 import Inteligencia.Buscador;
 import Inteligencia.Mareado;
+import Inteligencia.Estados.Tontear;
 
 /**
  * Clase TwoBehavior que extiende de Enemigo.
@@ -42,7 +43,7 @@ public class TwoBehavior  extends Enemigo{
 	public void restarVida(int i) {
 		super.restarVida(i);
 		if(porcentajeVida <= 50) {
-			inteligencia = new Mareado(this);
+			inteligencia.setEstado(new Tontear(inteligencia, this));
 		}		
 	}
 	

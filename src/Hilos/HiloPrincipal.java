@@ -20,10 +20,14 @@ public class HiloPrincipal extends Thread{
 	
 	//Constructor
 	public HiloPrincipal(){
+		JuegoHilo juego = JuegoHilo.getInstance();
+		enemigos = juego.obtenerEnemigos();
+		entidades = juego.obtenerEntidades();
 	}
 	
 	//Metodos
 	
+	@Override
 	public void run() {
 		JuegoHilo juego = JuegoHilo.getInstance();
 		while(true) {
@@ -32,20 +36,18 @@ public class HiloPrincipal extends Thread{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-			
-			enemigos = juego.obtenerEnemigos();
-			entidades = juego.obtenerEntidades();
+	
 			elimEnemigos = new LinkedList<Enemigo>();
 			elimEntidades = new LinkedList<Entidad>();
-
-			juego.cargarDisparosJugador();
-			
 			
 			colisionarEnemigos();
 			elimEnemigos();
+			
 			colisionarEntidades();
+			elimEnemigos();
 			elimEntidades();
+			
+			//juego.actualizarGrafica();
 			
 			if(!juego.hayEnemigos()) {
 				juego.siguienteNivel();
@@ -62,14 +64,14 @@ public class HiloPrincipal extends Thread{
 	private void colisionarEnemigos() {
 		for(Enemigo enem : enemigos) {
 			enem.mover();
-			
+			synchronized(entidades) {
 			//Colisionar entidades
 			for(Entidad ent: entidades) {
 				if(colisionan(enem.getGrafico(), ent.getGrafico())) {
 					enem.colisionar(ent);
 				}	
 			}
-			
+			}
 			//colisionar Jugador
 			JuegoHilo juego = JuegoHilo.getInstance();
 			if(colisionan(enem.getGrafico(), juego.obtenerJugador().getGrafico())) {
@@ -87,6 +89,7 @@ public class HiloPrincipal extends Thread{
 	 * Colisiona las entidades con los enemigos y jugador.
 	 */
 	private void colisionarEntidades() {
+		synchronized(entidades) {
 		for(Entidad ent : entidades) {
 			ent.mover();
 			
@@ -115,6 +118,7 @@ public class HiloPrincipal extends Thread{
 			if(ent.estoyMuerto()) {
 				elimEntidades.add(ent);
 			}
+		}
 		}
 	}
 	

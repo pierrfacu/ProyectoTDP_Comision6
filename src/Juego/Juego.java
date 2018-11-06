@@ -55,7 +55,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		
 		gestorNivel = new Nivel();
 		gestorNivel.cargarEntidadesAlJuego();
-		
+		gui.repaint();
 	}
 	
 	public void siguienteNivel() {
@@ -64,6 +64,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 			muerteSubita();
 			gestorNivel.cargarEntidadesAlJuego();
 			jugador.pausarDisparos();
+			gui.repaint();
 		}
 		else {
 			gui.partidaFinalizada(true);
@@ -88,6 +89,11 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public gui obtenerGrafica() {
 		return gui;
+	}
+	
+	public void actualizarGrafica() {
+		gui.actualizarIndicadores();
+		//gui.repaint();
 	}
 	
 	public Jugador obtenerJugador() {
@@ -119,10 +125,12 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void eliminarEntidad(Entidad e) {
 		if (e != null) {
-			entidades.remove(e);
-			gui.remove(e.getGrafico());
-			//gui.repaint(); 
-		}
+			synchronized(entidades) {
+				synchronized(gui) {
+					entidades.remove(e);
+					gui.remove(e.getGrafico());
+					//gui.repaint(); 
+		}}}
 	}
 	
 	public void eliminarEnemigo(Enemigo e) {
@@ -131,24 +139,34 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 				PowerUp pU = e.obtenerPowerUp();
 				agregarEntidad(pU);
 			}
-			enemigos.remove(e);
-			gui.remove(e.getGrafico());
-			//gui.repaint();
+			enemigos.remove(e); 
+			synchronized(gui) {
+				gui.remove(e.getGrafico());
+				//gui.repaint();
+			}
 		}
 	}
 	
 	public void addDisparoEnemigo(DisparoEnemigo dE) {
 		if(dE != null) {
-			entidades.add(dE);
-			gui.add(dE.getGrafico());
+			synchronized(entidades) {
+				entidades.add(dE);
+				gui.add(dE.getGrafico());
+			}
 		}
 	}
 	
 	public void addDisparoJugador(DisparoJugador dJ) {
 		if(dJ != null) {
-			dispJugEspera.add(dJ);
+			//dispJugEspera.add(dJ);
+			synchronized(entidades) {
+				entidades.add(dJ);
+				gui.add(dJ.getGrafico());
+			}
 		}
 	}
+	
+	
 	
 	public void cargarDisparosJugador() {
 		LinkedList<DisparoJugador> listClon = (LinkedList<DisparoJugador>) dispJugEspera.clone();
@@ -157,8 +175,9 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 			entidades.add(dJ);
 			gui.add(dJ.getGrafico());
 		}
-		gui.repaint();
+		//gui.repaint();
 	}
+	
 	
 	//Metodos privados
 	
