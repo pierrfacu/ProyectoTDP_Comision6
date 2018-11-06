@@ -13,7 +13,6 @@ import Juego.JuegoEnemigo;
  */
 
 public class Buscar extends Estado{
-	
 	//Constructor
 	public Buscar(Inteligencia i, Enemigo enemigo) {
 		super(i,enemigo);
@@ -25,23 +24,20 @@ public class Buscar extends Estado{
 		JuegoEnemigo juegoEnem = JuegoEnemigo.getInstance();
 		Point posJug = juegoEnem.obtenerJugador().getPosition();
 		Point posEnem=enemigo.getPosition();
-		Point posNueva=new Point(0,0);
-        int alto = juegoEnem.obtenerGrafica().altoGrafica();
+		Point posNueva= new Point(posEnem.x,0);
 	    if(posEnem.x < posJug.x && posEnem.y < posJug.y) //Derecha
 		    posNueva.setLocation(posEnem.x + velocidad, posEnem.y + velocidad);
 	    if(posEnem.x > posJug.x && posEnem.y < posJug.y) //Izquierda
 	    	posNueva.setLocation(posEnem.x - velocidad, posEnem.y + velocidad);
 	    if(posEnem.x == posJug.x && posEnem.y < posJug.y){ //Solo bajar
             posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
-    		
-        }
+        if(posEnem.x != posJug.x && posEnem.y >= posJug.y)
+        	posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
         enemigo.setPosition(posNueva);
         enemigo.setGrafico(0);
-        if(enemigo.getPosition().y >= alto) {
-        	inteligencia.setEstado(new VolverFormacion(inteligencia, enemigo));
-           
+        int alto = juegoEnem.obtenerGrafica().altoGrafica();
+ 		if(enemigo.getPosition().y > alto) 
+ 			inteligencia.setEstado(new VolverFormacion(inteligencia, enemigo));
 	}
-
-}
 	
 }

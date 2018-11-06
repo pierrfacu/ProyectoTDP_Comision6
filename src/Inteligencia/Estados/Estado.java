@@ -4,8 +4,8 @@ import Entidades.Enemigos.Enemigo;
 import Inteligencia.Inteligencia;
 
 /**
- * 
- * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * Clase abstracta Estado
+ * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heinrich (106205)
  *
  */
 

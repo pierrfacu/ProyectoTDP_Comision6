@@ -6,7 +6,7 @@ import Inteligencia.Estados.EnFormacion;
 import Inteligencia.Estados.Estado;
 
 /**
- * 
+ * CLase abstracta Inteligencia
  * @author  Aldana Cas� (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
