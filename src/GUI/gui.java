@@ -47,7 +47,7 @@ public class gui extends JFrame {
 	private Icon imagenFuerza[];
 	private Icon imagenCongelar[];
 	private Icon imagenAEspecial[];
-	private Icon imagenFinal[];
+	//private Icon imagenFinal[]; //se usa en el caso de que se agreguen imagenes en la pantalla final.
 	
 	/**
 	 * Create the frame.
