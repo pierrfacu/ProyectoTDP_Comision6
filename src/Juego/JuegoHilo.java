@@ -69,7 +69,7 @@ public interface JuegoHilo {
 	public void siguienteNivel();
 	
 	/**
-	 * Carga los disparos del jugador al juego.
+	 * Actualiza los idicadores de la grafica..
 	 */
-	public void cargarDisparosJugador();
+	public void actualizarGrafica();
 }

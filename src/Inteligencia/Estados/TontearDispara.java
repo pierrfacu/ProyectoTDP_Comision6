@@ -7,7 +7,7 @@ import Inteligencia.Inteligencia;
 
 /**
  * 
- * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * @author Aldana Casï¿½ (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 
