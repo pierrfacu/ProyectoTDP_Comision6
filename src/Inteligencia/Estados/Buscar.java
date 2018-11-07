@@ -29,7 +29,7 @@ public class Buscar extends Estado{
 		    posNueva.setLocation(posEnem.x + velocidad, posEnem.y + velocidad);
 	    if(posEnem.x > posJug.x && posEnem.y < posJug.y) //Izquierda
 	    	posNueva.setLocation(posEnem.x - velocidad, posEnem.y + velocidad);
-	    if(posEnem.x == posJug.x && posEnem.y < posJug.y){ //Solo bajar
+	    if(posEnem.x == posJug.x && posEnem.y < posJug.y) //Solo bajar
             posNueva.setLocation(posEnem.x, posEnem.y + velocidad);
         if(posEnem.x != posJug.x && posEnem.y >= posJug.y)
         	posNueva.setLocation(posEnem.x, posEnem.y + velocidad);

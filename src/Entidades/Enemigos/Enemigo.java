@@ -25,7 +25,6 @@ public abstract class Enemigo extends Entidad{
 	
 	public void mover() {
 		inteligencia.ejecutar();
-		setGrafico(0);
 	}
 	
 	/**

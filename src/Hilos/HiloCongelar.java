@@ -25,12 +25,15 @@ public class HiloCongelar extends Thread{
 		LinkedList<Enemigo> enemigos = juego.obtenerEnemigos();
 		HashMap<Enemigo, Inteligencia> backupInt = new HashMap <Enemigo, Inteligencia>();
 		
-		for(Enemigo e : enemigos) {
-			backupInt.put(e, e.obtenerInteligencia());
-			e.establecerInteligencia(new Congelado(e));
-			e.setGrafico(1);
-		}
+		juego.obtenerGrafica().setCongelarTiempo(true);
 		
+		synchronized(enemigos) {
+			for(Enemigo e : enemigos) {
+				backupInt.put(e, e.obtenerInteligencia());
+				e.establecerInteligencia(new Congelado(e));
+				e.setGrafico(1);
+			}
+		}
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -41,6 +44,8 @@ public class HiloCongelar extends Thread{
 		for(Enemigo e : enemigos) {
 			e.establecerInteligencia(backupInt.get(e));
 			e.setGrafico(0);
-		}		
+		}
+		
+		juego.obtenerGrafica().setCongelarTiempo(false);
 	}
 }

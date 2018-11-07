@@ -34,5 +34,6 @@ public class Proyectil extends PowerUp{
 		Jugador jugador = juego.obtenerJugador();
 		AJProyectil proy = new AJProyectil(jugador);
 		jugador.establecerArmaEspecial(proy);
+		juego.obtenerGrafica().setArmaEspecial(true);
 	}
 }

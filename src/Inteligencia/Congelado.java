@@ -4,7 +4,7 @@ import Entidades.Enemigos.Enemigo;
 
 /**
  * 
- * @author  Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * @author  Aldana Casï¿½ (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 
@@ -18,7 +18,6 @@ public class Congelado extends Inteligencia {
 	//Metodos 
 	
 	public void ejecutar() {
-		
 		
 	}
 }

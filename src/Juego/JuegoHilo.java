@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import Entidades.Entidad;
 import Entidades.Jugador;
 import Entidades.Enemigos.Enemigo;
+import GUI.gui;
 
 /**
  * Interfaz JuegoHilo.
@@ -67,6 +68,12 @@ public interface JuegoHilo {
 	 * Avanza el juego al siguiente nivel, si ya se jugo el ultimo, se termina la partida.
 	 */
 	public void siguienteNivel();
+	
+	/**
+	 * Devuelve la interfaz grafica del juego.
+	 * @return interfaz grafica.
+	 */
+	public gui obtenerGrafica();
 	
 	/**
 	 * Actualiza los idicadores de la grafica..

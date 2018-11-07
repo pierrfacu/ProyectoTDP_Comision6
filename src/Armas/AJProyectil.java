@@ -26,6 +26,7 @@ public class AJProyectil extends ArmaJugador {
 		DJProyectil disp = new DJProyectil(p);
 		disp.establecerDanio(disp.obtenerDanio()*danioExtra);
 		juego.addDisparoJugador(disp);
+		juego.obtenerGrafica().setArmaEspecial(false);
 	}
 
 }

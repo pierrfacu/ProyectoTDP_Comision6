@@ -40,10 +40,27 @@ public class gui extends JFrame {
 	private JLabel fuerza;
 	private JLabel congelar;
 	private JLabel armEspecial;
+	private int x_vida[];
 	private Icon imagenVida[];
 	private Icon imagenFuerza[];
 	private Icon imagenCongelar[];
 	private Icon imagenAEspecial[];
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					gui frame = new gui();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 	/**
 	 * Create the frame.
@@ -55,10 +72,7 @@ public class gui extends JFrame {
 				accionesJugador(arg0);
 			}
 		});
-		
-		
 		getContentPane().setLayout(null);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(new Dimension(width, height));
 		setLocationRelativeTo(null);
@@ -85,32 +99,12 @@ public class gui extends JFrame {
 		juego.iniciarJuego();
 		hiloPrincipal = new HiloPrincipal();
 		hiloPrincipal.start();
-		actualizarIndicadores();
 		
-		/**
-		 * Ver si es necesario ejecutar actualizarIndicadores().
-		 */
-		
+		actualizarIndicadores();		
 	}
 	
 	
 	//Metodos extras
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					gui frame = new gui();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public int altoGrafica() {
 		return height;
@@ -136,17 +130,19 @@ public class gui extends JFrame {
 		/**
 		 * TERMINAR
 		 * Se actualizaran:
-		 * Vida
-		 * Puntaje Falta tamaño texto
-		 * Nivel.
+		 * Vida LISTO
+		 * Puntaje Falta tamaï¿½o texto
+		 * Nivel.Falta tamaï¿½o texto
 		 */
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		
 		puntaje.setText(""+juego.obtenerPuntaje());
 		puntaje.setForeground(Color.white); 
+		
 		nivel.setText("Nivel: "+juego.obtenerNivel());
 		nivel.setForeground(Color.white);
 		
+		actualizarVidas(juego.obtenerJugador().cantVidas(), juego.obtenerJugador().porcentajeVida());
 	}
 	
 	/**
@@ -210,21 +206,24 @@ public class gui extends JFrame {
 		this.add(puntaje);
 		
 		//Vidas
-		int x[]= new int[3];
+		x_vida = new int[3];
+		x_vida[0] = 5;
+		x_vida[1] = 40;
+		x_vida[2] = 75;
 		
 		vida = new JLabel[3];
 		for(int i=0; i<vida.length; i++){
-			vida[i] = new JLabel();
-			vida[i].setBounds(width - 40, 5, 30, 30);
+			vida[i] = new JLabel(imagenVida[0]);
+			vida[i].setBounds(x_vida[i], height - 65, 30, 30);
 			this.add(vida[i]);
 		}
 		
 		//Fuerza
-		
 		fuerza = new JLabel();
 		fuerza.setIcon(imagenFuerza[0]);
 		fuerza.setBounds(width - 120,height - 65, 30, 30);
 		this.add(fuerza);
+		
 		//Congelar tiempo
 		congelar = new JLabel();
 		congelar.setIcon(imagenCongelar[0]);
@@ -237,9 +236,75 @@ public class gui extends JFrame {
 		armEspecial.setBounds(width - 40,height - 65, 30, 30);
 		this.add(armEspecial);
 	}
-
-
-	//METODOS PRIVADOS
+	
+	private void actualizarVidas(int cantVidas, int porcVid) {
+		
+		
+		switch (cantVidas){
+		case 0 : {//No deberia entrar aca, peeeeeero por las dudas
+			for(int i=0; i<vida.length; i++){
+				vida[i].setIcon(imagenVida[4]);
+				vida[i].setBounds(x_vida[i], height - 65, 30, 30);
+			}
+			break;
+		}
+		case 1 : {//Vida 1
+			int cantV = cantVidas - 1;
+			
+			vida[cantV].setIcon(imagenVidaPorcentaje(porcVid));
+			vida[cantV].setBounds(x_vida[cantV], height - 65, 30, 30);
+			
+			for(int i = (cantV + 1); i < 3; i++) {			
+				vida[i].setIcon(imagenVida[4]);
+				vida[i].setBounds(x_vida[i], height - 65, 30, 30);
+			}
+			break;
+		}
+		case 2 : {//Vida 2
+			int cantV = cantVidas - 1;
+			
+			vida[0].setIcon(imagenVida[0]);
+			vida[0].setBounds(x_vida[0], height - 65, 30, 30);
+			
+			vida[cantV].setIcon(imagenVidaPorcentaje(porcVid));
+			vida[cantV].setBounds(x_vida[cantV], height - 65, 30, 30);
+			
+			vida[2].setIcon(imagenVida[4]);
+			vida[2].setBounds(x_vida[2], height - 65, 30, 30);
+			break;
+		}
+		case 3 : {//Vida 3
+			int cantV = cantVidas - 1;
+			
+			for(int i = 0; i < (cantV + 1); i++) {			
+				vida[i].setIcon(imagenVida[0]);
+				vida[i].setBounds(x_vida[i], height - 65, 30, 30);
+			}
+			
+			vida[cantV].setIcon(imagenVidaPorcentaje(porcVid));
+			vida[cantV].setBounds(x_vida[cantV], height - 65, 30, 30);
+			break;
+		}
+		}	
+		
+	}
+	
+	private Icon imagenVidaPorcentaje(int porcV) {
+		Icon image = null;
+		
+		if(porcV == 0)
+			image = imagenVida[4];
+		if(porcV > 0 && porcV <= 25)
+			image = imagenVida[3];
+		if(porcV > 25 && porcV <= 50)
+			image = imagenVida[2];
+		if(porcV > 50 && porcV <= 75)
+			image = imagenVida[1];
+		if(porcV > 75 && porcV <= 100)
+			image = imagenVida[0];
+		
+		return image;
+	}
 	
 	private void cargarImagenes() {
 		imagenVida = new Icon[5];
@@ -249,16 +314,13 @@ public class gui extends JFrame {
 		imagenVida[3] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/vida25.png"));
 		imagenVida[4] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/vida0.png"));
 		
-		
 		imagenFuerza = new Icon[2];
 		imagenFuerza[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_off.png"));
 		imagenFuerza[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_on.png"));
 		
-		
 		imagenCongelar = new Icon[2];
 		imagenCongelar[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/congelartiempo_off.png"));
 		imagenCongelar[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/congelartiempo_on.png"));
-		
 		
 		imagenAEspecial = new Icon[2];
 		imagenAEspecial[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/proyectil_off.png"));

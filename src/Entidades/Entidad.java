@@ -93,6 +93,10 @@ public abstract class Entidad {
 			porcentajeVida = 100 + porcentajeVida;
 			cantVidas--;
 		}
+		if(cantVidas <= 0) {
+			cantVidas = 0;
+			porcentajeVida = 0;
+		}
 	}
 	
 	/**

@@ -18,7 +18,7 @@ public abstract class PowerUp extends Entidad{
 	protected PowerUp(Point p, int w, int h) {
 		super(p, w, h);
 
-		velocidad = 20;
+		velocidad = 10;
 		cantVidas = 1;
 		porcentajeVida = 100;
 		puntaje = 0;

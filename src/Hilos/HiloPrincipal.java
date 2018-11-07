@@ -44,10 +44,7 @@ public class HiloPrincipal extends Thread{
 			elimEnemigos();
 			
 			colisionarEntidades();
-			elimEnemigos();
 			elimEntidades();
-			
-			//juego.actualizarGrafica();
 			
 			if(!juego.hayEnemigos()) {
 				juego.siguienteNivel();
@@ -166,6 +163,7 @@ public class HiloPrincipal extends Thread{
 	 */
 	private void verificarVidaJugador() {
 		JuegoHilo juego = JuegoHilo.getInstance();
+		juego.actualizarGrafica();
 		if (juego.obtenerJugador().estoyMuerto()) {
 			juego.seMurioJugador();
 		}

@@ -7,7 +7,7 @@ import Inteligencia.Inteligencia;
 
 /**
  *
- * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * @author Aldana Casï¿½ (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 public class EnFormacion extends Estado {
@@ -40,7 +40,7 @@ public class EnFormacion extends Estado {
 			enemigo.setPosition(new Point(p.x - velFormacion,p.y));
 			break;
 		}
-		
+		enemigo.setGrafico(0);
 		contSecMF ++;
 		if(contSecMF == 4)
 			contSecMF = 0;

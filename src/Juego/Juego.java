@@ -21,7 +21,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	private Nivel gestorNivel; //Gestor de niveles
 	
 	private Jugador jugador;
-	private LinkedList<DisparoJugador> dispJugEspera;
 	private LinkedList<Enemigo> enemigos;
 	private LinkedList<Entidad> entidades;
 	
@@ -48,7 +47,6 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 		
 		jugador = new Jugador(new Point(280, 600));
 		gui.add(jugador.getGrafico());
-		dispJugEspera = new LinkedList<DisparoJugador>();
 		
 		entidades = new LinkedList<Entidad>();
 		enemigos = new LinkedList<Enemigo>();
@@ -93,7 +91,7 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void actualizarGrafica() {
 		gui.actualizarIndicadores();
-		//gui.repaint();
+		
 	}
 	
 	public Jugador obtenerJugador() {
@@ -126,11 +124,11 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	public void eliminarEntidad(Entidad e) {
 		if (e != null) {
 			synchronized(entidades) {
-				synchronized(gui) {
-					entidades.remove(e);
-					gui.remove(e.getGrafico());
-					//gui.repaint(); 
-		}}}
+				gui.remove(e.getGrafico());
+				entidades.remove(e);
+				gui.repaint(); 
+			}
+		}
 	}
 	
 	public void eliminarEnemigo(Enemigo e) {
@@ -139,10 +137,10 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 				PowerUp pU = e.obtenerPowerUp();
 				agregarEntidad(pU);
 			}
-			enemigos.remove(e); 
-			synchronized(gui) {
+			synchronized(entidades) {
 				gui.remove(e.getGrafico());
-				//gui.repaint();
+				enemigos.remove(e); 
+				gui.repaint();
 			}
 		}
 	}
@@ -158,26 +156,12 @@ public class Juego implements JuegoGrafica, JuegoEnemigo, JuegoJugador, JuegoHil
 	
 	public void addDisparoJugador(DisparoJugador dJ) {
 		if(dJ != null) {
-			//dispJugEspera.add(dJ);
 			synchronized(entidades) {
 				entidades.add(dJ);
 				gui.add(dJ.getGrafico());
 			}
 		}
 	}
-	
-	
-	
-	public void cargarDisparosJugador() {
-		LinkedList<DisparoJugador> listClon = (LinkedList<DisparoJugador>) dispJugEspera.clone();
-		dispJugEspera.clear();
-		for(DisparoJugador dJ : listClon) {
-			entidades.add(dJ);
-			gui.add(dJ.getGrafico());
-		}
-		//gui.repaint();
-	}
-	
 	
 	//Metodos privados
 	

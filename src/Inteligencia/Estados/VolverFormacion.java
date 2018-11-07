@@ -7,7 +7,7 @@ import Inteligencia.Inteligencia;
 
 /**
  * 
- * @author Aldana Casé (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
+ * @author Aldana Casï¿½ (104870), Facundo Pierrestegui (99694), Stefania Heirich (106205)
  *
  */
 
@@ -17,7 +17,7 @@ public class VolverFormacion extends Estado{
 	public VolverFormacion(Inteligencia i, Enemigo enemigo) {
 		super (i,enemigo);
 		enemigo.getPosition().setLocation(inteligencia.getPosFormacion().x, 0 - enemigo.altoEntidad());
-		enemigo.setGrafico(0);
+		//enemigo.setGrafico(0);
 	}
 	
 	//Metodos

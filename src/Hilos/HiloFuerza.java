@@ -18,15 +18,20 @@ public class HiloFuerza extends Thread{
 	
 	public void run() {
 		JuegoHilo juego = JuegoHilo.getInstance();
+		
+		juego.obtenerGrafica().setFuerza(true);
+		
 		Arma a = juego.obtenerJugador().obtenerArma();
 		a.aumentarDanio(2);
 		
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
 		a.aumentarDanio(1);
+		
+		juego.obtenerGrafica().setFuerza(false);
 	}
 }

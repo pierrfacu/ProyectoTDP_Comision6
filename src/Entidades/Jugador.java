@@ -48,7 +48,7 @@ public class Jugador extends Entidad{
 		int ancho = j.obtenerGrafica().anchoGrafica();
 		
 		switch (d){
-		case KeyEvent.VK_LEFT : //Izquierda
+		case KeyEvent.VK_LEFT : {//Izquierda
 			if ((pos.x - velocidad) < 0)
 				pos.setLocation(0, pos.y);
 			else pos.setLocation(pos.x - velocidad, pos.y);
@@ -56,7 +56,8 @@ public class Jugador extends Entidad{
 				setGrafico(1);
 			else setGrafico(0);
 			break;
-		case KeyEvent.VK_RIGHT : //Derecha
+		}
+		case KeyEvent.VK_RIGHT : {//Derecha
 			if ((pos.x + velocidad) > (ancho - 50))//550)
 				pos.setLocation((ancho - 50), pos.y);
 			else pos.setLocation(pos.x + velocidad, pos.y);
@@ -64,14 +65,19 @@ public class Jugador extends Entidad{
 				setGrafico(1);
 			else setGrafico(0);
 			break;
-		case KeyEvent.VK_SPACE : //Disparo
+		}
+		case KeyEvent.VK_SPACE : {//Disparo
 			if(!pausarDisparo)
 				arma.accionar();
-		case KeyEvent.VK_ALT : //Disparo especial
-			if( armaEspecial != null) {
+			break;
+		}
+		case KeyEvent.VK_ALT : {//Disparo especial
+			if( !pausarDisparo && armaEspecial != null) {
 				armaEspecial.accionar();
 				armaEspecial = null;
 			}
+			break;
+		}
 		}
 	}
 	
