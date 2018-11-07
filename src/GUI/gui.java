@@ -1,8 +1,10 @@
 package GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Point;
 
 import javax.swing.Icon;
@@ -10,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;   
 import Hilos.HiloPrincipal;
 import Juego.JuegoGrafica;
@@ -45,6 +48,7 @@ public class gui extends JFrame {
 	private Icon imagenFuerza[];
 	private Icon imagenCongelar[];
 	private Icon imagenAEspecial[];
+	//private Icon imagenFinal[]; //se usa en el caso de que se agreguen imagenes en la pantalla final.
 	
 	/**
 	 * Launch the application.
@@ -160,11 +164,58 @@ public class gui extends JFrame {
 		 * 3) Opcional, Botones de: volver a jugar y salir.
 		 * 4) Opcional, cambiar fondo.
 		 */
-		if(gano)
-			System.out.println("Has ganado.");
-		else System.out.println("Has perdido.");
+		pFinal = new JPanel();
+		//pFinal.setBounds(100, 100, 200, 150);
+		pFinal.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(pFinal);
+		pFinal.setLayout(null);
+		pFinal.setBackground(new Color(000));
+		
+		
+		/*imagenFinal = new Icon [2];
+		imagenFinal[0] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_on.png"));
+		imagenFinal[1] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_off.png"));
+		*/
+		JLabel etiquetaGanar = new JLabel();
+		//etiquetaGanar.setBounds(10, 10, 30, 30);
+		//this.add(etiquetaGanar);
+		
+		etiquetaGanar.setFont(new Font("Italica", Font.ITALIC, 15));
+		etiquetaGanar.setHorizontalAlignment(SwingConstants.CENTER);
+		etiquetaGanar.setBounds(200, 100, 150, 42);
+		pFinal.add(etiquetaGanar);
+		
+		JLabel etiquetaPerder= new JLabel();
+		//etiquetaPerder.setBounds(10, 10, 30, 30);
+		//this.add(etiquetaPerder);
+		
+		etiquetaPerder.setFont(new Font("Italica", Font.ITALIC, 15));
+		etiquetaPerder.setHorizontalAlignment(SwingConstants.CENTER);
+		etiquetaPerder.setBounds(200, 100, 150, 42);
+		pFinal.add(etiquetaPerder);
+		
 		JuegoGrafica juego = JuegoGrafica.getInstance();
-		System.out.println(juego.obtenerPuntaje());
+		JLabel PuntajeO = new JLabel();
+		
+		PuntajeO.setFont(new Font("Italica", Font.ITALIC, 15));
+		PuntajeO.setHorizontalAlignment(SwingConstants.CENTER);
+		PuntajeO.setBounds(200, 150, 150, 42);
+		pFinal.add(PuntajeO);
+		
+		if(gano) {
+			etiquetaGanar.setText("¡Has ganado! ");
+			etiquetaGanar.setForeground(Color.blue);
+			//etiquetaGanar.setIcon(imagenFinal[1]);
+		    PuntajeO.setText("Puntaje Obtenido: "+juego.obtenerPuntaje());
+		    PuntajeO.setForeground(Color.yellow); 	
+		}
+		else {
+			etiquetaPerder.setText("¡Has perdido! ");
+			etiquetaPerder.setForeground(Color.red); 
+			//etiquetaPerder.setIcon(imagenFinal[0]);
+		    PuntajeO.setText("Puntaje Obtenido: "+juego.obtenerPuntaje());
+		    PuntajeO.setForeground(Color.white); 	
+		}
 		hiloPrincipal.stop();
 	}
 	
@@ -325,6 +376,7 @@ public class gui extends JFrame {
 		imagenAEspecial = new Icon[2];
 		imagenAEspecial[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/proyectil_off.png"));
 		imagenAEspecial[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/proyectil_on.png"));
+		
 	}
 	
 } 
