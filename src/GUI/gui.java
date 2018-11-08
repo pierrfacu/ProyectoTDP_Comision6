@@ -1,14 +1,15 @@
 package GUI;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Point;
+import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,6 +17,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;   
 import Hilos.HiloPrincipal;
 import Juego.JuegoGrafica;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -30,13 +34,17 @@ public class gui extends JFrame {
 	private  int width = 600;
 	private int height = 700;
 	
-	private JPanel contentPane;
-	
-	private JPanel pFinal;
-	
 	private HiloPrincipal hiloPrincipal;
 	
+	//Atributos panel inicial
+	private JPanel pInicio;
+	private JLabel jlBanner;
+	private JButton jbJugar;
+	private JButton jbControles;
+	private JButton jbSalir;
+	
 	//Atributos panel juego
+	private JPanel pJuego;
 	private JLabel nivel;
 	private JLabel puntaje;
 	private JLabel vida [];
@@ -48,7 +56,21 @@ public class gui extends JFrame {
 	private Icon imagenFuerza[];
 	private Icon imagenCongelar[];
 	private Icon imagenAEspecial[];
+	
+	//Atributos panel final
+	private JPanel pFinal;
+	private JLabel jlGanar;
+	private JLabel jlPerder;
+	private JLabel jlPuntaje;
 	//private Icon imagenFinal[]; //se usa en el caso de que se agreguen imagenes en la pantalla final.
+	private JButton jbVolverJugar;
+	
+	//Imagenes Botones ( normal: 0, press: 1, holding: 2 )
+	private Icon imagenJugar[];
+	private Icon imagenControles[];
+	private Icon imagenVolverJugar[];
+	private Icon imagenSalir[];
+	
 	
 	/**
 	 * Launch the application.
@@ -59,6 +81,7 @@ public class gui extends JFrame {
 				try {
 					gui frame = new gui();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,41 +93,10 @@ public class gui extends JFrame {
 	 * Create the frame.
 	 */
 	public gui() {
-		addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				accionesJugador(arg0);
-			}
-		});
-		getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(new Dimension(width, height));
-		setLocationRelativeTo(null);
-		setResizable(false);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		contentPane.setBackground(new Color(000));
-		
-		/**
-		 * ACA ESTABLECER LA POSICION DE LOS INDICADORES
-		 * Posiciones:
-		 * 1) Lado superior izquierdo: nivel. Poner Nivel en 1
-		 * 2) Lado superior derecho: puntaje. Al puntaje ponerlo en cero.
-		 * 3) lado inferior izquierdo: vidas del jugador.  Vidas, completas. Imagenes 30*30
-		 * 4) Lado inferior derecho: poner Powerup en estado inactivo. Siendo, congelarTiempo, fuerza y proyectil. Imagenes 30x30
-		 */
-		
-		crearIndicadores();
-		
-		JuegoGrafica juego = JuegoGrafica.getInstance();
-		juego.establecerGrafica(this);
-		juego.iniciarJuego();
-		hiloPrincipal = new HiloPrincipal();
-		hiloPrincipal.start();
-		
-		actualizarIndicadores();		
+		setTitle("Galaxian");
+		Image iconVentana = new ImageIcon(getClass().getResource("/Galaxian/Interfaz/iconVentana.png")).getImage();
+		setIconImage(iconVentana);
+		pantallaInicio();
 	}
 	
 	
@@ -122,8 +114,7 @@ public class gui extends JFrame {
 		
 		JuegoGrafica juego = JuegoGrafica.getInstance();
 		juego.obtenerJugador().accionar(key.getKeyCode());
-		//juego.obtenerJugador().getGrafico().repaint();
-		//this.repaint();
+		this.repaint();
 		
 	}
 	
@@ -159,63 +150,26 @@ public class gui extends JFrame {
 		/**
 		 * TERMINAR
 		 * -Agregar:
-		 * 1) panel final
+		 * 
 		 * 2) Poner el estado final de la partida con el puntaje obtenido.
-		 * 3) Opcional, Botones de: volver a jugar y salir.
 		 * 4) Opcional, cambiar fondo.
 		 */
-		pFinal = new JPanel();
-		//pFinal.setBounds(100, 100, 200, 150);
-		pFinal.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(pFinal);
-		pFinal.setLayout(null);
-		pFinal.setBackground(new Color(000));
 		
-		
-		/*imagenFinal = new Icon [2];
-		imagenFinal[0] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_on.png"));
-		imagenFinal[1] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_off.png"));
-		*/
-		JLabel etiquetaGanar = new JLabel();
-		//etiquetaGanar.setBounds(10, 10, 30, 30);
-		//this.add(etiquetaGanar);
-		
-		etiquetaGanar.setFont(new Font("Italica", Font.ITALIC, 15));
-		etiquetaGanar.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaGanar.setBounds(200, 100, 150, 42);
-		pFinal.add(etiquetaGanar);
-		
-		JLabel etiquetaPerder= new JLabel();
-		//etiquetaPerder.setBounds(10, 10, 30, 30);
-		//this.add(etiquetaPerder);
-		
-		etiquetaPerder.setFont(new Font("Italica", Font.ITALIC, 15));
-		etiquetaPerder.setHorizontalAlignment(SwingConstants.CENTER);
-		etiquetaPerder.setBounds(200, 100, 150, 42);
-		pFinal.add(etiquetaPerder);
-		
-		JuegoGrafica juego = JuegoGrafica.getInstance();
-		JLabel PuntajeO = new JLabel();
-		
-		PuntajeO.setFont(new Font("Italica", Font.ITALIC, 15));
-		PuntajeO.setHorizontalAlignment(SwingConstants.CENTER);
-		PuntajeO.setBounds(200, 150, 150, 42);
-		pFinal.add(PuntajeO);
+		pantallaFinal();
 		
 		if(gano) {
-			etiquetaGanar.setText("¡Has ganado! ");
-			etiquetaGanar.setForeground(Color.blue);
-			//etiquetaGanar.setIcon(imagenFinal[1]);
-		    PuntajeO.setText("Puntaje Obtenido: "+juego.obtenerPuntaje());
-		    PuntajeO.setForeground(Color.yellow); 	
+			jlGanar.setText("ï¿½Has ganado! ");
+			jlGanar.setForeground(Color.blue);
+			//jlGanar.setIcon(imagenFinal[1]);
+		    jlPuntaje.setForeground(Color.yellow); 	
 		}
 		else {
-			etiquetaPerder.setText("¡Has perdido! ");
-			etiquetaPerder.setForeground(Color.red); 
-			//etiquetaPerder.setIcon(imagenFinal[0]);
-		    PuntajeO.setText("Puntaje Obtenido: "+juego.obtenerPuntaje());
-		    PuntajeO.setForeground(Color.white); 	
+			jlPerder.setText("ï¿½Has perdido! ");
+			jlPerder.setForeground(Color.red); 
+			//jlPerder.setIcon(imagenFinal[0]);
+		    jlPuntaje.setForeground(Color.white); 	
 		}
+		
 		hiloPrincipal.stop();
 	}
 	
@@ -243,7 +197,105 @@ public class gui extends JFrame {
 	
 	//METODOS PRIVADOS
 	
-	private void crearIndicadores(){
+	private void pantallaInicio() {
+		setFocusable(true);
+		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(new Dimension(width, height));
+		setLocationRelativeTo(null);
+		setResizable(false);
+		
+		pInicio = new JPanel();
+		pInicio.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(pInicio);
+		pInicio.setLayout(null);
+		pInicio.setBackground(new Color(000));
+		
+		// Imagen superior
+		
+		jlBanner = new JLabel();
+		Icon imgBanner = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/banner.png"));
+		jlBanner.setIcon(imgBanner);
+		jlBanner.setBounds(50,30, 500, 300);
+		pInicio.add(jlBanner);
+		
+		//botones Juegar, controles, salir
+		cargarImagenesBotones();
+		cargarBotonesPanelInicial();
+	}
+	
+	private void pantallaJuego() {
+		addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				accionesJugador(arg0);
+			}
+		});
+		setFocusable(true);
+		getContentPane().setLayout(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(new Dimension(width, height));
+		setLocationRelativeTo(null);
+		setResizable(false);
+		pJuego = new JPanel();
+		pJuego.setBorder(new EmptyBorder(5, 5, 5, 5));
+		pJuego.setLayout(null);
+		pJuego.setBackground(new Color(000));
+		setContentPane(pJuego);
+		
+		crearIndicadores();
+		
+		JuegoGrafica juego = JuegoGrafica.getInstance();
+		juego.establecerGrafica(this);
+		juego.iniciarJuego();
+		hiloPrincipal = new HiloPrincipal();
+		hiloPrincipal.start();
+		
+		actualizarIndicadores();
+	}
+	
+	private void pantallaFinal() {
+		pFinal = new JPanel();
+		pFinal.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(pFinal);
+		pFinal.setLayout(null);
+		pFinal.setBackground(new Color(000));
+		
+		/*imagenFinal = new Icon [2];
+		imagenFinal[0] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_on.png"));
+		imagenFinal[1] =  new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/fuerza_off.png"));
+		*/
+		jlGanar = new JLabel();
+		//etiquetaGanar.setBounds(10, 10, 30, 30);
+		//this.add(etiquetaGanar);
+		
+		jlGanar.setFont(new Font("Italica", Font.ITALIC, 15));
+		jlGanar.setHorizontalAlignment(SwingConstants.CENTER);
+		jlGanar.setBounds(200, 100, 150, 42);
+		pFinal.add(jlGanar);
+		
+		jlPerder= new JLabel();
+		//etiquetaPerder.setBounds(10, 10, 30, 30);
+		//this.add(etiquetaPerder);
+		
+		jlPerder.setFont(new Font("Italica", Font.ITALIC, 15));
+		jlPerder.setHorizontalAlignment(SwingConstants.CENTER);
+		jlPerder.setBounds(200, 100, 150, 42);
+		pFinal.add(jlPerder);
+		
+		JuegoGrafica juego = JuegoGrafica.getInstance();
+		jlPuntaje = new JLabel();
+		jlPuntaje.setText("Puntaje Obtenido: "+juego.obtenerPuntaje());
+		jlPuntaje.setFont(new Font("Italica", Font.ITALIC, 15));
+		jlPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
+		jlPuntaje.setBounds(200, 150, 150, 42);
+		pFinal.add(jlPuntaje);
+		
+		cargarImagenesBotones();
+		cargarBotonesPanelFinal();
+	}
+	
+ 	private void crearIndicadores(){
 		cargarImagenes();
 		
 		//Nivel 
@@ -379,4 +431,151 @@ public class gui extends JFrame {
 		
 	}
 	
-} 
+	private void cargarImagenesBotones() {
+		imagenJugar = new Icon[3];
+		imagenJugar[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_jugar.png"));
+		imagenJugar[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_jugar_c.png"));
+		imagenJugar[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_jugar_h.png"));
+		
+		imagenControles = new Icon[3];
+		imagenControles[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_controles.png"));
+		imagenControles[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_controles_c.png"));
+		imagenControles[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_controles_h.png"));
+		
+		imagenVolverJugar = new Icon[3];
+		imagenVolverJugar[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_volverJugar.png"));
+		imagenVolverJugar[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_volverJugar_c.png"));
+		imagenVolverJugar[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_volverJugar_h.png"));
+		
+		imagenSalir = new Icon[3];
+		imagenSalir[0] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_salir.png"));
+		imagenSalir[1] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_salir_c.png"));
+		imagenSalir[2] = new ImageIcon(this.getClass().getResource("/Galaxian/Interfaz/b_salir_h.png"));
+		
+	}
+	
+	private void cargarBotonesPanelInicial() {
+		//Atributos Principales
+		jbJugar = new JButton("");
+		jbJugar.setBorder(null);
+		jbJugar.setBorderPainted(false);
+		jbJugar.setContentAreaFilled(false);
+		jbJugar.setSelectedIcon(null);
+		jbJugar.setIcon(imagenJugar[0]);
+		jbJugar.setPressedIcon(imagenJugar[1]);
+		jbJugar.setRolloverIcon(imagenJugar[2]);
+		jbJugar.setSelectedIcon(imagenJugar[2]);
+		jbJugar.setBounds(145, 367, 310, 81);
+		jbJugar.setFocusable(false);
+		
+		jbControles = new JButton("");
+		jbControles.setBorder(null);
+		jbControles.setBorderPainted(false);
+		jbControles.setContentAreaFilled(false);
+		jbControles.setSelectedIcon(null);
+		jbControles.setIcon(imagenControles[0]);
+		jbControles.setPressedIcon(imagenControles[1]);
+		jbControles.setRolloverIcon(imagenControles[2]);
+		jbControles.setSelectedIcon(imagenControles[2]);
+		jbControles.setBounds(145, 468, 310, 81);
+		jbControles.setFocusable(false);
+		
+		jbSalir = new JButton("");
+		jbSalir.setBorder(null);
+		jbSalir.setBorderPainted(false);
+		jbSalir.setContentAreaFilled(false);
+		jbSalir.setSelectedIcon(null);
+		jbSalir.setIcon(imagenSalir[0]);
+		jbSalir.setPressedIcon(imagenSalir[1]);
+		jbSalir.setRolloverIcon(imagenSalir[2]);
+		jbSalir.setSelectedIcon(imagenSalir[2]);
+		jbSalir.setBounds(145, 569, 310, 81);
+		jbSalir.setFocusable(false);
+		
+		//Oyentes
+		OJugar oJugar = new OJugar();
+		OControles oControles = new OControles();
+		OSalir oSalir = new OSalir();
+		jbJugar.addActionListener(oJugar);
+		jbControles.addActionListener(oControles);
+		jbSalir.addActionListener(oSalir);
+		
+		//Agregados al panel
+		pInicio.add(jbJugar);
+		pInicio.add(jbControles);
+		pInicio.add(jbSalir);		
+	}
+	
+	private void cargarBotonesPanelFinal() {
+		//Atributos Principales
+		jbVolverJugar = new JButton("");
+		jbVolverJugar.setBorder(null);
+		jbVolverJugar.setBorderPainted(false);
+		jbVolverJugar.setContentAreaFilled(false);
+		jbVolverJugar.setSelectedIcon(null);
+		jbVolverJugar.setIcon(imagenVolverJugar[0]);
+		jbVolverJugar.setPressedIcon(imagenVolverJugar[1]);
+		jbVolverJugar.setRolloverIcon(imagenVolverJugar[2]);
+		jbVolverJugar.setSelectedIcon(imagenVolverJugar[2]);
+		jbVolverJugar.setBounds(145, 468, 310, 81);
+		jbVolverJugar.setFocusable(false);
+		
+		jbSalir = new JButton("");
+		jbSalir.setBorder(null);
+		jbSalir.setBorderPainted(false);
+		jbSalir.setContentAreaFilled(false);
+		jbSalir.setSelectedIcon(null);
+		jbSalir.setIcon(imagenSalir[0]);
+		jbSalir.setPressedIcon(imagenSalir[1]);
+		jbSalir.setRolloverIcon(imagenSalir[2]);
+		jbSalir.setSelectedIcon(imagenSalir[2]);
+		jbSalir.setBounds(145, 569, 310, 81);
+		jbSalir.setFocusable(false);
+		
+		//Oyentes
+		OVolverJugar oVolverJugar = new OVolverJugar();
+		OSalir oSalir = new OSalir();
+		jbVolverJugar.addActionListener(oVolverJugar);
+		jbSalir.addActionListener(oSalir);
+		
+		//Agregados al panel
+		pFinal.add(jbVolverJugar);
+		pFinal.add(jbSalir);
+		
+	}
+	
+	/**
+	 * CLASES OYENTES
+	 */
+	
+	//Oyente boton Jugar
+	private class OJugar implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			pInicio.setVisible(false);
+			pantallaJuego();
+		}
+	}
+	
+	//Oyente boton Jugar
+	private class OControles implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			
+		}
+	}
+	
+	//Oyente boton Jugar
+	private class OVolverJugar implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			pFinal.setVisible(false);
+			pantallaJuego();
+		}
+	}
+
+	//Oyente boton salir
+	private class OSalir implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			//Cierro ventana
+			dispose();
+		}
+	}
+}
