@@ -46,6 +46,8 @@ public class HiloPrincipal extends Thread{
 			colisionarEntidades();
 			elimEntidades();
 			
+			juego.actualizarGrafica();
+			
 			if(!juego.hayEnemigos()) {
 				juego.siguienteNivel();
 			}
