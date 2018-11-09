@@ -181,9 +181,9 @@ public class gui extends JFrame {
 		
 		pInicio = new JPanel();
 		pInicio.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(pInicio);
 		pInicio.setLayout(null);
 		pInicio.setBackground(new Color(000));
+		setContentPane(pInicio);
 		
 		// Imagen superior
 		
