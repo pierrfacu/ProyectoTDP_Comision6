@@ -1,6 +1,7 @@
 package Inteligencia.Estados;
 
 import java.awt.Point;
+import java.util.Random;
 
 import Entidades.Enemigos.Enemigo;
 import Inteligencia.Inteligencia;
@@ -44,12 +45,12 @@ public class EnFormacion extends Estado {
 		contSecMF ++;
 		if(contSecMF == 4)
 			contSecMF = 0;
-    } 
-	
-	public boolean isAtaco() {
-    	return true;
-    }
-	
+		
+		Random rnd = new Random();
+		int n=rnd.nextInt(30);
+		if (n<1)
+			inteligencia.establecerAtaque();
+    } 	
 }
 		
 

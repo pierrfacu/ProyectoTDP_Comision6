@@ -30,7 +30,7 @@ public class gui extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private  int width = 600;
 	private int height = 700;
-	
+			
 	private HiloPrincipal hiloPrincipal;
 	
 	//Atributos panel inicial
@@ -89,7 +89,7 @@ public class gui extends JFrame {
 	public gui() {
 		setTitle("Galaxian");
 		Image iconVentana = new ImageIcon(getClass().getResource("/Galaxian/Interfaz/iconVentana.png")).getImage();
-		setIconImage(iconVentana);
+		setIconImage(iconVentana);		
 		pantallaInicio();
 	}
 	

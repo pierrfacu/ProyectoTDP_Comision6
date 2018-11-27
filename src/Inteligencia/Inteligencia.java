@@ -36,6 +36,11 @@ public abstract class Inteligencia {
 	 */
 	public abstract void ejecutar();
 	
+	/**
+	 * Cambia la inteligencia al estado de ataque.
+	 */
+	public abstract void establecerAtaque();
+	
 	//Metodos
 	
 	/**
